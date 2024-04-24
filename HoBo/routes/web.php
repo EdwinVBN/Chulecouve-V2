@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PageController::class, 'home']);
+Route::get('/filminfo', [PageController::class, 'filminfo']);
+Route::get('/history', [PageController::class, 'history']);
+Route::get('/profile', [PageController::class, 'profile']);
+Route::get('/search', [PageController::class, 'search']);
+Route::get('/settings', [PageController::class, 'settings']);
+Route::get('/stream', [PageController::class, 'stream']);
