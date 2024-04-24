@@ -7,6 +7,6 @@
     <link rel="stylesheet" href="{{ asset('SCSS/styles.css') }}">
 </head>
 <body>
-    <h1 id='test'>Yo</h1>
+    <h1>Yo</h1>
 </body>
 </html>
