@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GenresController;
+use App\Http\Controllers\PageController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,10 @@ use App\Http\Controllers\GenresController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/genres', [GenresController::class, 'genres']);
+Route::get('/', [PageController::class, 'home']);
+Route::get('/filminfo', [PageController::class, 'filminfo']);
+Route::get('/history', [PageController::class, 'history']);
+Route::get('/profile', [PageController::class, 'profile']);
+Route::get('/search', [PageController::class, 'search']);
+Route::get('/settings', [PageController::class, 'settings']);
+Route::get('/stream', [PageController::class, 'stream']);
