@@ -1,3 +1,106 @@
-#test {
-    color: red;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@font-face {
+    font-family: 'Neutra';
+    src: url('../NeutraText-BoldAlt.otf') format('opentype');
+}
+
+$primary-color: #92d051;
+$secondary-color: #5b9bd5;
+$dark-color: #444444;
+$light-color: #efefef;
+
+$title: "Neutra", sans-serif;
+$paragraph: "Montserrat", sans-serif;
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    article {
+        display: flex;
+        gap: 150px;
+
+        a {
+            text-decoration: none;
+            font-size: 24px;
+            color: $primary-color;
+            font-family: $title;
+
+            &:hover {
+                color: #628b35;
+            }
+        }
+
+        img {
+            padding-top: 20px;
+            width: 100px;
+        }
+    }
+}
+
+#home-body {
+    margin: 0;
+    padding: 0;
+    background-color: $dark-color;
+    padding-left: 100px;
+    padding-right: 100px;
+    background-attachment:fixed;
+    background-image: linear-gradient(to bottom, rgba(255,153,153,0) 0%,$dark-color 90%,$dark-color 100%), url('../img/movie-wallpaper.jpg');
+    background-position:top center;
+    background-repeat:no-repeat;
+    background-size:100% auto;
+    overflow-x: hidden;
+
+    main {
+        #home-info {
+            margin-top: 200px;
+            width: 600px;
+    
+            h1 {
+                font-family: $title;
+                color: $primary-color;
+                font-size: 55px;
+                padding: 0;
+                margin: 0;
+            }
+    
+            p {
+                font-family: $paragraph;
+                color: $primary-color;
+                font-size: 20px;
+            }
+    
+            button {
+                width: 200px;
+                margin-top: 20px;
+                height: 60px;
+                background-color: $primary-color;
+                border: none;
+                border-radius: 30px;
+                color: $dark-color;
+                font-size: 20px;
+            }
+        }
+
+        #carousel-trending {
+            margin-top: 200px;
+
+            h1 {
+                color: $light-color;
+                font-family: $title;
+                font-size: 40px;
+            }
+
+            .carousel-images {
+                display: flex;
+                gap: 30px;
+
+                img {
+                    width: 250px;
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
 }

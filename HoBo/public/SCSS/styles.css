@@ -1,3 +1,83 @@
-#test {
-  color: red;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@font-face {
+  font-family: "Neutra";
+  src: url("../NeutraText-BoldAlt.otf") format("opentype");
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header article {
+  display: flex;
+  gap: 150px;
+}
+header article a {
+  text-decoration: none;
+  font-size: 24px;
+  color: #92d051;
+  font-family: "Neutra", sans-serif;
+}
+header article a:hover {
+  color: #628b35;
+}
+header article img {
+  padding-top: 20px;
+  width: 100px;
+}
+
+#home-body {
+  margin: 0;
+  padding: 0;
+  background-color: #444444;
+  padding-left: 100px;
+  padding-right: 100px;
+  background-attachment: fixed;
+  background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 0%, #444444 90%, #444444 100%), url("../img/movie-wallpaper.jpg");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  overflow-x: hidden;
+}
+#home-body main #home-info {
+  margin-top: 200px;
+  width: 600px;
+}
+#home-body main #home-info h1 {
+  font-family: "Neutra", sans-serif;
+  color: #92d051;
+  font-size: 55px;
+  padding: 0;
+  margin: 0;
+}
+#home-body main #home-info p {
+  font-family: "Montserrat", sans-serif;
+  color: #92d051;
+  font-size: 20px;
+}
+#home-body main #home-info button {
+  width: 200px;
+  margin-top: 20px;
+  height: 60px;
+  background-color: #92d051;
+  border: none;
+  border-radius: 30px;
+  color: #444444;
+  font-size: 20px;
+}
+#home-body main #carousel-trending {
+  margin-top: 200px;
+}
+#home-body main #carousel-trending h1 {
+  color: #efefef;
+  font-family: "Neutra", sans-serif;
+  font-size: 40px;
+}
+#home-body main #carousel-trending .carousel-images {
+  display: flex;
+  gap: 30px;
+}
+#home-body main #carousel-trending .carousel-images img {
+  width: 250px;
+  border-radius: 5px;
 }/*# sourceMappingURL=styles.css.map */
