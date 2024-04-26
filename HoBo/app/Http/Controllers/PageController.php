@@ -8,7 +8,7 @@ use App\Models\Serie;
 class PageController extends Controller
 {
     public function home() {
-        $series = Serie::all();
+        $series = Serie::take(9)->get();
 
         return view('home', ['series' => $series]);
     }

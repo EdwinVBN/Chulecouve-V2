@@ -65,19 +65,19 @@ header article img {
   color: #444444;
   font-size: 20px;
 }
-#home-body main #carousel-trending {
-  margin-top: 200px;
+#home-body main .carousel {
+  margin-top: 100px;
 }
-#home-body main #carousel-trending h1 {
-  color: #efefef;
+#home-body main .carousel h1 {
+  color: #5b9bd5;
   font-family: "Neutra", sans-serif;
   font-size: 40px;
 }
-#home-body main #carousel-trending .carousel-images {
+#home-body main .carousel .carousel-images {
   display: flex;
   gap: 30px;
 }
-#home-body main #carousel-trending .carousel-images img {
+#home-body main .carousel .carousel-images img {
   width: 250px;
   border-radius: 5px;
 }/*# sourceMappingURL=styles.css.map */
