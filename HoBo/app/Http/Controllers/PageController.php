@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Serie;
 
 class PageController extends Controller
 {
     public function home() {
-        return view('home');
+        $series = Serie::all();
+
+        return view('home', ['series' => $series]);
     }
 
     public function filminfo() {

@@ -17,17 +17,9 @@
         <section id="carousel-trending">
             <h1>Trending</h1>
             <section class="carousel-images">
-                <img src="img/test.jpg">
-                <img src="img/test.jpg">
-                <img src="img/test.jpg">
-                <img src="img/test.jpg">
-                <img src="img/test.jpg">
-                <img src="img/test.jpg">
-                <img src="img/test.jpg">
-                <img src="img/test.jpg">
-                <img src="img/test.jpg">
-                <img src="img/test.jpg">
-                <img src="img/test.jpg">
+                @foreach ($series as $serie)
+                    {{-- <img src="img/test.jpg"> --}}
+                @endforeach
             </section>
         </section>
     </main>
