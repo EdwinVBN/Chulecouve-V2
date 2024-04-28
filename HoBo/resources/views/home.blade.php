@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('SCSS/styles.css') }}">
+    <script src="{{ asset('js/carousel.js') }}" defer></script>
 </head>
 <body id="home-body">
     @include('header')
@@ -15,30 +16,16 @@
             <button id="watch">Kijk</button>
         </section>
         <section class="carousel">
+            <button id="next">next</button>
+            <button id="prev">prev</button>
             <h1>Laatst gekeken</h1>
             <section class="carousel-images">
                 @foreach ($series as $serie)
-                     <img src="img/test.jpg"> 
+                     <img class="carousel-image" src="img/test.jpg">
+                     <img class="carousel-image" src="img/test.jpg"> 
                 @endforeach      
             </section>
-        </section>
-        <section class="carousel">
-            <h1>Trending</h1>
-            <section class="carousel-images">
-                @foreach ($series as $serie)
-                     <img src="img/test.jpg"> 
-                @endforeach
-            </section>
-        </section>
-        <section class="carousel">
-            <h1>Editors picks</h1>
-            <section class="carousel-images">
-                @foreach ($series as $serie)
-                     <img src="img/test.jpg"> 
-                @endforeach
-            </section>
-        </section>
-        
+        </section>       
     </main>
 </body>
 </html>
