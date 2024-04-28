@@ -76,8 +76,9 @@ header article img {
 #home-body main .carousel .carousel-images {
   display: flex;
   gap: 30px;
+  transition: transform 0.3s ease-in-out;
 }
 #home-body main .carousel .carousel-images img {
-  width: 250px;
+  width: 235px;
   border-radius: 5px;
 }/*# sourceMappingURL=styles.css.map */

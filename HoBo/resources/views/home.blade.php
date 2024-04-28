@@ -22,7 +22,6 @@
             <section class="carousel-images">
                 @foreach ($series as $serie)
                      <img class="carousel-image" src="img/test.jpg">
-                     <img class="carousel-image" src="img/test.jpg"> 
                 @endforeach      
             </section>
         </section>       

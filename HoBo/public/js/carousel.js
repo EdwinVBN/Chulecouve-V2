@@ -7,7 +7,7 @@ class Slider {
     }
 
     next() {
-        if (this.index < this.images.length) {
+        if (this.index < this.images.length - 1) {
             this.index++;
             this.slide();
             this.images[this.index - 1].style.transition = "opacity 0.8s ease";
@@ -31,9 +31,14 @@ class Slider {
         this.slider.style.transition = 'transform 0.3s ease-in-out';
         this.slider.style.transform = `translateX(${offset}px)`;
     }
+
+    update() {
+        this.imageWidth = this.images[0].clientWidth;
+    }
 }
 
 const slider = new Slider();
 
 document.getElementById("next").addEventListener('click', () => slider.next());
 document.getElementById("prev").addEventListener('click', () => slider.prev());
+window.addEventListener("resize", () => slider.update());
