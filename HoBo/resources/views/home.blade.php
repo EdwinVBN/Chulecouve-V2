@@ -16,15 +16,15 @@
             <button id="watch">Kijk</button>
         </section>
         <section class="carousel">
-            <button id="next">next</button>
             <button id="prev">prev</button>
-            <h1>Laatst gekeken</h1>
+            <button id="next">next</button> 
+            <h1>Laatst gekeken</h1> 
             <section class="carousel-images">
                 @foreach ($series as $serie)
-                     <img class="carousel-image" src="img/test.jpg">
-                @endforeach      
+                    <img class="carousel-image" src="img/test.jpg">
+                @endforeach  
             </section>
-        </section>       
+        </section>     
     </main>
 </body>
 </html>
