@@ -95,6 +95,7 @@ header {
             .carousel-images {
                 display: flex;
                 gap: 30px;
+                transition: transform 0.3s ease-in-out;
 
                 img {
                     width: 250px;
