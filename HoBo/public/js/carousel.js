@@ -1,47 +1,60 @@
 class Slider {
-    constructor() {
-        this.slider = document.querySelector('.carousel-images');
-        this.images = document.querySelectorAll('.carousel-image');
+    constructor(container) {
+        this.container = container;
+        this.slider = container.querySelector('.carousel-images');
+        this.images = container.querySelectorAll('.carousel-image');
         this.imageWidth = this.images[0].clientWidth;
         this.containerWidth = this.slider.clientWidth;
         this.index = 0;
         this.visibleImages = Math.ceil(this.containerWidth / (this.imageWidth + 30));
+        this.maxIndex = this.images.length - this.visibleImages;
+        this.nextButton = container.querySelector('.next');
+        this.prevButton = container.querySelector('.prev');
+        this.bindEvents();
     }
 
     next() {
-        if (this.index < this.images.length - 1) {
-            this.index++;
+        const nextIndex = this.index + this.visibleImages;
+        if (nextIndex <= this.maxIndex) {
+            this.index = nextIndex;
             this.slide();
-            this.images[this.index - 1].style.transition = "opacity 0.8s ease";
-            this.images[this.index - 1].style.opacity = 0.5;  
+        } else {
+            this.index = this.maxIndex;
+            this.slide();
         }
     }
 
     prev() {
-        let adjust = this.index - 1;
-    
-        if (this.index > 0) {
-            this.index--;
+        const prevIndex = this.index - this.visibleImages;
+        if (prevIndex >= 0) {
+            this.index = prevIndex;
             this.slide();
-            this.images[adjust].style.transition = "opacity 0.8s ease";
-            this.images[adjust].style.opacity = 1;
+        } else {
+            this.index = 0;
+            this.slide();
         }
     }
 
     slide() {
-        const offset = -this.index * (this.imageWidth + 30) * this.visibleImages;
+        const offset = -this.index * (this.imageWidth + 30);
         this.slider.style.transition = 'transform 2s ease-in-out';
         this.slider.style.transform = `translateX(${offset}px)`;
     }
 
     update() {
         this.imageWidth = this.images[0].clientWidth;
+        this.containerWidth = this.slider.clientWidth;
         this.visibleImages = Math.ceil(this.containerWidth / (this.imageWidth + 30));
+        this.maxIndex = this.images.length - this.visibleImages;
+    }
+
+    bindEvents() {
+        this.nextButton.addEventListener('click', () => this.next());
+        this.prevButton.addEventListener('click', () => this.prev());
+        window.addEventListener("resize", () => this.update());
     }
 }
 
-const slider = new Slider();
-
-document.getElementById("next").addEventListener('click', () => slider.next());
-document.getElementById("prev").addEventListener('click', () => slider.prev());
-window.addEventListener("resize", () => slider.update());
+document.querySelectorAll(".carousel").forEach(container => {
+    const slider = new Slider(container);
+});

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('SCSS/styles.css') }}">
-    <script src="{{ asset('js/carousel.js') }}" defer></script>
 </head>
 <body id="home-body">
     @include('header')
@@ -16,8 +15,8 @@
             <button id="watch">Kijk</button>
         </section>
         <section class="carousel">
-            <button id="prev">prev</button>
-            <button id="next">next</button> 
+            <button class="prev">prev</button>
+            <button class="next">next</button> 
             <h1>Laatst gekeken</h1> 
             <section class="carousel-images">
                 @foreach ($series as $serie)
@@ -26,7 +25,35 @@
                     <img class="carousel-image" src="img/test.jpg">
                 @endforeach  
             </section>
-        </section>     
+        </section>
+        
+        <section class="carousel">
+            <button class="prev">prev</button>
+            <button class="next">next</button> 
+            <h1>Trending</h1> 
+            <section class="carousel-images">
+                @foreach ($series as $serie)
+                    <img class="carousel-image" src="img/test.jpg">
+                    <img class="carousel-image" src="img/test.jpg">
+                    <img class="carousel-image" src="img/test.jpg">
+                @endforeach  
+            </section>
+        </section>
+
+        <section class="carousel">
+            <button class="prev">prev</button>
+            <button class="next">next</button> 
+            <h1>Editors picks</h1> 
+            <section class="carousel-images">
+                @foreach ($series as $serie)
+                    <img class="carousel-image" src="img/test.jpg">
+                    <img class="carousel-image" src="img/test.jpg">
+                    <img class="carousel-image" src="img/test.jpg">
+                @endforeach  
+            </section>
+        </section>
     </main>
+
+    <script src="{{ asset('js/carousel.js') }}" defer></script>
 </body>
 </html>
