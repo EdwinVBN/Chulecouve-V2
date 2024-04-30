@@ -3,7 +3,9 @@ class Slider {
         this.slider = document.querySelector('.carousel-images');
         this.images = document.querySelectorAll('.carousel-image');
         this.imageWidth = this.images[0].clientWidth;
+        this.containerWidth = this.slider.clientWidth;
         this.index = 0;
+        this.visibleImages = Math.ceil(this.containerWidth / (this.imageWidth + 30));
     }
 
     next() {
@@ -27,13 +29,14 @@ class Slider {
     }
 
     slide() {
-        const offset = -this.index * (this.imageWidth + 30);
-        this.slider.style.transition = 'transform 0.3s ease-in-out';
+        const offset = -this.index * (this.imageWidth + 30) * this.visibleImages;
+        this.slider.style.transition = 'transform 2s ease-in-out';
         this.slider.style.transform = `translateX(${offset}px)`;
     }
 
     update() {
         this.imageWidth = this.images[0].clientWidth;
+        this.visibleImages = Math.ceil(this.containerWidth / (this.imageWidth + 30));
     }
 }
 
