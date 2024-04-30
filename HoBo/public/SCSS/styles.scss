@@ -35,6 +35,12 @@ header {
         img {
             padding-top: 20px;
             width: 100px;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+
+            &:hover {
+                transform: scale(1.1);
+            }
         }
     }
 }
@@ -80,11 +86,42 @@ header {
                 border-radius: 30px;
                 color: $dark-color;
                 font-size: 20px;
+                transition: transform 0.2s ease-in-out;
+                cursor: pointer;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
             }
         }
 
         .carousel {
             margin-top: 100px;
+
+            button {
+                margin-bottom: 20px;
+                background-color: rgba(0, 0, 0, 0.5);
+                border: none;
+                color: white;
+                border-radius: 50%;
+                width: 35px;
+                height: 35px;
+                display: inline-block;
+                text-align: center;
+                cursor: pointer;
+                transition: transform 0.2s ease-in-out;
+
+                img {
+                    width: 80%;
+                    filter: invert(100%);
+                    display: block; 
+                    margin: auto; 
+                }
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
 
             h1 {
                 color: $secondary-color;
@@ -100,6 +137,12 @@ header {
                 img {
                     width: 235px;
                     border-radius: 5px;
+                    cursor: pointer;
+                    transition: transform 0.2s ease-in-out;
+
+                    &:hover {
+                        transform: scale(1.05);
+                    }
                 }
             }
         }

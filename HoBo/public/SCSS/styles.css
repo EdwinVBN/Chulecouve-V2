@@ -24,6 +24,11 @@ header article a:hover {
 header article img {
   padding-top: 20px;
   width: 100px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+header article img:hover {
+  transform: scale(1.1);
 }
 
 #home-body {
@@ -64,9 +69,36 @@ header article img {
   border-radius: 30px;
   color: #444444;
   font-size: 20px;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+#home-body main #home-info button:hover {
+  transform: scale(1.1);
 }
 #home-body main .carousel {
   margin-top: 100px;
+}
+#home-body main .carousel button {
+  margin-bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+#home-body main .carousel button img {
+  width: 80%;
+  filter: invert(100%);
+  display: block;
+  margin: auto;
+}
+#home-body main .carousel button:hover {
+  transform: scale(1.1);
 }
 #home-body main .carousel h1 {
   color: #5b9bd5;
@@ -81,4 +113,9 @@ header article img {
 #home-body main .carousel .carousel-images img {
   width: 235px;
   border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+#home-body main .carousel .carousel-images img:hover {
+  transform: scale(1.05);
 }/*# sourceMappingURL=styles.css.map */

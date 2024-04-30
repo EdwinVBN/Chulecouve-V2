@@ -37,7 +37,7 @@ class Slider {
 
     slide() {
         const offset = -this.index * (this.imageWidth + 30);
-        this.slider.style.transition = 'transform 2s ease-in-out';
+        this.slider.style.transition = 'transform 1s ease-in-out';
         this.slider.style.transform = `translateX(${offset}px)`;
     }
 

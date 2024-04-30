@@ -8,10 +8,6 @@
 </head>
 <body>
     <header>
-        <article id="header-left">
-            <a href="">Home</a>
-            <a href="">Genre</a>
-        </article>
         <article id="header-logo">
             <img src="img/HOBO_Beeldmerk.png">
         </article>

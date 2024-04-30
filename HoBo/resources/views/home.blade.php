@@ -15,25 +15,22 @@
             <button id="watch">Kijk</button>
         </section>
         <section class="carousel">
-            <button class="prev">prev</button>
-            <button class="next">next</button> 
             <h1>Laatst gekeken</h1> 
+            <button class="prev"><img src="img/left-chevron.png" alt=""></button>
+            <button class="next"><img src="img/right-chevron.png" alt=""></button> 
             <section class="carousel-images">
                 @foreach ($series as $serie)
-                    <img class="carousel-image" src="img/test.jpg">
-                    <img class="carousel-image" src="img/test.jpg">
                     <img class="carousel-image" src="img/test.jpg">
                 @endforeach  
             </section>
         </section>
         
         <section class="carousel">
-            <button class="prev">prev</button>
-            <button class="next">next</button> 
             <h1>Trending</h1> 
+            <button class="prev"><img src="img/left-chevron.png" alt=""></button>
+            <button class="next"><img src="img/right-chevron.png" alt=""></button> 
             <section class="carousel-images">
                 @foreach ($series as $serie)
-                    <img class="carousel-image" src="img/test.jpg">
                     <img class="carousel-image" src="img/test.jpg">
                     <img class="carousel-image" src="img/test.jpg">
                 @endforeach  
@@ -41,12 +38,11 @@
         </section>
 
         <section class="carousel">
-            <button class="prev">prev</button>
-            <button class="next">next</button> 
             <h1>Editors picks</h1> 
+            <button class="prev"><img src="img/left-chevron.png" alt=""></button>
+            <button class="next"><img src="img/right-chevron.png" alt=""></button> 
             <section class="carousel-images">
                 @foreach ($series as $serie)
-                    <img class="carousel-image" src="img/test.jpg">
                     <img class="carousel-image" src="img/test.jpg">
                     <img class="carousel-image" src="img/test.jpg">
                 @endforeach  
