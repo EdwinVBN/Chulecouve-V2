@@ -64,7 +64,7 @@ header {
 
     main {
         #home-info {
-            margin-top: 200px;
+            margin-top: 150px;
             width: 600px;
 
             h1 {
@@ -96,6 +96,20 @@ header {
                 &:hover {
                     transform: scale(1.1);
                 }
+            }
+        }
+
+        #info-movie {
+            height: 20vh;
+            margin-top: 10vh;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            font-size: 18px;
+
+            h1 {
+                color: $secondary-color;
+                font-family: $title;
             }
         }
 

@@ -47,7 +47,7 @@ header article img:hover {
 }
 #info-body main #home-info,
 #home-body main #home-info {
-  margin-top: 200px;
+  margin-top: 150px;
   width: 600px;
 }
 #info-body main #home-info h1,
@@ -80,6 +80,20 @@ header article img:hover {
 #info-body main #home-info button:hover,
 #home-body main #home-info button:hover {
   transform: scale(1.1);
+}
+#info-body main #info-movie,
+#home-body main #info-movie {
+  height: 20vh;
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  font-size: 18px;
+}
+#info-body main #info-movie h1,
+#home-body main #info-movie h1 {
+  color: #5b9bd5;
+  font-family: "Neutra", sans-serif;
 }
 #info-body main .carousel,
 #home-body main .carousel {
