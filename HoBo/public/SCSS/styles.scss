@@ -1,3 +1,4 @@
+// Variables
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 @font-face {
     font-family: 'Neutra';
@@ -12,6 +13,7 @@ $light-color: #efefef;
 $title: "Neutra", sans-serif;
 $paragraph: "Montserrat", sans-serif;
 
+// Header Styles
 header {
     display: flex;
     justify-content: space-between;
@@ -45,24 +47,26 @@ header {
     }
 }
 
+// Info Body Styles
+#info-body,
 #home-body {
     margin: 0;
     padding: 0;
     background-color: $dark-color;
     padding-left: 100px;
     padding-right: 100px;
-    background-attachment:fixed;
-    background-image: linear-gradient(to bottom, rgba(255,153,153,0) 0%,$dark-color 90%,$dark-color 100%), url('../img/movie-wallpaper.jpg');
-    background-position:top center;
-    background-repeat:no-repeat;
-    background-size:100% auto;
+    background-attachment: fixed;
+    background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 0%, $dark-color 90%, $dark-color 100%), url('../img/movie-wallpaper.jpg');
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
     overflow-x: hidden;
 
     main {
         #home-info {
             margin-top: 200px;
             width: 600px;
-    
+
             h1 {
                 font-family: $title;
                 color: $primary-color;
@@ -70,13 +74,13 @@ header {
                 padding: 0;
                 margin: 0;
             }
-    
+
             p {
                 font-family: $paragraph;
                 color: $primary-color;
                 font-size: 20px;
             }
-    
+
             button {
                 width: 200px;
                 margin-top: 20px;
@@ -114,8 +118,8 @@ header {
                 img {
                     width: 80%;
                     filter: invert(100%);
-                    display: block; 
-                    margin: auto; 
+                    display: block;
+                    margin: auto;
                 }
 
                 &:hover {
@@ -149,6 +153,7 @@ header {
     }
 }
 
+// Stream Body Styles
 #stream-body {
     padding: 0;
     margin: 0;
@@ -172,15 +177,15 @@ header {
         text-align: center;
         cursor: pointer;
         transition: transform 0.2s ease-in-out;
-        position: absolute; 
-        top: 1%; 
+        position: absolute;
+        top: 1%;
         left: 1%;
 
         img {
             width: 80%;
             filter: invert(100%);
-            display: block; 
-            margin: auto; 
+            display: block;
+            margin: auto;
         }
 
         &:hover {

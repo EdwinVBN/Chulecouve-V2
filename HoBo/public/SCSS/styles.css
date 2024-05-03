@@ -31,6 +31,7 @@ header article img:hover {
   transform: scale(1.1);
 }
 
+#info-body,
 #home-body {
   margin: 0;
   padding: 0;
@@ -44,10 +45,12 @@ header article img:hover {
   background-size: 100% auto;
   overflow-x: hidden;
 }
+#info-body main #home-info,
 #home-body main #home-info {
   margin-top: 200px;
   width: 600px;
 }
+#info-body main #home-info h1,
 #home-body main #home-info h1 {
   font-family: "Neutra", sans-serif;
   color: #92d051;
@@ -55,11 +58,13 @@ header article img:hover {
   padding: 0;
   margin: 0;
 }
+#info-body main #home-info p,
 #home-body main #home-info p {
   font-family: "Montserrat", sans-serif;
   color: #92d051;
   font-size: 20px;
 }
+#info-body main #home-info button,
 #home-body main #home-info button {
   width: 200px;
   margin-top: 20px;
@@ -72,12 +77,15 @@ header article img:hover {
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
 }
+#info-body main #home-info button:hover,
 #home-body main #home-info button:hover {
   transform: scale(1.1);
 }
+#info-body main .carousel,
 #home-body main .carousel {
   margin-top: 100px;
 }
+#info-body main .carousel button,
 #home-body main .carousel button {
   margin-bottom: 20px;
   background-color: rgba(0, 0, 0, 0.5);
@@ -91,31 +99,37 @@ header article img:hover {
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
 }
+#info-body main .carousel button img,
 #home-body main .carousel button img {
   width: 80%;
   filter: invert(100%);
   display: block;
   margin: auto;
 }
+#info-body main .carousel button:hover,
 #home-body main .carousel button:hover {
   transform: scale(1.1);
 }
+#info-body main .carousel h1,
 #home-body main .carousel h1 {
   color: #5b9bd5;
   font-family: "Neutra", sans-serif;
   font-size: 40px;
 }
+#info-body main .carousel .carousel-images,
 #home-body main .carousel .carousel-images {
   display: flex;
   gap: 30px;
   transition: transform 0.3s ease-in-out;
 }
+#info-body main .carousel .carousel-images img,
 #home-body main .carousel .carousel-images img {
   width: 235px;
   border-radius: 5px;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
 }
+#info-body main .carousel .carousel-images img:hover,
 #home-body main .carousel .carousel-images img:hover {
   transform: scale(1.05);
 }

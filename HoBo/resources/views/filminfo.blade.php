@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('SCSS/styles.css') }}">
 </head>
-<body id="home-body">
+<body id="info-body">
     @include('header')
     <main>
         <section id="home-info">
