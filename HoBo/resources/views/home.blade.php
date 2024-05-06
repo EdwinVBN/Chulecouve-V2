@@ -20,7 +20,7 @@
             <button class="next"><img src="img/right-chevron.png" alt=""></button> 
             <section class="carousel-images">
                 @foreach ($series as $serie)
-                    <img class="carousel-image" src="img/test.jpg">
+                    <img class="carousel-image" src="{{ $serie->Image }}">
                 @endforeach  
             </section>
         </section>

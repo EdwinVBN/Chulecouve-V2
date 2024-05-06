@@ -8,9 +8,11 @@ use App\Models\Serie;
 class PageController extends Controller
 {
     public function home() {
-        $series = Serie::take(9)->get();
+        $series = Serie::whereNotNull('Image')->take(12)->get();
 
-        return view('home', ['series' => $series]);
+        return view('home', [
+            'series' => $series,
+        ]);
     }
 
     public function filminfo() {
