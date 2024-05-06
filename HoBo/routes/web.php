@@ -14,8 +14,9 @@ use App\Http\Controllers\PageController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', [PageController::class, 'home']);
+Route::get('/login', [PageController::class, 'login']);
+Route::get('/register', [PageController::class, 'register']);
 Route::get('/filminfo', [PageController::class, 'filminfo']);
 Route::get('/history', [PageController::class, 'history']);
 Route::get('/profile', [PageController::class, 'profile']);

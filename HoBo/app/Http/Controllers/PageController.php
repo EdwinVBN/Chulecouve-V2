@@ -7,6 +7,14 @@ use App\Models\Serie;
 
 class PageController extends Controller
 {
+    public function register(){
+        return view('register');
+    }
+
+    public function login(){
+        return view('login');
+    }
+
     public function home() {
         $viewing = Serie::whereNotNull('Image')->take(9)->get();
         $active = Serie::where('Actief', 1)->inRandomOrder()->take(30)->get();

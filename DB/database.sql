@@ -5,7 +5,11 @@
 -- Host: 127.0.0.1
 -- Generation Time: Apr 12, 2022 at 08:59 PM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- PHP Version: 8.
+
+DROP DATABASE IF EXISTS `Hobo`;
+CREATE DATABASE `Hobo`;
+USE `Hobo`;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
