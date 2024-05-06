@@ -19,7 +19,7 @@
             <button class="prev"><img src="img/left-chevron.png" alt=""></button>
             <button class="next"><img src="img/right-chevron.png" alt=""></button> 
             <section class="carousel-images">
-                @foreach ($series as $serie)
+                @foreach ($viewing as $serie)
                     <img class="carousel-image" src="{{ $serie->Image }}">
                 @endforeach  
             </section>
@@ -30,9 +30,8 @@
             <button class="prev"><img src="img/left-chevron.png" alt=""></button>
             <button class="next"><img src="img/right-chevron.png" alt=""></button> 
             <section class="carousel-images">
-                @foreach ($series as $serie)
-                    <img class="carousel-image" src="img/test.jpg">
-                    <img class="carousel-image" src="img/test.jpg">
+                @foreach ($active as $serie)
+                    <img class="carousel-image" src="{{ $serie->Image }}">
                 @endforeach  
             </section>
         </section>
@@ -42,9 +41,8 @@
             <button class="prev"><img src="img/left-chevron.png" alt=""></button>
             <button class="next"><img src="img/right-chevron.png" alt=""></button> 
             <section class="carousel-images">
-                @foreach ($series as $serie)
-                    <img class="carousel-image" src="img/test.jpg">
-                    <img class="carousel-image" src="img/test.jpg">
+                @foreach ($picks as $serie)
+                    <img class="carousel-image" src="{{ $serie->Image }}">
                 @endforeach  
             </section>
         </section>

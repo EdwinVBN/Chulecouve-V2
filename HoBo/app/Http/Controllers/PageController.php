@@ -8,10 +8,14 @@ use App\Models\Serie;
 class PageController extends Controller
 {
     public function home() {
-        $series = Serie::whereNotNull('Image')->take(12)->get();
+        $viewing = Serie::whereNotNull('Image')->take(9)->get();
+        $active = Serie::where('Actief', 1)->inRandomOrder()->take(30)->get();
+        $picks = Serie::whereNotNull('Image')->inRandomOrder()->take(30)->get();
 
         return view('home', [
-            'series' => $series,
+            'viewing' => $viewing,
+            'active' => $active,
+            'picks' => $picks
         ]);
     }
 
