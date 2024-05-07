@@ -16,9 +16,9 @@ use App\Http\Controllers\PageController;
 */
 
 Route::get('/', [PageController::class, 'home']);
-Route::get('/filminfo', [PageController::class, 'filminfo']);
+Route::get('/filminfo/{id}', [PageController::class, 'filminfo']);
 Route::get('/history', [PageController::class, 'history']);
 Route::get('/profile', [PageController::class, 'profile']);
 Route::get('/search', [PageController::class, 'search']);
 Route::get('/settings', [PageController::class, 'settings']);
-Route::get('/stream', [PageController::class, 'stream']);
+Route::get('/stream/{id}', [PageController::class, 'stream']);

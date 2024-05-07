@@ -15,12 +15,14 @@
             <button id="watch">Kijk</button>
         </section>
         <section class="carousel">
-            <h1>Laatst gekeken</h1> 
+            <h1>Kijk verder</h1> 
             <button class="prev"><img src="img/left-chevron.png" alt=""></button>
             <button class="next"><img src="img/right-chevron.png" alt=""></button> 
             <section class="carousel-images">
                 @foreach ($viewing as $serie)
-                    <img class="carousel-image" src="{{ $serie->Image }}">
+                    <a href="filminfo/{{ $serie->SerieID }}">
+                        <img class="carousel-image" src="{{ $serie->Image }}">
+                    </a>
                 @endforeach  
             </section>
         </section>
@@ -31,7 +33,9 @@
             <button class="next"><img src="img/right-chevron.png" alt=""></button> 
             <section class="carousel-images">
                 @foreach ($active as $serie)
-                    <img class="carousel-image" src="{{ $serie->Image }}">
+                    <a href="filminfo/{{ $serie->SerieID }}">
+                        <img class="carousel-image" src="{{ $serie->Image }}">
+                    </a>
                 @endforeach  
             </section>
         </section>
@@ -42,7 +46,9 @@
             <button class="next"><img src="img/right-chevron.png" alt=""></button> 
             <section class="carousel-images">
                 @foreach ($picks as $serie)
-                    <img class="carousel-image" src="{{ $serie->Image }}">
+                    <a href="filminfo/{{ $serie->SerieID }}">
+                        <img class="carousel-image" src="{{ $serie->Image }}">
+                    </a>
                 @endforeach  
             </section>
         </section>

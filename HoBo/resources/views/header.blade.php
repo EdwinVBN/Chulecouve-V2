@@ -9,7 +9,9 @@
 <body>
     <header>
         <article id="header-logo">
-            <img src="img/HOBO_Beeldmerk.png">
+            <a href="/">
+                <img src="img/HOBO_Beeldmerk.png">    
+            </a>
         </article>
         <article id="header-right">
             <a href="">Profiel</a>
