@@ -63,6 +63,15 @@ header {
     overflow-x: hidden;
 
     main {
+
+        #popup{
+            position: relative;
+            z-index: 999;
+            background-color: red;
+            height: 500px;
+            width: 500px;
+        }
+
         #home-info {
             margin-top: 150px;
             width: 600px;

@@ -45,6 +45,14 @@ header article img:hover {
   background-size: 100% auto;
   overflow-x: hidden;
 }
+#info-body main #popup,
+#home-body main #popup {
+  position: relative;
+  z-index: 999;
+  background-color: red;
+  height: 500px;
+  width: 500px;
+}
 #info-body main #home-info,
 #home-body main #home-info {
   margin-top: 150px;

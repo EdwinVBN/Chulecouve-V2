@@ -9,6 +9,12 @@
 <body id="home-body">
     @include('header')
     <main>
+        <section>
+            <article id="form-head">
+
+            </article>
+            article
+        </section>
         <section id="home-info">
             <h1>Title</h1>
             <p>Lorem ipsum dolor sit amet. Non exercitationem consequatur et repellendus minima qui dolorem laboriosam. Qui rerum maxime cum odit corporis ea minus asperiores ad impedit impedit. Vel dicta rerum et possimus dolorum est ducimus rerum. Nam consequuntur pariatur in totam tempore sit nulla sint qui enim atque in consectetur nemo et velit sint 33 aliquid voluptatem.</p>
@@ -49,5 +55,7 @@
     </main>
 
     <script src="{{ asset('js/carousel.js') }}" defer></script>
+    <script src="{{ asset('js/modal.js') }}" defer></script>
+
 </body>
 </html>

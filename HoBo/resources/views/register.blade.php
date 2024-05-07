@@ -16,7 +16,8 @@
         </article>    
     </header>
     <main>
-        <form action="./action_page.php" method="post">
+        <form action="{{ route('register.submit') }}" method="post">
+            @csrf
             <label for="email">Email</label><br>
             <input placeholder="email" type="email" name="email" id="">
             <br><br>
