@@ -8,10 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function showRegistrationForm()
-    {
-        return view('register');
-    }
 
     public function register(Request $request)
     {

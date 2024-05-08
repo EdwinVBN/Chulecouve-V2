@@ -18,15 +18,24 @@
     <main>
         <form action="{{ route('register.submit') }}" method="post">
             @csrf
+            <label for="voornaam">voornaam</label><br>
+            <input placeholder="voornaam" type="text" name="voornaam" id="">
+            <br><br>
+            <label for="tussenvoegsel">tussenvoegsel</label><br>
+            <input placeholder="tussenvoegsel" type="text" name="tussenvoegsel" id="">
+            <br><br>
+            <label for="achternaam">achternaam</label><br>
+            <input placeholder="achternaam" type="text" name="achternaam" id="">
+            <br><br>
             <label for="email">Email</label><br>
             <input placeholder="email" type="email" name="email" id="">
-            <br><br>
-            <label for="username">username</label><br>
-            <input placeholder="username" type="text" name="username" id="">
             <br><br>
             <label for="password">password</label><br>
             <input placeholder="password" type="password" name="password" id="">
             <br><br>
+            @foreach ($genres as $genre)
+                <label for="genre">{}</label><br>
+            @endforeach
             <input type="submit" value="submit">
         </form>
     </main>

@@ -4,11 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Serie;
+use App\Models\Genre;
 
 class PageController extends Controller
 {
     public function register(){
-        return view('register');
+        $genres = Genre::all('genreNaam');
+
+        // dd($genres);
+
+        return view('register', [
+            'genres' => $genres,
+        ]);
     }
 
     public function login(){
