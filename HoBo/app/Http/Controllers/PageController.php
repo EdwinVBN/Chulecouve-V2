@@ -21,10 +21,11 @@ class PageController extends Controller
 
     public function filminfo($id) {
         $serie = Serie::find($id);
-
+        $test = $serie->genres;
 
         return view('filminfo', [
-            'serie' => $serie
+            'serie' => $serie,
+            'test' => $test
         ]);
     }
 
@@ -45,8 +46,10 @@ class PageController extends Controller
     }
 
     public function stream($id) {
+        $serie = Serie::find($id);
 
-
-        return view('stream');
+        return view('stream', [
+            'serie' => $serie
+        ]);
     }
 }

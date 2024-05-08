@@ -27,7 +27,10 @@
             </a>
         </section>  
         <section id="info-movie">
-            <h1>Genre: </h1>
+            <h1>Genres: </h1>
+            @foreach ($test as $genre)
+                <p class="movieGenre">{{ $genre->GenreNaam }}</p>
+            @endforeach
             <h1>Regisseur: </h1>
             <h1>Rating: </h1>
         </section>
