@@ -47,11 +47,38 @@ header article img:hover {
 }
 #info-body main #popup,
 #home-body main #popup {
-  position: relative;
-  z-index: 999;
+  position: fixed;
+  top: 15%;
+  left: 35%;
+  z-index: 9999;
   background-color: red;
-  height: 500px;
-  width: 500px;
+  height: 70%;
+  width: 30%;
+  justify-content: center;
+  display: none;
+}
+#info-body main #popup #form-body,
+#home-body main #popup #form-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+#info-body main #popup #form-body #form-head,
+#home-body main #popup #form-body #form-head {
+  flex: 1;
+}
+#info-body main #popup #form-body #form-main,
+#home-body main #popup #form-body #form-main {
+  flex: 6;
+}
+#info-body main #popup #form-body #form-foot,
+#home-body main #popup #form-body #form-foot {
+  flex: 1;
+}
+#info-body main #popup #form-body #form-foot #form-foot button,
+#home-body main #popup #form-body #form-foot #form-foot button {
+  cursor: pointer;
 }
 #info-body main #home-info,
 #home-body main #home-info {

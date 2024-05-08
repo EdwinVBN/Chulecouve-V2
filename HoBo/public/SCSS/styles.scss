@@ -65,11 +65,40 @@ header {
     main {
 
         #popup{
-            position: relative;
-            z-index: 999;
+            position: fixed;
+            top: 15%;
+            left: 35%;
+            z-index: 9999;
             background-color: red;
-            height: 500px;
-            width: 500px;
+            height: 70%;
+            width: 30%;
+            justify-content: center;
+            display: none;
+
+
+            #form-body{
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                width: 100%;
+
+                #form-head{
+                    flex: 1;
+                }
+    
+                #form-main{
+                    flex: 6;
+                }
+    
+                #form-foot{
+                    flex: 1;
+
+                    #form-foot button {
+                        cursor: pointer;
+                    }
+                }
+    
+            }
         }
 
         #home-info {

@@ -9,11 +9,18 @@
 <body id="home-body">
     @include('header')
     <main>
-        <section>
-            <article id="form-head">
-
-            </article>
-            article
+        <section id="popup">
+            <section id="form-body">
+                <article id="form-head">
+                    header
+                </article>
+                <article id="form-main">
+                    body
+                </article>
+                <article id="form-foot">
+                    <button id="closebutton">Close</button>
+                </article>    
+            </section>
         </section>
         <section id="home-info">
             <h1>Title</h1>

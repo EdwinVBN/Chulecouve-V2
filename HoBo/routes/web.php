@@ -15,7 +15,7 @@ use App\Http\Controllers\UserController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/home', [PageController::class, 'home']);
+Route::get('/', [PageController::class, 'home']);
 
 Route::get('/login', [PageController::class, 'login']);
 Route::post('/login', [UserController::class, 'login'])->name('login.submit');

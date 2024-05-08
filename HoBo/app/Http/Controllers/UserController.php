@@ -41,7 +41,7 @@ class UserController extends Controller
     
         $credentials = $request->only('username', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect('/home');
+            return redirect('/');
         }
     
         return back()->withInput()->withErrors(['username' => 'Invalid email or password.']);

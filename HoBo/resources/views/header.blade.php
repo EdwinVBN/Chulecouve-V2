@@ -12,9 +12,11 @@
             <img src="img/HOBO_Beeldmerk.png">
         </article>
         <article id="header-right">
+            <button id="login">login</button>
             <a href="">Profiel</a>
             <a href="">Zoek</a>
         </article>    
     </header>
+    <script src="{{ asset('js/modal.js') }}" defer></script>
 </body>
 </html>
