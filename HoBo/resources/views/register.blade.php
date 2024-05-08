@@ -32,11 +32,12 @@
             <br><br>
             <label for="password">password</label><br>
             <input placeholder="password" type="password" name="password" id="">
-            <br><br>
-            @foreach ($genres as $genre)
-                <label for="genre">{}</label><br>
-            @endforeach
+            <br><br>           
             <input type="submit" value="submit">
+            @foreach ($genres as $genre)
+            <label for="genre">{{$genre->GenreNaam}}</label><br>
+
+            @endforeach
         </form>
     </main>
 </body>
