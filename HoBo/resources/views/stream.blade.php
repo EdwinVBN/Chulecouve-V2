@@ -8,8 +8,12 @@
 </head>
 <body id="stream-body">
     <video width="100%" height="auto" controls>
-        <source src="videos/vid.mp4" type="video/mp4">
+        <source src="" type="video/mp4">
     </video>
-    <button><img src="img/left-chevron.png" alt=""></button>
+    <a href="/filminfo/{{ $serie->SerieID }}">
+        <button>
+            <img src="../img/left-chevron.png" alt="">
+        </button>
+    </a>
 </body>
 </html>

@@ -122,13 +122,21 @@ header article img:hover {
   margin-top: 10vh;
   display: flex;
   flex-direction: column;
-  gap: 40px;
   font-size: 18px;
 }
 #info-body main #info-movie h1,
 #home-body main #info-movie h1 {
   color: #5b9bd5;
   font-family: "Neutra", sans-serif;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+#info-body main #info-movie .movieGenre,
+#home-body main #info-movie .movieGenre {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  padding: 0;
+  margin: 0;
 }
 #info-body main .carousel,
 #home-body main .carousel {

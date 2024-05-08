@@ -23,19 +23,25 @@ class PageController extends Controller
     }
 
     public function home() {
-        $viewing = Serie::whereNotNull('Image')->take(9)->get();
-        $active = Serie::where('Actief', 1)->inRandomOrder()->take(30)->get();
-        $picks = Serie::whereNotNull('Image')->inRandomOrder()->take(30)->get();
+        $seriesWithStreams = Serie::whereHas('seasons.episodes.streams')->get();
+        $active = Serie::where('Actief', 1)->inRandomOrder()->take(20)->get();
+        $picks = Serie::whereNotNull('Image')->inRandomOrder()->take(20)->get();
 
         return view('home', [
-            'viewing' => $viewing,
+            'viewing' => $seriesWithStreams,
             'active' => $active,
             'picks' => $picks
         ]);
     }
 
-    public function filminfo() {
-        return view('filminfo');
+    public function filminfo($id) {
+        $serie = Serie::find($id);
+        $test = $serie->genres;
+
+        return view('filminfo', [
+            'serie' => $serie,
+            'test' => $test
+        ]);
     }
 
     public function history() {
@@ -54,7 +60,11 @@ class PageController extends Controller
         return view('settings');
     }
 
-    public function stream() {
-        return view('stream');
+    public function stream($id) {
+        $serie = Serie::find($id);
+
+        return view('stream', [
+            'serie' => $serie
+        ]);
     }
 }

@@ -11,34 +11,28 @@ class Slider {
         this.nextButton = container.querySelector('.next');
         this.prevButton = container.querySelector('.prev');
         this.bindEvents();
+        this.updateButtons();
     }
 
     next() {
+        if (!this.canSlide()) return;
         const nextIndex = this.index + this.visibleImages;
-        if (nextIndex <= this.maxIndex) {
-            this.index = nextIndex;
-            this.slide();
-        } else {
-            this.index = this.maxIndex;
-            this.slide();
-        }
+        this.index = nextIndex <= this.maxIndex ? nextIndex : this.maxIndex;
+        this.slide();
     }
 
     prev() {
+        if (!this.canSlide()) return;
         const prevIndex = this.index - this.visibleImages;
-        if (prevIndex >= 0) {
-            this.index = prevIndex;
-            this.slide();
-        } else {
-            this.index = 0;
-            this.slide();
-        }
+        this.index = prevIndex >= 0 ? prevIndex : 0;
+        this.slide();
     }
 
     slide() {
         const offset = -this.index * (this.imageWidth + 30);
         this.slider.style.transition = 'transform 1s ease-in-out';
         this.slider.style.transform = `translateX(${offset}px)`;
+        this.updateButtons();
     }
 
     update() {
@@ -46,6 +40,21 @@ class Slider {
         this.containerWidth = this.slider.clientWidth;
         this.visibleImages = Math.ceil(this.containerWidth / (this.imageWidth + 30));
         this.maxIndex = this.images.length - this.visibleImages;
+        this.updateButtons();
+    }
+
+    updateButtons() {
+        if (!this.canSlide()) {
+            this.nextButton.disabled = true;
+            this.prevButton.disabled = true;
+        } else {
+            this.nextButton.disabled = this.index >= this.maxIndex;
+            this.prevButton.disabled = this.index <= 0;
+        }
+    }
+
+    canSlide() {
+        return this.images.length > this.visibleImages;
     }
 
     bindEvents() {
@@ -56,5 +65,5 @@ class Slider {
 }
 
 document.querySelectorAll(".carousel").forEach(container => {
-    const slider = new Slider(container);
+    new Slider(container);
 });
