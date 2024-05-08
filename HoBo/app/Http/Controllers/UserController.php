@@ -10,8 +10,7 @@ class UserController extends Controller
 {
 
     public function register(Request $request)
-    {
-        
+    {  
         $user = new User();
         $user->email = $request->input('email');
         $user->username = $request->input('username');
@@ -20,12 +19,6 @@ class UserController extends Controller
         
         return redirect('/login');
     }
-
-    public function showLoginForm()
-    { 
-        return view('login');
-    }
-
 
     public function login(Request $request)
     {

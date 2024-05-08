@@ -9,7 +9,7 @@ use App\Models\Genre;
 class PageController extends Controller
 {
     public function register(){
-        $genres = Genre::all('genreNaam');
+        $genres = Genre::all('GenreNaam');
 
         // dd($genres);
 
