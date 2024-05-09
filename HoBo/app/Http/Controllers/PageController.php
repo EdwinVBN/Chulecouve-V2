@@ -39,10 +39,12 @@ class PageController extends Controller
     public function filminfo($id) {
         $serie = Serie::find($id);
         $test = $serie->genres;
+        $episodes = Serie::find($id)->episodes;
 
         return view('filminfo', [
             'serie' => $serie,
-            'test' => $test
+            'test' => $test,
+            'episodes' => $episodes
         ]);
     }
 

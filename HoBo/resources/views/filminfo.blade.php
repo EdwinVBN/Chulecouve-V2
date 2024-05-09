@@ -40,6 +40,24 @@
             <h1>Rating: </h1>
                 <p class="movieGenre">{{ $serie->IMDBrating }}</p>
         </section>
+        <section class="carousel">
+            <h1>Afleveringen</h1> 
+            <button class="prev"><img src="../img/left-chevron.png" alt=""></button>
+            <button class="next"><img src="../img/right-chevron.png" alt=""></button> 
+            <section class="carousel-images">
+                @foreach ($episodes as $episode)
+                    <section class="carousel-section">
+                        <a href="../stream/{{ $serie->SerieID }}">
+                            <img class="carousel-image" src="../{{ $serie->Image }}">
+                        </a>
+                        <p>{{ $episode->AflTitel }}</p>
+                    </section>
+                @endforeach  
+            </section>
+        </section>
     </main>
+
+    <script src="{{ asset('js/carousel.js') }}" defer></script>
+
 </body>
 </html>
