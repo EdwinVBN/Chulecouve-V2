@@ -23,9 +23,11 @@
             </section>
         </section>
         <section id="home-info">
-            <h1>Title</h1>
-            <p>Lorem ipsum dolor sit amet. Non exercitationem consequatur et repellendus minima qui dolorem laboriosam. Qui rerum maxime cum odit corporis ea minus asperiores ad impedit impedit. Vel dicta rerum et possimus dolorum est ducimus rerum. Nam consequuntur pariatur in totam tempore sit nulla sint qui enim atque in consectetur nemo et velit sint 33 aliquid voluptatem.</p>
-            <button id="watch">Kijk</button>
+            <h1>{{ $pick->SerieTitel }}</h1>
+            <p>{{ $pick->Description }}</p>
+            <a href="stream/{{ $pick->SerieID }}">
+                <button id="watch">Kijk</button>
+            </a>
         </section>
         <section class="carousel">
             <h1>Kijk verder</h1> 
@@ -34,7 +36,7 @@
             <section class="carousel-images">
                 @foreach ($viewing as $serie)
                     <section class="carousel-section">
-                        <a href="filminfo/{{ $serie->SerieID }}">
+                        <a href="stream/{{ $serie->SerieID }}">
                             <img class="carousel-image" src="{{ $serie->Image }}">
                         </a>
                         <p>{{ $serie->SerieTitel }}</p>

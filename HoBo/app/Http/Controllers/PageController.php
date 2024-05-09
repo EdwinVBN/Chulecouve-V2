@@ -26,11 +26,13 @@ class PageController extends Controller
         $seriesWithStreams = Serie::whereHas('seasons.episodes.streams')->get();
         $active = Serie::where('Actief', 1)->inRandomOrder()->take(20)->get();
         $picks = Serie::whereNotNull('Image')->inRandomOrder()->take(20)->get();
+        $daredevil = Serie::find(215);
 
         return view('home', [
             'viewing' => $seriesWithStreams,
             'active' => $active,
-            'picks' => $picks
+            'picks' => $picks,
+            'pick' => $daredevil
         ]);
     }
 

@@ -8,10 +8,6 @@ class Modal {
             this.closeModal();
         });
 
-        window.addEventListener('load', () => {
-            this.openModal();
-        });
-
         this.loginButton.addEventListener('click', () => {
             this.openModal();
         });

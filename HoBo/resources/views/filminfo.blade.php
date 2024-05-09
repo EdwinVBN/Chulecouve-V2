@@ -28,11 +28,17 @@
         </section>  
         <section id="info-movie">
             <h1>Genres: </h1>
-            @foreach ($test as $genre)
-                <p class="movieGenre">{{ $genre->GenreNaam }}</p>
-            @endforeach
+            @if(count($test) > 0)
+                @foreach ($test as $genre)
+                    <p class="movieGenre">{{ $genre->GenreNaam }}</p>
+                @endforeach
+            @else
+                <p class="movieGenre">No genres found.</p>
+            @endif
             <h1>Regisseur: </h1>
+                <p class="movieGenre">{{ $serie->Director }}</p>
             <h1>Rating: </h1>
+                <p class="movieGenre">{{ $serie->IMDBrating }}</p>
         </section>
     </main>
 </body>
