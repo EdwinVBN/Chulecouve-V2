@@ -190,6 +190,18 @@ header article img:hover {
 #home-body main .carousel .carousel-images img:hover {
   transform: scale(1.05);
 }
+#info-body main .carousel .carousel-images .carousel-section,
+#home-body main .carousel .carousel-images .carousel-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+#info-body main .carousel .carousel-images .carousel-section p,
+#home-body main .carousel .carousel-images .carousel-section p {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+}
 
 #stream-body {
   padding: 0;

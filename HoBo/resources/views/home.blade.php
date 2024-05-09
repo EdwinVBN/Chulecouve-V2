@@ -33,9 +33,12 @@
             <button class="next"><img src="img/right-chevron.png" alt=""></button> 
             <section class="carousel-images">
                 @foreach ($viewing as $serie)
-                    <a href="filminfo/{{ $serie->SerieID }}">
-                        <img class="carousel-image" src="{{ $serie->Image }}">
-                    </a>
+                    <section class="carousel-section">
+                        <a href="filminfo/{{ $serie->SerieID }}">
+                            <img class="carousel-image" src="{{ $serie->Image }}">
+                        </a>
+                        <p>{{ $serie->SerieTitel }}</p>
+                    </section>
                 @endforeach  
             </section>
         </section>
@@ -46,9 +49,12 @@
             <button class="next"><img src="img/right-chevron.png" alt=""></button> 
             <section class="carousel-images">
                 @foreach ($active as $serie)
-                    <a href="filminfo/{{ $serie->SerieID }}">
-                        <img class="carousel-image" src="{{ $serie->Image }}">
-                    </a>
+                    <section class="carousel-section">
+                        <a href="filminfo/{{ $serie->SerieID }}">
+                            <img class="carousel-image" src="{{ $serie->Image }}">
+                        </a>
+                        <p>{{ $serie->SerieTitel }}</p>
+                    </section>
                 @endforeach  
             </section>
         </section>
@@ -59,9 +65,12 @@
             <button class="next"><img src="img/right-chevron.png" alt=""></button> 
             <section class="carousel-images">
                 @foreach ($picks as $serie)
-                    <a href="filminfo/{{ $serie->SerieID }}">
-                        <img class="carousel-image" src="{{ $serie->Image }}">
-                    </a>
+                    <section class="carousel-section">
+                        <a href="filminfo/{{ $serie->SerieID }}">
+                            <img class="carousel-image" src="{{ $serie->Image }}">
+                        </a>
+                        <p>{{ $serie->SerieTitel }}</p>
+                    </section>
                 @endforeach  
             </section>
         </section>
