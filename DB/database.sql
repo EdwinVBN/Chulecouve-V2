@@ -10156,7 +10156,6 @@ INSERT INTO `serie` (`SerieID`, `SerieTitel`, `IMDBLink`, `Actief`, `Image`, `De
 (98, 'She', 'https://www.imdb.com/title/tt0903747/', 0, NULL, NULL, NULL, NULL),
 (99, 'Hasmukh', 'https://www.imdb.com/title/tt0903747/', 0, NULL, NULL, NULL, NULL),
 (100, 'Betaal', 'https://www.imdb.com/title/tt0903747/', 0, NULL, NULL, NULL, NULL),
-(100, 'Betaal', 'https://www.imdb.com/title/tt0903747/', 0, NULL, NULL, NULL, NULL),
 (101, 'Masaba Masaba', 'https://www.imdb.com/title/tt0903747/', 0, NULL, NULL, NULL, NULL),
 (102, 'Mismatched', 'https://www.imdb.com/title/tt0903747/', 0, NULL, NULL, NULL, NULL),
 (103, 'Bhaag Beanie Bhaag', 'https://www.imdb.com/title/tt0903747/', 0, NULL, NULL, NULL, NULL),

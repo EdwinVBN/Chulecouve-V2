@@ -16,7 +16,7 @@
         <article id="header-right">
             <button id="login">login</button>
             <a href="">Profiel</a>
-            <a href="">Zoek</a>
+            <a href="{{ route('search') }}">Zoek</a>
         </article>    
     </header>
     <script src="{{ asset('js/modal.js') }}" defer></script>
