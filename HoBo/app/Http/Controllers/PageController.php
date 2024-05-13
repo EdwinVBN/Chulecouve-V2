@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Abonnement;
 use Illuminate\Http\Request;
 use App\Models\Serie;
 use App\Models\Genre;
@@ -10,11 +11,13 @@ class PageController extends Controller
 {
     public function register(){
         $genres = Genre::all('GenreNaam');
+        $abbonementType = Abonnement::all();
 
-        // dd($genres);
+        // dd($abbonementType);
 
         return view('register', [
             'genres' => $genres,
+            'abos' => $abbonementType,
         ]);
     }
 
@@ -26,11 +29,16 @@ class PageController extends Controller
         $seriesWithStreams = Serie::whereHas('seasons.episodes.streams')->get();
         $active = Serie::where('Actief', 1)->inRandomOrder()->take(20)->get();
         $picks = Serie::whereNotNull('Image')->inRandomOrder()->take(20)->get();
+        $genres = Genre::all('GenreNaam');
+        $abbonementType = Abonnement::all();
+
 
         return view('home', [
             'viewing' => $seriesWithStreams,
             'active' => $active,
-            'picks' => $picks
+            'picks' => $picks,
+            'genres' => $genres,
+            'abos' => $abbonementType,
         ]);
     }
 

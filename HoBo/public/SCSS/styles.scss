@@ -82,12 +82,9 @@ header {
                 height: 100%;
                 width: 100%;
 
-                #form-head{
-                    flex: 1;
-                }
     
                 #form-main{
-                    flex: 6;
+                    flex: 7;
                 }
     
                 #form-foot{
@@ -252,4 +249,22 @@ header {
             transform: scale(1.1);
         }
     }
+}
+
+#form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#genrevak{
+    width: 200px;
+    height: 100px;
+    overflow-y: scroll;
+    background-color: white;
+}
+
+#abonnentenVak{
+    display: flex;
+
 }

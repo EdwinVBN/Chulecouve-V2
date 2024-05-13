@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Klant extends Model
 {
     protected $table = 'klant';
+    protected $fillable = ['AboID', 'Voornaam', 'Tussenvoegsel', 'Achternaam', 'Email', 'password', 'Genre'];
 }

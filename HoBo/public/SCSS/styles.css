@@ -64,13 +64,9 @@ header article img:hover {
   height: 100%;
   width: 100%;
 }
-#info-body main #popup #form-body #form-head,
-#home-body main #popup #form-body #form-head {
-  flex: 1;
-}
 #info-body main #popup #form-body #form-main,
 #home-body main #popup #form-body #form-main {
-  flex: 6;
+  flex: 7;
 }
 #info-body main #popup #form-body #form-foot,
 #home-body main #popup #form-body #form-foot {
@@ -225,4 +221,21 @@ header article img:hover {
 }
 #stream-body button:hover {
   transform: scale(1.1);
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#genrevak {
+  width: 200px;
+  height: 100px;
+  overflow-y: scroll;
+  background-color: white;
+}
+
+#abonnentenVak {
+  display: flex;
 }/*# sourceMappingURL=styles.css.map */

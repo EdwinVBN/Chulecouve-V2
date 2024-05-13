@@ -1,8 +1,11 @@
 <?php
 
+use App\Models\Klant;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\KlantController;
+
 
 
 /*
@@ -16,12 +19,12 @@ use App\Http\Controllers\UserController;
 |
 */
 Route::get('/', [PageController::class, 'home']);
+Route::post('/', [KlantController::class, 'register'])->name('home.submit');
 
 Route::get('/login', [PageController::class, 'login']);
 Route::post('/login', [UserController::class, 'login'])->name('login.submit');
 
 Route::get('/register', [PageController::class, 'register']);
-Route::post('/register', [UserController::class, 'register'])->name('register.submit');
 
 Route::get('/filminfo/{id}', [PageController::class, 'filminfo']);
 Route::get('/history', [PageController::class, 'history']);

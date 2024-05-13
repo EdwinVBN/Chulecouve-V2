@@ -4,62 +4,52 @@ namespace App\Http\Controllers;
 
 use App\Models\Klant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KlantController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+    public function register(Request $request)
     {
-        //
+    
+    // $request->validate([
+    //     'abonnement' => 'required|integer',
+    //     'voornaam' => 'required|string|max:255',
+    //     'tussenvoegsel' => 'nullable|string|max:255',
+    //     'achternaam' => 'required|string|max:255',
+    //     'email' => 'required|email|unique:klant|max:255',
+    //     'password' => 'required',
+    //     'genre' => 'required|string|in:Male,Female,Other',
+    // ]);
+
+    $klant = new Klant();
+    $klant->AboID = $request->input('abonnement');
+    $klant->Voornaam = $request->input('voornaam');
+    $klant->Tussenvoegsel = $request->input('tussenvoegsel');
+    $klant->Achternaam = $request->input('achternaam');
+    $klant->Email = $request->input('email');
+    $klant->password = bcrypt($request->input('password'));
+    $klant->Genre = $request->input('genre');
+    $klant->save();
+        // dd($klant);
+
+    return redirect('/')->with('success', 'Registration successful!');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function login(Request $request)
     {
-        //
+        $request->validate([
+            'username' => 'required|string',
+            'password' => 'required',
+        ]);
+        
+    
+        $credentials = $request->only('username', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect('/');
+        }
+    
+        return back()->withInput()->withErrors(['username' => 'Invalid email or password.']);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Klant $klant)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Klant $klant)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Klant $klant)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Klant $klant)
-    {
-        //
-    }
 }

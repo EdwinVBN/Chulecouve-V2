@@ -11,11 +11,8 @@
     <main>
         <section id="popup">
             <section id="form-body">
-                <article id="form-head">
-                    header
-                </article>
                 <article id="form-main">
-                    body
+                    @include('register')
                 </article>
                 <article id="form-foot">
                     <button id="closebutton">Close</button>
