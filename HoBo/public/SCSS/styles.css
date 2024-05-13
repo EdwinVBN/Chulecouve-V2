@@ -118,7 +118,6 @@ header article img:hover {
 }
 #info-body main #info-movie,
 #home-body main #info-movie {
-  height: 20vh;
   margin-top: 5vh;
   display: flex;
   flex-direction: column;
@@ -137,6 +136,10 @@ header article img:hover {
   font-family: "Montserrat", sans-serif;
   padding: 0;
   margin: 0;
+}
+#info-body main #carousel-info,
+#home-body main #carousel-info {
+  margin-top: 80px;
 }
 #info-body main .carousel,
 #home-body main .carousel {

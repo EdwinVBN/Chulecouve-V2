@@ -39,8 +39,12 @@
                 <p class="movieGenre">{{ $serie->Director }}</p>
             <h1>Rating: </h1>
                 <p class="movieGenre">{{ $serie->IMDBrating }}</p>
+            <h1>IMDB Link: </h1>
+            <a href={{$serie->IMDBLink}}>
+                <p class="movieGenre">Click here!</p>
+            </a>
         </section>
-        <section class="carousel">
+        <section id="carousel-info" class="carousel">
             <h1>Afleveringen</h1> 
             <button class="prev"><img src="../img/left-chevron.png" alt=""></button>
             <button class="next"><img src="../img/right-chevron.png" alt=""></button> 
