@@ -14,7 +14,7 @@
             </a>
         </article>
         <article id="header-right">
-            <button id="login">login</button>
+            <button id="login">Login</button>
             <a href="">Profiel</a>
             <a href="">Zoek</a>
         </article>    

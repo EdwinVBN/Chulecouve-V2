@@ -34,6 +34,19 @@ header {
             }
         }
 
+        #login {
+            background-color: transparent;
+            border: none;
+            color: $primary-color;
+            font-family: $title;
+            font-size: 24px;
+            cursor: pointer;
+
+            &:hover {
+                color: #628b35;
+            }
+        }
+
         img {
             padding-top: 20px;
             width: 100px;

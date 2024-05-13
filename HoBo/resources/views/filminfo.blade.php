@@ -14,11 +14,25 @@
             </a>
         </article>
         <article id="header-right">
+            <button id="login">Login</button>
             <a href="">Profiel</a>
             <a href="">Zoek</a>
         </article>    
     </header>
     <main>
+        <section id="popup">
+            <section id="form-body">
+                <article id="form-head">
+                    header
+                </article>
+                <article id="form-main">
+                    body
+                </article>
+                <article id="form-foot">
+                    <button id="closebutton">Close</button>
+                </article>    
+            </section>
+        </section>
         <section id="home-info">
             <h1>{{ $serie->SerieTitel }}</h1>
             <p>{{ $serie->Description }}</p>
@@ -60,8 +74,7 @@
             </section>
         </section>
     </main>
-
+    <script src="{{ asset('js/modal.js') }}" defer></script>
     <script src="{{ asset('js/carousel.js') }}" defer></script>
-
 </body>
 </html>
