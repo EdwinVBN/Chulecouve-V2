@@ -15,18 +15,23 @@
         </article>
         <article id="header-right">
             <a href="">Profiel</a>
-            <a href="">Zoek</a>
+            <a href="{{ route('search') }}">Zoek</a>
         </article>    
     </header>
     <main>
         <section id="home-info">
-            <h1>{{ $serie->SerieTitel }}</h1>
-            <p>{{ $serie->Description }}</p>
-            <a href="/stream/{{ $serie->SerieID }}">
-                <button id="watch">Kijk</button>
-            </a>
-        </section>  
-        <section id="info-movie">
+            <div>
+                <h1>{{ $serie->SerieTitel }}</h1>
+                <p>{{ $serie->Description }}</p>
+                <a href="/stream/{{ $serie->SerieID }}">
+                    <button id="watch">Kijk</button>
+                </a>
+            </div>
+            <div style="position: absolute; right: 0; bottom: 20%;">
+                <img src="../{{ $serie->Image }}" alt="{{$serie->SerieTitel}}" style="max-width: 70%; border: 1px solid transparent; border-radius: 25px;">
+            </div>
+        </section>
+        <section id="info-movie" style="margin-top: 20px;">
             <h1>Genres: </h1>
             @if(count($test) > 0)
                 @foreach ($test as $genre)

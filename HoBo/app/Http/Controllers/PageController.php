@@ -56,12 +56,28 @@ class PageController extends Controller
         return view('profile');
     }
 
-    public function search() {
-        return view('search');
-    }
-
     public function settings() {
         return view('settings');
+    }
+
+    public function search(Request $request) {
+        $search = $request->input('search');
+        $active = Serie::where('Actief', 1)->inRandomOrder()->take(50)->get();
+
+        if ($search == null) {
+            return view('search', [
+                'active' => $active,
+            ]);
+        }
+
+        $series = Serie::where('SerieTitel', 'LIKE', "%$search%")
+            ->whereNotNull('Image')
+            ->get();
+
+        return view('search', [
+            'series' => $series,
+            'search' => $search,
+        ]);
     }
 
     public function stream($id) {
