@@ -70,7 +70,7 @@ header {
             left: 35%;
             z-index: 9999;
             background-color: red;
-            height: 70%;
+            height: 80%;
             width: 30%;
             justify-content: center;
             display: none;
@@ -82,9 +82,39 @@ header {
                 height: 100%;
                 width: 100%;
 
+                #form-switch{
+                    flex: 1;
+                    flex-direction: row;
+                    display: flex;
+                    justify-content: flex-end;
+                    gap: 1.5%;
+
+                    #login_switch{
+                        background-color: #5b9bd5;
+                        width: 25%;
+                        height: 40%;
+                        text-align: center;
+                    }
+
+                    #register_switch{
+                        background-color: #92d051;
+                        width: 25%;
+                        height: 40%;
+                        text-align: center;
+                    }
+
+                }
     
-                #form-main{
+                .form-main{
                     flex: 7;
+                    flex-direction: row;
+                    // display: flex;
+                    // justify-content: center;
+                    // align-self: center;
+
+                    #registerForm{
+                        display: none;
+                    }
                 }
     
                 #form-foot{
@@ -251,11 +281,18 @@ header {
     }
 }
 
-#form{
+.registerForm{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 
 #genrevak{
     width: 200px;

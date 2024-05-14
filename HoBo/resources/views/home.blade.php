@@ -11,9 +11,15 @@
     <main>
         <section id="popup">
             <section id="form-body">
-                <article id="form-main">
-                    @include('register')
+                <article id="form-switch">
+                    <section id="login_switch">Login</section>
+                    <section id="register_switch">Register</section>
                 </article>
+                <section class="form-main">
+                    @include('register')
+
+                    @include('login')
+                </section>
                 <article id="form-foot">
                     <button id="closebutton">Close</button>
                 </article>    

@@ -52,7 +52,7 @@ header article img:hover {
   left: 35%;
   z-index: 9999;
   background-color: red;
-  height: 70%;
+  height: 80%;
   width: 30%;
   justify-content: center;
   display: none;
@@ -64,9 +64,36 @@ header article img:hover {
   height: 100%;
   width: 100%;
 }
-#info-body main #popup #form-body #form-main,
-#home-body main #popup #form-body #form-main {
+#info-body main #popup #form-body #form-switch,
+#home-body main #popup #form-body #form-switch {
+  flex: 1;
+  flex-direction: row;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5%;
+}
+#info-body main #popup #form-body #form-switch #login_switch,
+#home-body main #popup #form-body #form-switch #login_switch {
+  background-color: #5b9bd5;
+  width: 25%;
+  height: 40%;
+  text-align: center;
+}
+#info-body main #popup #form-body #form-switch #register_switch,
+#home-body main #popup #form-body #form-switch #register_switch {
+  background-color: #92d051;
+  width: 25%;
+  height: 40%;
+  text-align: center;
+}
+#info-body main #popup #form-body .form-main,
+#home-body main #popup #form-body .form-main {
   flex: 7;
+  flex-direction: row;
+}
+#info-body main #popup #form-body .form-main #registerForm,
+#home-body main #popup #form-body .form-main #registerForm {
+  display: none;
 }
 #info-body main #popup #form-body #form-foot,
 #home-body main #popup #form-body #form-foot {
@@ -223,7 +250,13 @@ header article img:hover {
   transform: scale(1.1);
 }
 
-#form {
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginForm {
   display: flex;
   flex-direction: column;
   align-items: center;
