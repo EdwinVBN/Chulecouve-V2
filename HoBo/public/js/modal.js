@@ -35,12 +35,18 @@ class Modal {
 
     openRegister() {
         this.registerForm.style.display = 'flex';
+        this.registerForm.style.flexDirection = 'column';
+        this.registerForm.style.alignItems = 'center';
+
         this.loginForm.style.display = 'none';
     }
 
     openLogin() {
         this.registerForm.style.display = 'none';
+        
         this.loginForm.style.display = 'flex';
+        this.loginForm.style.flexDirection = 'column';
+        this.loginForm.style.alignItems = 'center';
     }
 
     openModal() {

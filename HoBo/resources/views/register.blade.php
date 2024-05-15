@@ -11,6 +11,9 @@
             </article>
         @endforeach
     </article>
+    <label for="username">username</label>
+    <input placeholder="username" type="text" name="username" id="">
+
     <label for="voornaam">voornaam</label>
     <input placeholder="voornaam" type="text" name="voornaam" id="">
 
@@ -25,6 +28,13 @@
 
     <label for="password">password</label>
     <input placeholder="password" type="password" name="password" id="">
+
+    <label for="iban">iban</label>
+    <input placeholder="iban" type="text" pattern="^NL\d{2} [A-Z]{4} \d{4} \d{4} \d{2}$" name="iban" id="">
+
+    <label for="adress">adress</label>
+    <input placeholder="adress" type="text" name="adress" id="">
+
 
     <article id="genrevak">
         @foreach ($genres as $genre)

@@ -9,22 +9,24 @@
 <body id="home-body">
     @include('header')
     <main>
-        <section id="popup">
-            <section id="form-body">
-                <article id="form-switch">
-                    <section id="login_switch">Login</section>
-                    <section id="register_switch">Register</section>
-                </article>
-                <section class="form-main">
-                    @include('register')
+        @auth            
+            <section id="popup">
+                <section id="form-body">
+                    <article id="form-switch">
+                        <section id="login_switch">Login</section>
+                        <section id="register_switch">Register</section>
+                    </article>
+                    <section class="form-main">
+                        @include('register')
 
-                    @include('login')
+                        @include('login')
+                    </section>
+                    <article id="form-foot">
+                        <button id="closebutton">Close</button>
+                    </article>    
                 </section>
-                <article id="form-foot">
-                    <button id="closebutton">Close</button>
-                </article>    
             </section>
-        </section>
+        @endauth
         <section id="home-info">
             <h1>Title</h1>
             <p>Lorem ipsum dolor sit amet. Non exercitationem consequatur et repellendus minima qui dolorem laboriosam. Qui rerum maxime cum odit corporis ea minus asperiores ad impedit impedit. Vel dicta rerum et possimus dolorum est ducimus rerum. Nam consequuntur pariatur in totam tempore sit nulla sint qui enim atque in consectetur nemo et velit sint 33 aliquid voluptatem.</p>

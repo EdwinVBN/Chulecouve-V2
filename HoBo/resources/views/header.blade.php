@@ -14,7 +14,14 @@
             </a>
         </article>
         <article id="header-right">
+            @auth
             <button id="login">login</button>
+            @endauth
+
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit">Logout</button>
+            </form>                        
             <a href="">Profiel</a>
             <a href="">Zoek</a>
         </article>    

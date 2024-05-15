@@ -24,12 +24,16 @@ class KlantController extends Controller
 
     $klant = new Klant();
     $klant->AboID = $request->input('abonnement');
+    $klant->Username = $request->input('username');
     $klant->Voornaam = $request->input('voornaam');
     $klant->Tussenvoegsel = $request->input('tussenvoegsel');
     $klant->Achternaam = $request->input('achternaam');
     $klant->Email = $request->input('email');
     $klant->password = bcrypt($request->input('password'));
     $klant->Genre = $request->input('genre');
+    $iban = str_replace(' ', '', $request->input('iban'));
+    $klant->Iban = $iban;
+    $klant->adress = $request->input('adress');
     $klant->save();
         // dd($klant);
 
@@ -46,10 +50,17 @@ class KlantController extends Controller
     
         $credentials = $request->only('username', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect('/');
+            return redirect('/')->with('success', 'Login successful');
+
         }
     
-        return back()->withInput()->withErrors(['username' => 'Invalid email or password.']);
+        return response()->json(['message' => 'Invalid credentials'], 401);
+    }
+
+    public function logout(Request $request){
+        
+        Auth::logout();
+        return redirect('/')->with('success', 'Logged out successfully');    
     }
 
 }
