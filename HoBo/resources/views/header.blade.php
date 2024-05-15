@@ -1,3 +1,6 @@
+@php
+use Illuminate\Support\Facades\Auth;
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,10 +21,17 @@
             <button id="login">login</button>
             @endauth
 
-            <form action="{{ route('logout') }}" method="POST">
-                @csrf
-                <button type="submit">Logout</button>
-            </form>                        
+            {{-- @if (Auth::check())
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit">Logout</button>
+                </form>
+            @else
+                <button id="login">Login</button>
+            @endif --}}
+
+
+
             <a href="">Profiel</a>
             <a href="">Zoek</a>
         </article>    
