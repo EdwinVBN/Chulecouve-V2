@@ -17,18 +17,24 @@ use Illuminate\Support\Facades\Auth;
             </a>
         </article>
         <article id="header-right">
-            @auth
+            {{-- @guest
             <button id="login">login</button>
-            @endauth
+            @endguest
+            @auth
+            <form action="{{ route('logout.submit') }}" method="post">
+                @csrf
+                <button type="submit">Logout</button>
+            </form>
+            @endauth --}}
 
-            {{-- @if (Auth::check())
-                <form action="{{ route('logout') }}" method="POST">
+            @if (Auth::check())
+                <form action="{{ route('logout.submit') }}" method="post">
                     @csrf
                     <button type="submit">Logout</button>
                 </form>
             @else
                 <button id="login">Login</button>
-            @endif --}}
+            @endif
 
 
 

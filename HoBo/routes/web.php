@@ -25,7 +25,9 @@ Route::post('/', [KlantController::class, 'register'])->name('home.submit');
 Route::get('/login', [PageController::class, 'login']);
 Route::post('/login', [KlantController::class, 'login'])->name('login.submit');
 
-Route::post('/logout', [KlantController::class, 'logout'])->name('logout');
+
+Route::post('/logout', [KlantController::class, 'logout'])->name('logout.submit');
+
 
 Route::get('/register', [PageController::class, 'register']);
 

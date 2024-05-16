@@ -4,13 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\Auth\Authenticatable;
 
-class Klant extends Model implements Authenticatable
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class Klant extends Authenticatable
 {
     use HasFactory;
     protected $table = 'klant';
     protected $fillable = ['AboID', 'Username', 'Voornaam', 'Tussenvoegsel', 'Achternaam', 'Email', 'password', 'Genre', 'Iban', 'adress'];
+
+    protected $primareyKey = 'KlantNr';
 
     public function getAuthIdentifierName()
     {
@@ -19,7 +22,7 @@ class Klant extends Model implements Authenticatable
 
     public function getAuthIdentifier()
     {
-        return $this->getKey(); // Assuming your primary key column is named 'id'
+        return $this->KlantNr; // Assuming your primary key column is named 'id'
     }
 
     public function getAuthPassword()

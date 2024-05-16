@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Klant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 
 class KlantController extends Controller
 {
@@ -42,25 +44,37 @@ class KlantController extends Controller
 
     public function login(Request $request)
     {
-        $request->validate([
-            'username' => 'required|string',
-            'password' => 'required',
-        ]);
+        // $request->validate([
+        //     'username' => 'required|string',
+        //     'password' => 'required',
+        // ]);
         
     
         $credentials = $request->only('username', 'password');
-        if (Auth::attempt($credentials)) {
-            return redirect('/')->with('success', 'Login successful');
+        Log::info('Credentials: ' . $credentials['username'] . $credentials['password']);
+        $attempt = Auth::attempt($credentials);
+        Log::info('Attempt: ' . $attempt);
+        if ($attempt) {
+            $user = Auth::getLastAttempted();
+            Log::info('Detected user: ' . $user);
+            Auth::login($user);
+            session()->save();
+
+
+
+            return redirect('/');
 
         }
     
         return response()->json(['message' => 'Invalid credentials'], 401);
     }
 
-    public function logout(Request $request){
-        
+    public function logout(Request $request)
+    {
         Auth::logout();
-        return redirect('/')->with('success', 'Logged out successfully');    
+        $request->session()->invalidate();
+        $request->session()->regenerate();        
+        return redirect('/')->with('success', 'You have been logged out.'); 
     }
 
 }
