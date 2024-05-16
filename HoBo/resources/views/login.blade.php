@@ -1,36 +1,30 @@
+<!-- resources/views/auth/login.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{{ asset('SCSS/styles.css') }}">
+    <title>Login</title>
 </head>
-<body id="home-body">
-    <header>
-        <article id="header-logo">
-            <img src="img/HOBO_Beeldmerk.png">
-        </article>
-        <article id="header-right">
-            <a href="">home</a>
-        </article>    
-    </header>
-    <main>
-        <form action="{{ route('login.submit') }}" method="post">
-            @csrf
-            <label for="username">username</label><br>
-            <input placeholder="username" type="text" name="username" id="">
-            <br><br>
-            <label for="password">password</label><br>
-            <input placeholder="password" type="password" name="password" id="">
-            <br><br>
-            <input type="submit" value="submit">
-        </form>
-        <?php if($errors->has('username')): ?>
-            <script>
-                alert("<?php echo $errors->first('username'); ?>");
-            </script>
-        <?php endif; ?>
-    </main>
+<body>
+    @if (Auth::check())
+        <!-- The user is logged in... -->
+        <p>Hello, {{ Auth::user()->name }}</p>
+    @else
+        <!-- The user is not logged in... -->
+        <p>You are not logged in</p>
+    @endif
+    <form action="{{ route('login') }}" method="POST">
+        @csrf
+        <div>
+            <label for="Email">Email:</label>
+            <input type="email" id="email" name="Email" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Login</button>
+    </form>
 </body>
 </html>

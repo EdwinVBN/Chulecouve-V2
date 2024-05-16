@@ -14,7 +14,7 @@
             </a>
         </article>
         <article id="header-right">
-            <a href="">Profiel</a>
+            <a href="{{ route('profiel', 10005) }}">Profiel</a>
             <a href="{{ route('search') }}">Zoek</a>
         </article>    
     </header>

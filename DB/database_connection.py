@@ -13,5 +13,5 @@ def select_all():
 
 conn = connect()
 cursor = conn.cursor()
-cursor.execute("SELECT * FROM serie")
+cursor.execute("SELECT * FROM serie WHERE Image IS NOT NULL")
 print(cursor.fetchall())

@@ -14,11 +14,19 @@
             </a>
         </article>
         <article id="header-right">
-            <button id="login">login</button>
-            <a href="">Profiel</a>
+            <form action="{{ route('logout') }}" method="post">
+                @csrf
+                @if (Auth::check())
+                    <button type="submit">Logout</button>
+                @else
+                    <a href="{{ route('login') }}">Logout</a>
+                @endif
+            </form>
+            <!-- <a href="{{route('logout')}}">logout</a> -->
+            <a href="{{ route('profiel', 10005) }}">Profiel</a>
             <a href="{{ route('search') }}">Zoek</a>
         </article>    
     </header>
-    <script src="{{ asset('js/modal.js') }}" defer></script>
+    <!-- <script src="{{ asset('js/modal.js') }}" defer></script> -->
 </body>
 </html>

@@ -11,7 +11,7 @@
         <div style="position: absolute; top: 0; left: 0; width: 100%; padding: 0 90px;">
             <form method="GET" action="{{ route('search') }}" id="searchForm" style="width: 80%; margin-bottom: 20px;">
                 <div style="border-bottom: 1px solid grey; display: flex; -webkit-box-align: center; align-items: center;">
-                    <input style='padding: 48px 0; width: 100%; font-family: "montserrat",sans-serif; font-size: 1rem; color: grey; background-color: transparent; border-bottom: 1px solid grey; border: none; outline: none;' type="text" name="search" id="searchform" placeholder="Waar ben je naar op zoek?">
+                    <input style='padding: 48px 0; caret-color: white; width: 100%; font-family: "montserrat",sans-serif; font-size: 1rem; color: grey; background-color: transparent; border-bottom: 1px solid grey; border: none; outline: none;' type="text" name="search" id="searchform" placeholder="Waar ben je naar op zoek?">
                     <button type="submit" style="background:transparent; border:none; color:transparent;">Search</button>
                 </dive>
             </form>
