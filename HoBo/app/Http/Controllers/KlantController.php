@@ -55,9 +55,9 @@ class KlantController extends Controller
     {
         Auth::logout();
     
-        $request->session()->invalidate();
+        // $request->session()->invalidate();
     
-        $request->session()->regenerateToken();
+        // $request->session()->regenerateToken();
     
         return redirect('/')->with('success', 'You have been logged out.');
     }
@@ -114,41 +114,17 @@ class KlantController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->only('Email', 'password');
-
-        Log::info('Attempting login with credentials: ', $credentials);
-
+        $credentials = $request->only('email', 'password');
         $attempt = Auth::attempt($credentials);
-
-        // Log the result of the Auth::attempt() call
-        Log::info('Auth::attempt() returned: ' . $attempt);
-
         if ($attempt) {
-            // Authentication passed...
-            Log::info('Authentication passed, redirecting to home');
-        
-            // Manually log the user in
             $user = Auth::getLastAttempted();
-            Log::info('Last attempted user: ' . $user);
             Auth::login($user);
             session()->save();
-        
-            // Log the session data before redirect
-            Log::info('Session data before redirect: ', $request->session()->all());
-        
             $redirect = redirect()->intended(route('home'));
-        
-            // Log the session data after redirect
-            Log::info('Session data after redirect: ', $request->session()->all());
-        
             return $redirect;
         }
 
-        $user = Klant::where('Email', $credentials['Email'])->first();
-        Log::info('User found in database: ' . $user);
-
-        Log::warning('Authentication failed for email: ' . $credentials['Email']);
-
+        $user = Klant::where('Email', $credentials['email'])->first();
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);

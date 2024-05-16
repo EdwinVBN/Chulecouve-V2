@@ -19,11 +19,11 @@
                 @if (Auth::check())
                     <button type="submit">Logout</button>
                 @else
-                    <a href="{{ route('login') }}">Logout</a>
+                    <a href="{{ route('login') }}">Login</a>
                 @endif
             </form>
             <!-- <a href="{{route('logout')}}">logout</a> -->
-            <a href="{{ route('profiel', 10005) }}">Profiel</a>
+            <a href="{{ route('profiel') }}">Profiel</a>
             <a href="{{ route('search') }}">Zoek</a>
         </article>    
     </header>

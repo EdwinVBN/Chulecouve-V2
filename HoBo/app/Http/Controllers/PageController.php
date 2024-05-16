@@ -34,7 +34,7 @@ class PageController extends Controller
         $recentlyWatched = session('recently_watched', collect());
         
         $seriesWithStreams = $recentlyWatched->merge($seriesWithStreams)->unique('SerieID');
-
+        
         $active = Serie::where('Actief', 1)->inRandomOrder()->take(20)->get();
         $picks = Serie::whereNotNull('Image')->inRandomOrder()->take(20)->get();
         $daredevil = Serie::find(215);
@@ -102,23 +102,16 @@ class PageController extends Controller
             'search' => $search,
         ]);
     }
-    public function profiel($klantNr) {
-    //     $user = Klant::take(3)
-    //     ->get();
-    //     return view('profiel',
-    //     [
-    //         'user' => $user
-    //     ]
-    // );
+    public function profiel()
+    {
+        $user = Auth::user();
 
-    $user = Klant::where('KlantNr', $klantNr)->first();
-
-    if ($user) {
-        return view('profiel', compact('user'));
-    } else {
-        return redirect()->back()->withErrors(['error' => 'Klant not found']);
+        if ($user) {
+            return view('profiel', compact('user'));
+        } else {
+            return redirect()->back()->withErrors(['error' => 'User not authenticated']);
+        }
     }
-}
 
     public function genre() {
         return view('genre');
@@ -128,8 +121,6 @@ class PageController extends Controller
     {
         $serie = Serie::find($id);
         Log::info('Found series with id: ' . $id, ['serie' => $serie]);
-
-        // Update the recently_watched session data
         $recentlyWatched = session('recently_watched', collect());
         if ($recentlyWatched->contains('SerieID', $serie->SerieID)) {
             $recentlyWatched = $recentlyWatched->filter(function ($item) use ($serie) {

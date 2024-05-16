@@ -19,27 +19,17 @@ use App\Http\Controllers\UserController;
 
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', [PageController::class, 'home'])->name('home');
-
-    Route::post('/logout', [KlantController::class, 'logout'])->name('logout');
-        
-    Route::get('/history', [PageController::class, 'history'])->name('history');
-
-    Route::get('/filminfo/{id}', [PageController::class, 'filminfo']);
-
-    Route::get('/profile', [PageController::class, 'profile']);
-
+    Route::post('/logout', [KlantController::class, 'logout'])->name('logout')->middleware('auth');
+    Route::get('/history', [PageController::class, 'history'])->name('history')->middleware('auth');
+    Route::get('/filminfo/{id}', [PageController::class, 'filminfo'])->middleware('auth');
+    Route::get('/profile', [PageController::class, 'profile'])->middleware('auth');
     Route::get('/search', [PageController::class, 'search'])->name('search');
+    Route::get('/profiel', [PageController::class, 'profiel'])->name('profiel')->middleware('auth');
+    Route::get('/genre', [PageController::class, 'genre'])->name('genre')->middleware('auth');
+    Route::get('/settings', [PageController::class, 'settings'])->middleware('auth');
+    Route::get('/stream/{id}', [PageController::class, 'stream'])->name('stream')->middleware('auth');
+    Route::post('/update-user-data', [KlantController::class, 'updateUserData'])->name('update-user-data')->middleware('auth');
 
-    Route::get('/profiel/{klantNr}', [PageController::class, 'profiel'])->name('profiel');
-
-    Route::get('/genre', [PageController::class, 'genre'])->name('genre');
-
-    Route::get('/settings', [PageController::class, 'settings']);
-    Route::get('/stream/{id}', [PageController::class, 'stream'])->name('stream');
-
-    Route::post('/update-user-data', [KlantController::class, 'updateUserData'])->name('update-user-data');
-
-    // Move these routes inside the web middleware group
     Route::get('login', [KlantController::class, 'showLoginForm'])->name('login');
     Route::post('login', [KlantController::class, 'login']);
     Route::get('/register', [PageController::class, 'register']);
