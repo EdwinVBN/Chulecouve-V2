@@ -26,7 +26,7 @@
                 </a>
             </article>
             <article style="flex: 1;" id="header-right">
-                <a href="{{ route('profiel') }}">Profiel</a>
+                <a href="{{ route('profiel', Auth::user()->KlantNr) }}">Profiel</a>
                 <a href="{{ route('search') }}">Zoek</a>
                 <form action="{{ route('logout') }}" method="post">
                 @csrf

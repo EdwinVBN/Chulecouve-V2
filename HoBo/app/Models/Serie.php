@@ -18,6 +18,10 @@ class Serie extends Model
         return $this->belongsToMany(Genre::class, 'serie_genre', 'SerieID', 'GenreID');
     }
 
+    protected $fillable = ['SerieTitel'];
+
+    public $timestamps = false;
+
     public function episodes()
     {
         return $this->hasManyThrough(

@@ -47,6 +47,14 @@ class PageController extends Controller
         ]);
     }
 
+    public function deleteUser($klantNr)
+    {
+        $user = Klant::findOrFail($klantNr);
+        $user->delete();
+
+        return redirect()->route('users')->with('success', 'User account deleted successfully.');
+    }
+
     public function filminfo($id) {
         $serie = Serie::find($id);
         $test = $serie->genres;
@@ -56,6 +64,40 @@ class PageController extends Controller
             'serie' => $serie,
             'test' => $test,
             'episodes' => $episodes
+        ]);
+    }
+
+    public function users()
+    {
+        $users = Klant::all();
+
+        return view('users', [
+            'users' => $users,
+        ]);
+    }
+
+    public function admin() {
+        $series = Serie::all();
+        $genres = Genre::all();
+        $users = Klant::all();
+    
+        $seriesCount = $series->count();
+        $genresCount = $genres->count();
+        $usersCount = $users->count();
+
+        $genreDistribution = Genre::withCount('series')->get();
+
+        $topSeries = Serie::orderByDesc('IMDBrating')->take(10)->get();
+
+        return view('admin', [
+            'series' => $series,
+            'genres' => $genres,
+            'users' => $users,
+            'seriesCount' => $seriesCount,
+            'genresCount' => $genresCount,
+            'usersCount' => $usersCount,
+            'genreDistribution' => $genreDistribution,
+            'topSeries' => $topSeries
         ]);
     }
 
@@ -70,7 +112,6 @@ class PageController extends Controller
     public function search(Request $request)
     {
         $search = $request->input('search');
-        // $active = Serie::where('Actief', 1)->inRandomOrder()->take(50)->get();
         $active = Serie::where('Actief', 1)->take(50)->get();
 
         if ($search == null) {
@@ -79,9 +120,17 @@ class PageController extends Controller
             ]);
         }
 
-        $series = [];
-
         $search_querys = explode(' ', $search);
+        $search_querys = array_filter($search_querys, function ($query) {
+            return strlen($query) >= 4;
+        });
+
+        if (empty($search_querys)) {
+            return view('search', [
+                'active' => $active,
+                'search' => $search,
+            ]);
+        }
 
         $query = Serie::query();
 
@@ -97,17 +146,71 @@ class PageController extends Controller
             ->whereNotNull('Image')
             ->get();
 
+        $series = $series->map(function ($serie) use ($search_querys) {
+            $relevance = 0;
+            foreach ($search_querys as $querys) {
+                if (stripos($serie->SerieTitel, $querys) !== false) {
+                    $relevance += 2;
+                } elseif (levenshtein($serie->SerieTitel, $querys) <= 2) {
+                    $relevance++;
+                }
+            }
+            $serie->relevance = $relevance;
+            return $serie;
+        });
+
+        $series = $series->sortByDesc('relevance');
+
         return view('search', [
             'series' => $series,
             'search' => $search,
         ]);
     }
+
+    public function editSerie($id)
+    {
+        $serie = Serie::findOrFail($id);
+        return view('admin.edit-serie', ['serie' => $serie]);
+    }
+
+    public function updateSerie(Request $request, $id)
+    {
+        $serie = Serie::findOrFail($id);
+        $serie->update([
+            'SerieTitel' => $request->input('SerieTitel'),
+            'IMDBLink' => $request->input('IMDBLink'),
+            'Image' => $request->input('Image'),
+            'Description' => $request->input('Description'),
+            'Director' => $request->input('Director'),
+            'IMDBRating' => $request->input('IMDBRating'),
+            'trailerVideo' => $request->input('trailerVideo'),
+        ]);
+        return redirect()->route('admin.manageSeries')->with('success', 'Series updated successfully.');
+    }
+
+    public function deleteSerie($id)
+    {
+        $serie = Serie::findOrFail($id);
+        $serie->delete();
+        return redirect()->route('admin.manageSeries')->with('success', 'Series deleted successfully.');
+    }
+
+    public function manageSeries()
+    {
+        $series = Serie::all();
+        return view('admin.series', ['series' => $series]);
+    }
     public function profiel()
     {
         $user = Auth::user();
 
+        $genres = Genre::all();
+
         if ($user) {
-            return view('profiel', compact('user'));
+            return view('profiel', [
+                'user' => $user,
+                'genres' => $genres,
+            ]);
         } else {
             return redirect()->back()->withErrors(['error' => 'User not authenticated']);
         }

@@ -5,17 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('SCSS/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body id="home-body" style="background-image: none; background-color: rgb(26,26,26);">
     <main>
-        <div style="position: absolute; top: 0; left: 0; width: 100%; padding: 0 90px;">
-            <form method="GET" action="{{ route('search') }}" id="searchForm" style="width: 80%; margin-bottom: 20px;">
-                <div style="border-bottom: 1px solid grey; display: flex; -webkit-box-align: center; align-items: center;">
-                    <input style='padding: 48px 0; caret-color: white; width: 100%; font-family: "montserrat",sans-serif; font-size: 1rem; color: grey; background-color: transparent; border-bottom: 1px solid grey; border: none; outline: none;' type="text" name="search" id="searchform" placeholder="Waar ben je naar op zoek?">
-                    <button type="submit" style="background:transparent; border:none; color:transparent;">Search</button>
-                </dive>
-            </form>
+    <form method="GET" action="{{ route('search') }}" id="searchForm" style="width: 80%; margin-bottom: 20px;">
+        <div style="border-bottom: 1px solid grey; display: flex; -webkit-box-align: center; align-items: center;">
+            <input style='padding: 48px 0; caret-color: white; width: 100%; font-family: "montserrat",sans-serif; font-size: 1rem; color: grey; background-color: transparent; border-bottom: 1px solid grey; border: none; outline: none;' type="text" name="search" id="searchInput" placeholder="Waar ben je naar op zoek?">
+            <button type="button" id="microphoneBtn" class="microphone-btn" style="background: transparent; border:none; color: white;">
+                <i class="fa fa-microphone"></i>
+            </button>
+            <button type="submit" style="background:transparent; border:none; color:transparent;">Search</button>
         </div>
+    </form>
 
         @if(isset($series) && isset($search))
         <section class="carousel">
@@ -53,5 +55,32 @@
     </main>
     <script src="{{ asset('js/carousel.js') }}" defer></script>
     <script src="{{ asset('js/modal.js') }}" defer></script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const microphoneBtn = document.getElementById('microphoneBtn');
+    const searchInput = document.getElementById('searchInput');
+    const recognition = new webkitSpeechRecognition();
+    recognition.continuous = false;
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    microphoneBtn.addEventListener('click', function() {
+        recognition.start();
+    });
+
+    recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        searchInput.value = transcript;
+        setTimeout(function() {
+            document.getElementById('searchForm').submit();
+        }, 500);
+    };
+
+    recognition.onspeechend = function() {
+        recognition.stop();
+    };
+});
+</script>
 </body>
 </html>

@@ -13,6 +13,19 @@ $light-color: #efefef;
 $title: "Neutra", sans-serif;
 $paragraph: "Montserrat", sans-serif;
 
+
+.microphone-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    margin-left: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.microphone-btn:hover {
+    color: #888;
+}
 // Header Styles
 header {
     display: flex;

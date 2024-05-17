@@ -117,7 +117,11 @@
 </head>
 <body id="login-body">
     <section id="login-form">
-        <h1>Login</h1>
+        @if (Auth::check())
+            <h1>Switch to another account</h1>
+        @else
+            <h1>Login</h1>
+        @endif
         <form action="{{ route('login') }}" method="POST">
             @csrf
             <div class="form-group">

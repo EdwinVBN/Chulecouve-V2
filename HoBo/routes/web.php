@@ -4,6 +4,7 @@ use App\Http\Controllers\KlantController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 
 
 /*
@@ -24,14 +25,31 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/filminfo/{id}', [PageController::class, 'filminfo'])->middleware('auth');
     Route::get('/profile', [PageController::class, 'profile'])->middleware('auth');
     Route::get('/search', [PageController::class, 'search'])->name('search');
-    Route::get('/profiel', [PageController::class, 'profiel'])->name('profiel')->middleware('auth');
+    Route::get('/profiel/{KlantNr}', [PageController::class, 'profiel'])->name('profiel')->middleware('auth');
     Route::get('/genre', [PageController::class, 'genre'])->name('genre')->middleware('auth');
     Route::get('/settings', [PageController::class, 'settings'])->middleware('auth');
     Route::get('/stream/{id}', [PageController::class, 'stream'])->name('stream')->middleware('auth');
+    Route::get('/admin', [PageController::class, 'admin'])->name('admin')->middleware('auth');
     Route::post('/update-user-data', [KlantController::class, 'updateUserData'])->name('update-user-data')->middleware('auth');
+    Route::delete('/admin/users/{id}', [PageController::class, 'deleteUser'])->name('admin.deleteUser')->middleware('auth');
+    Route::get('/admin/users', [PageController::class, 'users'])->name('users');
+    Route::get('/admin/series', [PageController::class, 'manageSeries'])->name('admin.manageSeries')->middleware('auth', 'contentmanager');
+    Route::get('/admin/series/{id}/edit', [PageController::class, 'editSerie'])->name('admin.editSerie')->middleware('auth', 'contentmanager');
+    Route::delete('/admin/series/{id}', [PageController::class, 'deleteSerie'])->name('admin.deleteSerie')->middleware('auth', 'contentmanager');
+    Route::get('/admin/series/{id}/edit', [PageController::class, 'editSerie'])->name('admin.editSerie')->middleware('auth', 'contentmanager');
+    Route::put('/admin/series/{id}', [PageController::class, 'updateSerie'])->name('admin.updateSerie')->middleware('auth', 'contentmanager');
+    Route::delete('/admin/series/{id}', [PageController::class, 'deleteSerie'])->name('admin.deleteSerie')->middleware('auth', 'contentmanager');
 
     Route::get('login', [KlantController::class, 'showLoginForm'])->name('login');
     Route::post('login', [KlantController::class, 'login']);
-    Route::get('/register', [PageController::class, 'register']);
-    Route::post('/register', [UserController::class, 'register'])->name('register.submit');
+    Route::get('/register', [KlantController::class, 'showRegistrationForm'])->name('register');
+    Route::post('/register', [KlantController::class, 'register'])->name('register.submit');
+});
+
+Route::fallback(function () {
+    if (Auth::check()) {
+        return redirect()->route('home');
+    } else {
+        return redirect()->route('login');
+    }
 });

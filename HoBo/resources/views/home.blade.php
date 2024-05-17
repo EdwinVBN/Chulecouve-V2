@@ -29,6 +29,7 @@
                 <button id="watch">Kijk</button>
             </a>
         </section>
+        @if (Auth::check())
         <section class="carousel">
             <h1>Kijk verder</h1> 
             <button class="prev"><img src="img/left-chevron.png" alt=""></button>
@@ -44,6 +45,7 @@
                 @endforeach  
             </section>
         </section>
+        @endif
         
         <section class="carousel">
             <h1>Trending</h1> 
