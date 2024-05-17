@@ -85,7 +85,6 @@
                 {{ session('success') }}
             </div>
         @endif
-        
 
         <table class="table">
             <thead>
@@ -93,6 +92,7 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Membership</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -100,8 +100,9 @@
                 @foreach ($users as $user)
                     <tr>
                         <td>{{ $user->KlantNr }}</td>
-                        <td>{{ $user->Naam }}</td>
+                        <td>{{ $user->Voornaam . ' ' . $user->Tussenvoegsel . ' ' . $user->Achternaam}}</td>
                         <td>{{ $user->Email }}</td>
+                        <td>{{$abbonementen[$user->AboID - 1]->AboNaam}}</td>
                         <td>
                             <form action="{{ route('admin.deleteUser', $user->KlantNr) }}" method="POST">
                                 @csrf

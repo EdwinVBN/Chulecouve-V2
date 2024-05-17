@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Serie;
 use App\Models\Genre;
 use App\Models\Klant;
+use App\Models\Abonnement;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -70,9 +71,11 @@ class PageController extends Controller
     public function users()
     {
         $users = Klant::all();
+        $abbonementen = Abonnement::all();
 
         return view('users', [
             'users' => $users,
+            'abbonementen' => $abbonementen,
         ]);
     }
 
