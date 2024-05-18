@@ -14,6 +14,8 @@
             </a>
         </article>
         <article id="header-right">
+            <a href="{{route('genres')}}">Genres</a>
+            <a href="{{route('customer-service')}}">Customer Service</a>
             @if (Auth::check())
                 @if (Auth::user()->AboID == 5 || Auth::user()->AboID == 4)
                 <a href="{{ route('admin.manageSeries') }}">Manage</a>

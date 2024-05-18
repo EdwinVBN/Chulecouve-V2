@@ -3,6 +3,131 @@
   font-family: "Neutra";
   src: url("../NeutraText-BoldAlt.otf") format("opentype");
 }
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.chat-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.chat-message {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  color: #ffffff;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.user-message {
+  background-color: #92d051;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.assistant-message {
+  background-color: #5b9bd5;
+  align-self: flex-start;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.form-control {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f5f5f5;
+  color: #444444;
+  font-size: 16px;
+}
+
+.btn-primary {
+  padding: 10px 20px;
+  background-color: #92d051;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #7cb63d;
+}
+
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.typing-indicator span {
+  width: 8px;
+  height: 8px;
+  background-color: #92d051;
+  border-radius: 50%;
+  margin-right: 5px;
+  animation: typing 1s infinite;
+}
+
+@keyframes typing {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.assistant-message {
+  display: flex;
+  align-items: center;
+}
+
+.microphone-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  margin-left: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.microphone-btn.active {
+  color: red;
+}
+
+.microphone-btn:hover {
+  color: #888;
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -91,6 +216,7 @@ header article img:hover {
 }
 
 #info-body,
+#login-body,
 #home-body {
   margin: 0;
   padding: 0;
@@ -105,6 +231,7 @@ header article img:hover {
   overflow-x: hidden;
 }
 #info-body main #popup,
+#login-body main #popup,
 #home-body main #popup {
   position: fixed;
   top: 15%;
@@ -117,6 +244,7 @@ header article img:hover {
   display: none;
 }
 #info-body main #popup #form-body,
+#login-body main #popup #form-body,
 #home-body main #popup #form-body {
   display: flex;
   flex-direction: column;
@@ -124,27 +252,33 @@ header article img:hover {
   width: 100%;
 }
 #info-body main #popup #form-body #form-head,
+#login-body main #popup #form-body #form-head,
 #home-body main #popup #form-body #form-head {
   flex: 1;
 }
 #info-body main #popup #form-body #form-main,
+#login-body main #popup #form-body #form-main,
 #home-body main #popup #form-body #form-main {
   flex: 6;
 }
 #info-body main #popup #form-body #form-foot,
+#login-body main #popup #form-body #form-foot,
 #home-body main #popup #form-body #form-foot {
   flex: 1;
 }
 #info-body main #popup #form-body #form-foot #form-foot button,
+#login-body main #popup #form-body #form-foot #form-foot button,
 #home-body main #popup #form-body #form-foot #form-foot button {
   cursor: pointer;
 }
 #info-body main #home-info,
+#login-body main #home-info,
 #home-body main #home-info {
   margin-top: 150px;
   width: 600px;
 }
 #info-body main #home-info h1,
+#login-body main #home-info h1,
 #home-body main #home-info h1 {
   font-family: "Neutra", sans-serif;
   color: #92d051;
@@ -153,12 +287,14 @@ header article img:hover {
   margin: 0;
 }
 #info-body main #home-info p,
+#login-body main #home-info p,
 #home-body main #home-info p {
   font-family: "Montserrat", sans-serif;
   color: #92d051;
   font-size: 20px;
 }
 #info-body main #home-info button,
+#login-body main #home-info button,
 #home-body main #home-info button {
   width: 200px;
   margin-top: 20px;
@@ -172,10 +308,12 @@ header article img:hover {
   cursor: pointer;
 }
 #info-body main #home-info button:hover,
+#login-body main #home-info button:hover,
 #home-body main #home-info button:hover {
   transform: scale(1.1);
 }
 #info-body main #info-movie,
+#login-body main #info-movie,
 #home-body main #info-movie {
   height: 20vh;
   margin-top: 5vh;
@@ -184,6 +322,7 @@ header article img:hover {
   font-size: 18px;
 }
 #info-body main #info-movie h1,
+#login-body main #info-movie h1,
 #home-body main #info-movie h1 {
   color: #5b9bd5;
   font-family: "Neutra", sans-serif;
@@ -191,6 +330,7 @@ header article img:hover {
   margin-top: 10px;
 }
 #info-body main #info-movie .movieGenre,
+#login-body main #info-movie .movieGenre,
 #home-body main #info-movie .movieGenre {
   color: white;
   font-family: "Montserrat", sans-serif;
@@ -198,10 +338,12 @@ header article img:hover {
   margin: 0;
 }
 #info-body main .carousel,
+#login-body main .carousel,
 #home-body main .carousel {
   margin-top: 100px;
 }
 #info-body main .carousel button,
+#login-body main .carousel button,
 #home-body main .carousel button {
   margin-bottom: 20px;
   background-color: rgba(0, 0, 0, 0.5);
@@ -216,6 +358,7 @@ header article img:hover {
   transition: transform 0.2s ease-in-out;
 }
 #info-body main .carousel button img,
+#login-body main .carousel button img,
 #home-body main .carousel button img {
   width: 80%;
   filter: invert(100%);
@@ -223,22 +366,26 @@ header article img:hover {
   margin: auto;
 }
 #info-body main .carousel button:hover,
+#login-body main .carousel button:hover,
 #home-body main .carousel button:hover {
   transform: scale(1.1);
 }
 #info-body main .carousel h1,
+#login-body main .carousel h1,
 #home-body main .carousel h1 {
   color: #5b9bd5;
   font-family: "Neutra", sans-serif;
   font-size: 40px;
 }
 #info-body main .carousel .carousel-images,
+#login-body main .carousel .carousel-images,
 #home-body main .carousel .carousel-images {
   display: flex;
   gap: 30px;
   transition: transform 0.3s ease-in-out;
 }
 #info-body main .carousel .carousel-images img,
+#login-body main .carousel .carousel-images img,
 #home-body main .carousel .carousel-images img {
   width: 235px;
   border-radius: 5px;
@@ -246,10 +393,12 @@ header article img:hover {
   transition: transform 0.2s ease-in-out;
 }
 #info-body main .carousel .carousel-images img:hover,
+#login-body main .carousel .carousel-images img:hover,
 #home-body main .carousel .carousel-images img:hover {
   transform: scale(1.05);
 }
 #info-body main .carousel .carousel-images .carousel-section,
+#login-body main .carousel .carousel-images .carousel-section,
 #home-body main .carousel .carousel-images .carousel-section {
   display: flex;
   flex-direction: column;
@@ -257,6 +406,7 @@ header article img:hover {
   text-align: center;
 }
 #info-body main .carousel .carousel-images .carousel-section p,
+#login-body main .carousel .carousel-images .carousel-section p,
 #home-body main .carousel .carousel-images .carousel-section p {
   color: white;
   font-family: "Montserrat", sans-serif;

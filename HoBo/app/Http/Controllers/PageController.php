@@ -68,6 +68,19 @@ class PageController extends Controller
         ]);
     }
 
+    public function genrePage()
+    {
+        $genres = Genre::with(['series' => function ($query) {
+            $query->whereNotNull('Image');
+        }])->get();
+
+        $genres = $genres->filter(function ($genre) {
+            return $genre->series->isNotEmpty();
+        });
+
+        return view('genre', compact('genres'));
+    }
+
     public function users()
     {
         $users = Klant::all();

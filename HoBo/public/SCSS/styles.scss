@@ -14,6 +14,100 @@ $title: "Neutra", sans-serif;
 $paragraph: "Montserrat", sans-serif;
 
 
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.chat-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+.chat-message {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+.user-message {
+    background-color: #92d051;
+    align-self: flex-end;
+    margin-left: auto;
+}
+.assistant-message {
+    background-color: #5b9bd5;
+    align-self: flex-start;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+}
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.form-control {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #f5f5f5;
+    color: #444444;
+    font-size: 16px;
+}
+.btn-primary {
+    padding: 10px 20px;
+    background-color: #92d051;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+.btn-primary:hover {
+    background-color: #7cb63d;
+}
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    background-color: #92d051;
+    border-radius: 50%;
+    margin-right: 5px;
+    animation: typing 1s infinite;
+}
+@keyframes typing {
+    0% { opacity: 0.2; }
+    50% { opacity: 1; }
+    100% { opacity: 0.2; }
+}
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.assistant-message {
+    display: flex;
+    align-items: center;
+}
+
 .microphone-btn {
     background: transparent;
     border: none;
@@ -23,10 +117,13 @@ $paragraph: "Montserrat", sans-serif;
     cursor: pointer;
 }
 
+.microphone-btn.active {
+    color: red;
+}
+
 .microphone-btn:hover {
     color: #888;
 }
-// Header Styles
 header {
     display: flex;
     justify-content: space-between;

@@ -55,30 +55,52 @@
     </main>
     <script src="{{ asset('js/carousel.js') }}" defer></script>
     <script src="{{ asset('js/modal.js') }}" defer></script>
-    <script>
+    <>
+<script>
 document.addEventListener('DOMContentLoaded', function() {
     const microphoneBtn = document.getElementById('microphoneBtn');
     const searchInput = document.getElementById('searchInput');
     const recognition = new webkitSpeechRecognition();
-    recognition.continuous = false;
+    recognition.continuous = true;
     recognition.lang = 'en-US';
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
 
+    // Start listening when the page loads
+    recognition.start();
+
     microphoneBtn.addEventListener('click', function() {
-        recognition.start();
+        if (recognition.isStarted) {
+            recognition.stop();
+        } else {
+            recognition.start();
+        }
     });
 
     recognition.onresult = function(event) {
-        const transcript = event.results[0][0].transcript;
-        searchInput.value = transcript;
-        setTimeout(function() {
-            document.getElementById('searchForm').submit();
-        }, 500);
+        const transcript = event.results[event.results.length - 1][0].transcript;
+        const searchCommand = 'search for';
+
+        if (transcript.toLowerCase().startsWith(searchCommand)) {
+            const query = transcript.slice(searchCommand.length).trim();
+            searchInput.value = query;
+            setTimeout(function() {
+                document.getElementById('searchForm').submit();
+            }, 500);
+        }
     };
 
-    recognition.onspeechend = function() {
-        recognition.stop();
+    recognition.onstart = function() {
+        recognition.isStarted = true;
+        microphoneBtn.classList.add('active');
+    };
+
+    recognition.onend = function() {
+        recognition.isStarted = false;
+        microphoneBtn.classList.remove('active');
+        setTimeout(function() {
+            recognition.start();
+        }, 1000);
     };
 });
 </script>

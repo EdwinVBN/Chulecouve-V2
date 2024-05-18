@@ -4,6 +4,7 @@ use App\Http\Controllers\KlantController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CustomerServiceController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -22,9 +23,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/', [PageController::class, 'home'])->name('home');
     Route::post('/logout', [KlantController::class, 'logout'])->name('logout')->middleware('auth');
     Route::get('/history', [PageController::class, 'history'])->name('history')->middleware('auth');
-    Route::get('/filminfo/{id}', [PageController::class, 'filminfo'])->middleware('auth');
+    Route::get('/filminfo/{id}', [PageController::class, 'filminfo'])->name('filminfo')->middleware('auth');
     Route::get('/profile', [PageController::class, 'profile'])->middleware('auth');
     Route::get('/search', [PageController::class, 'search'])->name('search');
+    Route::get('/genres', [PageController::class, 'genrePage'])->name('genres');
     Route::get('/profiel/{KlantNr}', [PageController::class, 'profiel'])->name('profiel')->middleware('auth');
     Route::get('/genre', [PageController::class, 'genre'])->name('genre')->middleware('auth');
     Route::get('/settings', [PageController::class, 'settings'])->middleware('auth');
@@ -39,6 +41,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/admin/series/{id}/edit', [PageController::class, 'editSerie'])->name('admin.editSerie')->middleware('auth', 'contentmanager');
     Route::put('/admin/series/{id}', [PageController::class, 'updateSerie'])->name('admin.updateSerie')->middleware('auth', 'contentmanager');
     Route::delete('/admin/series/{id}', [PageController::class, 'deleteSerie'])->name('admin.deleteSerie')->middleware('auth', 'contentmanager');
+
+    Route::post('/customer-service/request', [CustomerServiceController::class, 'handleRequest']);
+    Route::get('/customer-service', function () {
+        return view('customer-service');
+    })->name('customer-service');
 
     Route::get('login', [KlantController::class, 'showLoginForm'])->name('login');
     Route::post('login', [KlantController::class, 'login']);
