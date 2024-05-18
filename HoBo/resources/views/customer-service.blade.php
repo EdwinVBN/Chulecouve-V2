@@ -12,7 +12,6 @@
     <div class="container">
         <h1><i class="fas fa-headset"></i> Customer Service</h1>
         <div id="chat-container" class="chat-container">
-            <!-- Chat messages will be displayed here -->
         </div>
         <div class="input-group">
             <input type="text" id="question" class="form-control" placeholder="Ask a question...">
@@ -37,6 +36,8 @@
         });
 
         function sendQuestion(question) {
+            showTypingIndicator();
+
             // Send the question to the server via AJAX
             fetch('/customer-service/request', {
                 method: 'POST',
@@ -87,11 +88,13 @@
         }
 
         function showTypingIndicator() {
-            document.getElementById('typing-indicator').style.display = 'flex';
+            var typingIndicator = document.getElementById('typing-indicator');
+            typingIndicator.style.display = 'flex';
         }
 
         function hideTypingIndicator() {
-            document.getElementById('typing-indicator').style.display = 'none';
+            var typingIndicator = document.getElementById('typing-indicator');
+            typingIndicator.style.display = 'none';
         }
     </script>
 </body>

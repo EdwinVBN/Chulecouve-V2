@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Orhanerday\OpenAi\OpenAi;
+use App\Models\Klant;
+use App\Models\Serie;
 
 class CustomerServiceController extends Controller
 {
@@ -13,6 +15,14 @@ class CustomerServiceController extends Controller
 
         $openai = new OpenAi(env('OPENAI_API_KEY'));
         $baseText = $this->loadBaseText();
+
+        $aantal_klanten = Klant::count();
+        $aantal_series = Serie::count();
+
+        $extraTekst = "Er zijn momenteel $aantal_klanten klanten geregistreerd." .
+            " Er zijn $aantal_series series beschikbaar op hobo."; 
+
+        $baseText .= $extraTekst;
 
         $response = $openai->chat([
             'model' => 'gpt-3.5-turbo',
