@@ -52,11 +52,3 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/register', [KlantController::class, 'showRegistrationForm'])->name('register');
     Route::post('/register', [KlantController::class, 'register'])->name('register.submit');
 });
-
-Route::fallback(function () {
-    if (Auth::check()) {
-        return redirect()->route('home');
-    } else {
-        return redirect()->route('login');
-    }
-});
