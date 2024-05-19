@@ -62,7 +62,7 @@
         font-size: 16px;
         padding-bottom: 14px;
         padding-top: 14px;
-        border: 1px solid grey;
+        border: 1px solid rgb(199, 199, 199);
         background-color: #fff;
         color: var(--dark-color);
         border-radius: 4px;

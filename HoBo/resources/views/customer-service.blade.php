@@ -7,10 +7,26 @@
     <link rel="stylesheet" href="{{ asset('SCSS/styles.css') }}">
 </head>
 <body id="home-body">
+    <style>
+        :root {
+            --primary-color: #92d051;
+            --secondary-color: #5b9bd5;
+            --dark-color: #444444;
+            --light-color: #efefef;
+            --title-font: "Neutra", sans-serif;
+            --paragraph-font: "Montserrat", sans-serif;
+        }
+
+        #title {
+            font-family: var(--title-font);
+            color: var(--secondary-color);
+        }
+    </style>
+
     @include('header')
 
     <div class="container">
-        <h1><i class="fas fa-headset"></i> Customer Service</h1>
+        <h1 id='title'><i class="fas fa-headset"></i> Klantenservice</h1>
         <div id="chat-container" class="chat-container">
         </div>
         <div class="input-group">

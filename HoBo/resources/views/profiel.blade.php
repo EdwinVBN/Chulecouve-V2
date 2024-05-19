@@ -19,7 +19,7 @@
             <a class='tab' href="{{ route('history') }}">Geschiedenis</a>
             @endif
             <a class='tab' href="{{route('genres')}}">Genres</a>
-            <a class='tab' href="{{route('customer-service')}}">Customer Service</a>
+            <a class='tab' href="{{route('customer-service')}}">Klantenservice</a>
             @if (Auth::check())
                 @if (Auth::user()->AboID == 5 || Auth::user()->AboID == 4)
                 <a class='tab' href="{{ route('admin.manageSeries') }}">Manage</a>
@@ -29,7 +29,7 @@
                 @endif
             @endif
             @if (!Auth::check())
-            <a class='tab' href="{{ route('register') }}">Register</a>
+            <a class='tab' href="{{ route('register') }}">Registreren</a>
             @endif
             @if (Auth::check())
                 <a class='tab' href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="logout-link">Logout</a>
@@ -106,6 +106,7 @@
                 background-color: white;
                 display: flex;
                 flex-direction: column;
+                transition: width 0.5s ease;
             }
     
             #logo {
@@ -159,7 +160,7 @@
                 <a href="{{ route('history') }}">Geschiedenis</a>
                 @endif
                 <a href="{{route('genres')}}">Genres</a>
-                <a href="{{route('customer-service')}}">Customer Service</a>
+                <a href="{{route('customer-service')}}">Klantenservice</a>
                 @if (Auth::check())
                     @if (Auth::user()->AboID == 5 || Auth::user()->AboID == 4)
                     <a href="{{ route('admin.manageSeries') }}">Manage</a>
@@ -169,7 +170,7 @@
                     @endif
                 @endif
                 @if (!Auth::check())
-                <a href="{{ route('register') }}">Register</a>
+                <a href="{{ route('register') }}">Registreren</a>
                 @endif
                 @if (Auth::check())
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="logout-link">Logout</a>

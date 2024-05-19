@@ -5,6 +5,13 @@ function closeBar() {
 }
 
 function openBar() {
-    console.log('try');
     sidebar.style.width = '300px';
 }
+
+function removeSidebar() {
+    if(window.innerWidth >= 1750) {
+        closeBar(); 
+    }
+}
+
+window.addEventListener('resize', removeSidebar);
