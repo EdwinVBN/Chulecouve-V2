@@ -10,11 +10,13 @@ class Seizoen extends Model
     protected $table = 'seizoen';
     protected $primaryKey = 'SeizoenID';
 
-    public function series() {
-        return $this->belongsTo(Serie::class, 'serieID');
+    public function serie()
+    {
+        return $this->belongsTo(Serie::class, 'SerieID');
     }
 
-    public function episodes() {
+    public function episodes() 
+    {
         return $this->hasMany(Aflevering::class, 'SeizID');
     }
 }

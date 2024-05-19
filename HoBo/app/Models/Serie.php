@@ -18,19 +18,15 @@ class Serie extends Model
         return $this->belongsToMany(Genre::class, 'serie_genre', 'SerieID', 'GenreID');
     }
 
-    protected $fillable = ['SerieTitel'];
-
-    public $timestamps = false;
-
     public function episodes()
     {
         return $this->hasManyThrough(
-            Aflevering::class, // Final child model
-            Seizoen::class,  // Intermediate model
-            'SerieID',     // Foreign key on the intermediate model
-            'SeizID',    // Foreign key on the final child model
-            'SerieID',           // Local key on the parent model (Serie)
-            'SeizoenID'            // Local key on the intermediate model (Season)
+            Aflevering::class, 
+            Seizoen::class,  
+            'SerieID',     
+            'SeizID',    
+            'SerieID',           
+            'SeizoenID'           
         );
     }
 }

@@ -23,7 +23,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/', [PageController::class, 'home'])->name('home');
     Route::post('/logout', [KlantController::class, 'logout'])->name('logout')->middleware('auth');
     Route::get('/history', [PageController::class, 'history'])->name('history')->middleware('auth');
-    Route::get('/filminfo/{id}', [PageController::class, 'filminfo'])->name('filminfo')->middleware('auth');
+    Route::get('/filminfo/{id}', [PageController::class, 'filminfo'])->name('filminfo');
     Route::get('/profile', [PageController::class, 'profile'])->middleware('auth');
     Route::get('/search', [PageController::class, 'search'])->name('search');
     Route::get('/genres', [PageController::class, 'genrePage'])->name('genres');

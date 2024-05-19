@@ -107,5 +107,6 @@
     @else
     <h1>Unauthorized</h1>
     @endif
+    <script src="{{ asset('js/sidebar.js') }}"></script>
 </body>
 </html>

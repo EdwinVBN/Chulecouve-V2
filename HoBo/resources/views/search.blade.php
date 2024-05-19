@@ -9,7 +9,7 @@
 </head>
 <body id="home-body" style="background-image: none; background-color: rgb(26,26,26);">
     <main>
-    <form method="GET" action="{{ route('search') }}" id="searchForm" style="width: 80%; margin-bottom: 20px;">
+    <form method="GET" action="{{ route('search') }}" id="searchForm" style="width: 100%; margin-bottom: 20px;">
         <div style="border-bottom: 1px solid grey; display: flex; -webkit-box-align: center; align-items: center;">
             <input style='padding: 48px 0; caret-color: white; width: 100%; font-family: "montserrat",sans-serif; font-size: 1rem; color: grey; background-color: transparent; border-bottom: 1px solid grey; border: none; outline: none;' type="text" name="search" id="searchInput" placeholder="Waar ben je naar op zoek?">
             <button type="button" id="microphoneBtn" class="microphone-btn" style="background: transparent; border:none; color: white;">

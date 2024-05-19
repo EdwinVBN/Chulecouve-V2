@@ -81,7 +81,7 @@
     </main>
 
     <script src="{{ asset('js/carousel.js') }}" defer></script>
+    <script src="{{ asset('js/sidebar.js') }}" defer></script>
     <!-- <script src="{{ asset('js/modal.js') }}" defer></script> -->
-
 </body>
 </html>

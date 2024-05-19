@@ -124,6 +124,7 @@ $paragraph: "Montserrat", sans-serif;
 .microphone-btn:hover {
     color: #888;
 }
+
 header {
     display: flex;
     justify-content: space-between;
@@ -133,14 +134,29 @@ header {
         display: flex;
         gap: 150px;
 
-        a {
+        #hamburger {
+            display: none;
+            width: 70px;
+            filter: invert(1) sepia(1) saturate(10000%) hue-rotate(30deg);
+
+            @media screen and (max-width: 1750px) {
+                display: inline-block;
+            }
+        }
+
+        .tab {
             text-decoration: none;
             font-size: 24px;
             color: $primary-color;
             font-family: $title;
+            display: inline-block;
 
             &:hover {
                 color: #628b35;
+            }
+
+            @media screen and (max-width: 1750px) {
+                display: none;
             }
         }
 

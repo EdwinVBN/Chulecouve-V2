@@ -14,32 +14,37 @@
             </a>
         </article>
         <article id="header-right">
-            <a href="{{route('genres')}}">Genres</a>
-            <a href="{{route('customer-service')}}">Customer Service</a>
+            <img id='hamburger' src='img/hamburger.png' onclick="openBar()">
+            @if (Auth::check())
+            <a class='tab' href="{{ route('history') }}">Geschiedenis</a>
+            @endif
+            <a class='tab' href="{{route('genres')}}">Genres</a>
+            <a class='tab' href="{{route('customer-service')}}">Customer Service</a>
             @if (Auth::check())
                 @if (Auth::user()->AboID == 5 || Auth::user()->AboID == 4)
-                <a href="{{ route('admin.manageSeries') }}">Manage</a>
+                <a class='tab' href="{{ route('admin.manageSeries') }}">Manage</a>
                 @endif
                 @if (Auth::user()->AboID == 4)
-                <a href="{{ route('admin') }}">Admin</a>
+                <a class='tab' href="{{ route('admin') }}">Admin</a>
                 @endif
             @endif
             @if (!Auth::check())
-            <a href="{{ route('register') }}">Register</a>
+            <a class='tab' href="{{ route('register') }}">Register</a>
             @endif
             @if (Auth::check())
-                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="logout-link">Logout</a>
+                <a class='tab' href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="logout-link">Logout</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
             @else
-                <a href="{{ route('login') }}">Login</a>
+                <a class='tab' href="{{ route('login') }}">Login</a>
             @endif
             @if (Auth::check())
-            <a href="{{ route('profiel', Auth::user()->KlantNr) }}">Profiel</a>
+            <a class='tab' href="{{ route('profiel', Auth::user()->KlantNr) }}">Profiel</a>
             @endif
-            <a href="{{ route('search') }}">Zoek</a>
-        </article>    
+            <a class='tab' href="{{ route('search') }}">Zoek</a>
+        </article>
+        @include('sidebar') 
     </header>
 </body>
 </html>

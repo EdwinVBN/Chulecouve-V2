@@ -137,14 +137,30 @@ header article {
   display: flex;
   gap: 150px;
 }
-header article a {
+header article #hamburger {
+  display: none;
+  width: 70px;
+  filter: invert(1) sepia(1) saturate(10000%) hue-rotate(30deg);
+}
+@media screen and (max-width: 1750px) {
+  header article #hamburger {
+    display: inline-block;
+  }
+}
+header article .tab {
   text-decoration: none;
   font-size: 24px;
   color: #92d051;
   font-family: "Neutra", sans-serif;
+  display: inline-block;
 }
-header article a:hover {
+header article .tab:hover {
   color: #628b35;
+}
+@media screen and (max-width: 1750px) {
+  header article .tab {
+    display: none;
+  }
 }
 header article button {
   text-decoration: none;

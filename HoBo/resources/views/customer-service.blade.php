@@ -97,5 +97,6 @@
             typingIndicator.style.display = 'none';
         }
     </script>
+    <script src="{{ asset('js/sidebar.js') }}"></script>
 </body>
 </html>

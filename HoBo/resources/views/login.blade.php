@@ -18,6 +18,8 @@
         #login-body {
             background-color: var(--dark-color);
             background-image: url('../img/movie-wallpaper.jpg');
+            background-repeat: none;
+            background-size: cover;
             color: var(--light-color);
             display: flex;
             justify-content: center;
@@ -29,13 +31,28 @@
         }
 
         #login-form {
-            background-color: rgba(68, 68, 68, 0.8);
+            background-color: rgba(255, 255, 255, 1);
             padding: 40px;
             border-radius: 8px;
-            border: 2px solid var(--primary-color);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 20px rgba(131, 49, 49, 0.3);
             text-align: center;
             animation: fadeIn 1s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 300px;
+        }
+
+        #login-form img{
+            width: 200px;
+            padding-bottom: 50px;
+        }
+
+        #login-form form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center
         }
 
         #login-form h1 {
@@ -47,7 +64,6 @@
         }
 
         #login-form input {
-            width: 100%;
             font-size: 16px;
             padding: 14px;
             margin-bottom: 20px;
@@ -117,6 +133,7 @@
 </head>
 <body id="login-body">
     <section id="login-form">
+        <img src="../img/HOBO_logo.png">
         @if (Auth::check())
             <h1>Switch to another account</h1>
         @else

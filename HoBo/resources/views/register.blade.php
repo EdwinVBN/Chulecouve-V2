@@ -28,10 +28,9 @@
     }
 
     #register-form {
-        background-color: rgba(68, 68, 68, 0.8);
+        background-color: rgba(255, 255, 255, 1);
         padding: 40px;
         border-radius: 8px;
-        border: 2px solid var(--primary-color);
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
         text-align: center;
         animation: fadeIn 1s ease-in-out;
@@ -52,6 +51,7 @@
         text-align: left;
         margin-bottom: 8px;
         font-size: 16px;
+        color: black;
     }
 
     #register-form input[type="text"],
@@ -60,9 +60,9 @@
     #register-form select {
         width: 100%;
         font-size: 16px;
-        padding: 14px;
-        margin-bottom: 20px;
-        border: none;
+        padding-bottom: 14px;
+        padding-top: 14px;
+        border: 1px solid grey;
         background-color: #fff;
         color: var(--dark-color);
         border-radius: 4px;
@@ -85,6 +85,7 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 20px;
+        gap: 20px;
     }
 
     #register-form #abonnentVak {
@@ -93,6 +94,7 @@
         border-radius: 4px;
         text-align: center;
         width: 30%;
+        margin: 0 !important;
     }
 
     #register-form button {
