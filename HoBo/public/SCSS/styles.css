@@ -21,15 +21,15 @@ header article a {
 header article a:hover {
   color: #628b35;
 }
-header article button {
-  text-decoration: none;
-  font-size: 24px;
-  color: #92d051;
-  font-family: "Neutra", sans-serif;
+header article #login {
   background-color: transparent;
   border: none;
+  color: #92d051;
+  font-family: "Neutra", sans-serif;
+  font-size: 24px;
+  cursor: pointer;
 }
-header article button:hover {
+header article #login:hover {
   color: #628b35;
 }
 header article img {
@@ -40,54 +40,6 @@ header article img {
 }
 header article img:hover {
   transform: scale(1.1);
-}
-
-.nice-input {
-  border: 1px solid transparent;
-  border-radius: 4px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.nice-input:focus {
-  outline: none;
-}
-
-.main-top,
-.main-bottom {
-  font-family: "Neutra", sans-serif;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-}
-
-.view-box, .betalings-gegevens-view, .user-info-view {
-  padding: 20px;
-  background-color: #5b9bd5;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.user-info-view {
-  align-items: center;
-  margin-right: 20px;
-}
-.user-info-view section {
-  margin-right: 1vw;
-  float: left;
-}
-.user-info-view img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
-.user-info-view h1 {
-  color: #92d051;
-  margin-top: 0;
-}
-
-.betalings-gegevens-view p {
-  margin-bottom: 10px;
 }
 
 #info-body,
@@ -177,7 +129,6 @@ header article img:hover {
 }
 #info-body main #info-movie,
 #home-body main #info-movie {
-  height: 20vh;
   margin-top: 5vh;
   display: flex;
   flex-direction: column;
@@ -196,6 +147,10 @@ header article img:hover {
   font-family: "Montserrat", sans-serif;
   padding: 0;
   margin: 0;
+}
+#info-body main #carousel-info,
+#home-body main #carousel-info {
+  margin-top: 80px;
 }
 #info-body main .carousel,
 #home-body main .carousel {

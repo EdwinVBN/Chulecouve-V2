@@ -34,13 +34,13 @@ header {
             }
         }
 
-        button {
-            text-decoration: none;
-            font-size: 24px;
-            color: $primary-color;
-            font-family: $title;
+        #login {
             background-color: transparent;
             border: none;
+            color: $primary-color;
+            font-family: $title;
+            font-size: 24px;
+            cursor: pointer;
 
             &:hover {
                 color: #628b35;
@@ -60,71 +60,8 @@ header {
     }
 }
 
-.nice-input {
-    border: 1px solid transparent;
-    border-radius: 4px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.nice-input:focus {
-    outline: none;
-}
-
-$padding: 20px;
-$border-radius: 10px;
-$box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-$avatar-size: 50px;
-
-.main-top,
-.main-bottom {
-    font-family: "Neutra", sans-serif;
-    padding: $padding;
-    display: flex;
-    justify-content: center;
-}
-
-.view-box {
-    padding: $padding;
-    background-color: $secondary-color;
-    border-radius: $border-radius;
-    box-shadow: $box-shadow;
-}
-
-.user-info-view {
-    @extend .view-box;
-    align-items: center;
-    margin-right: 20px;
-
-    section {
-        margin-right: 1vw;
-        float: left;
-    }
-
-    img {
-        width: $avatar-size;
-        height: $avatar-size;
-        border-radius: 50%;
-        margin-bottom: 10px;
-    }
-
-    h1 {
-        color: $primary-color;
-        margin-top: 0;
-    }
-}
-
-.betalings-gegevens-view {
-    @extend .view-box;
-
-    p {
-        margin-bottom: 10px;
-    }
-}
-
-
 // Info Body Styles
 #info-body,
-#login-body,
 #home-body {
     margin: 0;
     padding: 0;
@@ -214,7 +151,6 @@ $avatar-size: 50px;
         }
 
         #info-movie {
-            height: 20vh;
             margin-top: 5vh;
             display: flex;
             flex-direction: column;
@@ -233,6 +169,10 @@ $avatar-size: 50px;
                 padding: 0;
                 margin: 0;
             }
+        }
+
+        #carousel-info {
+            margin-top: 80px;
         }
 
         .carousel {
@@ -301,6 +241,7 @@ $avatar-size: 50px;
     }
 }
 
+// Stream Body Styles
 #stream-body {
     padding: 0;
     margin: 0;
