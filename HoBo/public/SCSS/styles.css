@@ -20,6 +20,7 @@ header article a {
 }
 header article a:hover {
   color: #628b35;
+  cursor: pointer;
 }
 header article img {
   padding-top: 20px;
@@ -51,11 +52,20 @@ header article img:hover {
   top: 15%;
   left: 35%;
   z-index: 9999;
-  background-color: red;
+  background-color: #92d051;
   height: 80%;
   width: 30%;
   justify-content: center;
   display: none;
+}
+#info-body main #popup #bckgrnd_vid,
+#home-body main #popup #bckgrnd_vid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
 }
 #info-body main #popup #form-body,
 #home-body main #popup #form-body {
@@ -72,58 +82,59 @@ header article img:hover {
   justify-content: flex-end;
   gap: 1.5%;
 }
-#info-body main #popup #form-body #form-switch #login_switch,
-#home-body main #popup #form-body #form-switch #login_switch {
-  background-color: #5b9bd5;
+#info-body main #popup #form-body #form-switch .switch_text,
+#home-body main #popup #form-body #form-switch .switch_text {
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  background-color: transparent;
   width: 25%;
   height: 40%;
-  text-align: center;
+  padding-top: 2%;
+  font-size: large;
 }
-#info-body main #popup #form-body #form-switch #register_switch,
-#home-body main #popup #form-body #form-switch #register_switch {
-  background-color: #92d051;
-  width: 25%;
-  height: 40%;
-  text-align: center;
+#info-body main #popup #form-body #form-switch .switch_text:hover,
+#home-body main #popup #form-body #form-switch .switch_text:hover {
+  cursor: pointer;
+  font-size: larger;
+  color: #5b9bd5;
+  transition: transform 0.2s ease-in-out;
 }
 #info-body main #popup #form-body .form-main,
 #home-body main #popup #form-body .form-main {
   flex: 7;
   flex-direction: row;
-}
-#info-body main #popup #form-body .form-main #registerForm,
-#home-body main #popup #form-body .form-main #registerForm {
-  display: none;
+  display: flex;
+  justify-content: center;
+  align-self: center;
 }
 #info-body main #popup #form-body #form-foot,
 #home-body main #popup #form-body #form-foot {
   flex: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
 }
-#info-body main #popup #form-body #form-foot #form-foot button,
-#home-body main #popup #form-body #form-foot #form-foot button {
-  cursor: pointer;
-}
-#info-body main #home-info,
-#home-body main #home-info {
+#info-body main #popup #home-info,
+#home-body main #popup #home-info {
   margin-top: 150px;
   width: 600px;
 }
-#info-body main #home-info h1,
-#home-body main #home-info h1 {
+#info-body main #popup #home-info h1,
+#home-body main #popup #home-info h1 {
   font-family: "Neutra", sans-serif;
   color: #92d051;
   font-size: 55px;
   padding: 0;
   margin: 0;
 }
-#info-body main #home-info p,
-#home-body main #home-info p {
+#info-body main #popup #home-info p,
+#home-body main #popup #home-info p {
   font-family: "Montserrat", sans-serif;
   color: #92d051;
   font-size: 20px;
 }
-#info-body main #home-info button,
-#home-body main #home-info button {
+#info-body main #popup #home-info button,
+#home-body main #popup #home-info button {
   width: 200px;
   margin-top: 20px;
   height: 60px;
@@ -135,38 +146,38 @@ header article img:hover {
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
 }
-#info-body main #home-info button:hover,
-#home-body main #home-info button:hover {
+#info-body main #popup #home-info button:hover,
+#home-body main #popup #home-info button:hover {
   transform: scale(1.1);
 }
-#info-body main #info-movie,
-#home-body main #info-movie {
+#info-body main #popup #info-movie,
+#home-body main #popup #info-movie {
   height: 20vh;
   margin-top: 10vh;
   display: flex;
   flex-direction: column;
   font-size: 18px;
 }
-#info-body main #info-movie h1,
-#home-body main #info-movie h1 {
+#info-body main #popup #info-movie h1,
+#home-body main #popup #info-movie h1 {
   color: #5b9bd5;
   font-family: "Neutra", sans-serif;
   margin-bottom: 10px;
   margin-top: 10px;
 }
-#info-body main #info-movie .movieGenre,
-#home-body main #info-movie .movieGenre {
+#info-body main #popup #info-movie .movieGenre,
+#home-body main #popup #info-movie .movieGenre {
   color: white;
   font-family: "Montserrat", sans-serif;
   padding: 0;
   margin: 0;
 }
-#info-body main .carousel,
-#home-body main .carousel {
+#info-body main #popup .carousel,
+#home-body main #popup .carousel {
   margin-top: 100px;
 }
-#info-body main .carousel button,
-#home-body main .carousel button {
+#info-body main #popup .carousel button,
+#home-body main #popup .carousel button {
   margin-bottom: 20px;
   background-color: rgba(0, 0, 0, 0.5);
   border: none;
@@ -179,52 +190,54 @@ header article img:hover {
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
 }
-#info-body main .carousel button img,
-#home-body main .carousel button img {
+#info-body main #popup .carousel button img,
+#home-body main #popup .carousel button img {
   width: 80%;
   filter: invert(100%);
   display: block;
   margin: auto;
 }
-#info-body main .carousel button:hover,
-#home-body main .carousel button:hover {
+#info-body main #popup .carousel button:hover,
+#home-body main #popup .carousel button:hover {
   transform: scale(1.1);
 }
-#info-body main .carousel h1,
-#home-body main .carousel h1 {
+#info-body main #popup .carousel h1,
+#home-body main #popup .carousel h1 {
   color: #5b9bd5;
   font-family: "Neutra", sans-serif;
   font-size: 40px;
 }
-#info-body main .carousel .carousel-images,
-#home-body main .carousel .carousel-images {
+#info-body main #popup .carousel .carousel-images,
+#home-body main #popup .carousel .carousel-images {
   display: flex;
   gap: 30px;
   transition: transform 0.3s ease-in-out;
 }
-#info-body main .carousel .carousel-images img,
-#home-body main .carousel .carousel-images img {
+#info-body main #popup .carousel .carousel-images img,
+#home-body main #popup .carousel .carousel-images img {
   width: 235px;
   border-radius: 5px;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
 }
-#info-body main .carousel .carousel-images img:hover,
-#home-body main .carousel .carousel-images img:hover {
+#info-body main #popup .carousel .carousel-images img:hover,
+#home-body main #popup .carousel .carousel-images img:hover {
   transform: scale(1.05);
 }
-
-#stream-body {
+#info-body #stream-body,
+#home-body #stream-body {
   padding: 0;
   margin: 0;
   overflow-y: hidden;
   background-color: black;
 }
-#stream-body video {
+#info-body #stream-body video,
+#home-body #stream-body video {
   width: 100%;
   height: 100vh;
 }
-#stream-body button {
+#info-body #stream-body button,
+#home-body #stream-body button {
   margin-bottom: 20px;
   background-color: rgba(0, 0, 0, 0.5);
   border: none;
@@ -240,35 +253,105 @@ header article img:hover {
   top: 1%;
   left: 1%;
 }
-#stream-body button img {
+#info-body #stream-body button img,
+#home-body #stream-body button img {
   width: 80%;
   filter: invert(100%);
   display: block;
   margin: auto;
 }
-#stream-body button:hover {
+#info-body #stream-body button:hover,
+#home-body #stream-body button:hover {
   transform: scale(1.1);
 }
 
-.registerForm {
+#registerForm {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-.loginForm {
+#registerForm #userVak {
   display: flex;
   flex-direction: column;
+  flex: 3;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
   align-items: center;
+  gap: 20%;
 }
-
-#genrevak {
-  width: 200px;
-  height: 100px;
+#registerForm #userVak .user_section {
+  display: flex;
+  flex-direction: column;
+}
+#registerForm #persoonVak {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 20%;
+}
+#registerForm #persoonVak .persoon_section {
+  display: flex;
+  flex-direction: column;
+}
+#registerForm #genrevak {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  height: 70%;
+}
+#registerForm #genrevak .genre_section {
   overflow-y: scroll;
-  background-color: white;
+}
+#registerForm #directionVak {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  gap: 3%;
+}
+#registerForm #directionVak .dir_btn {
+  background-color: transparent;
+  border: none;
+  font-family: "Neutra", sans-serif;
+  font-size: larger;
+}
+#registerForm #directionVak .dir_btn:hover {
+  color: #5b9bd5;
+  cursor: pointer;
 }
 
-#abonnentenVak {
+#loginForm {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25%;
+}
+#loginForm .login_vak {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#loginForm .login_vak .login_kop {
+  font-family: "Neutra", sans-serif;
+  color: #5b9bd5;
+  font-size: larger;
+}
+#loginForm #login_sumbit {
+  border: none;
+  background: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: x-large;
+  color: #5b9bd5;
+}
+#loginForm #login_sumbit:hover {
+  cursor: pointer;
+  font-weight: bold;
 }/*# sourceMappingURL=styles.css.map */

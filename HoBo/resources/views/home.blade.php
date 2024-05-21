@@ -10,10 +10,13 @@
     @include('header')
     <main>
         <section id="popup">
+            <video id="bckgrnd_vid" autoplay muted loop src="">
+
+            </video>
             <section id="form-body">
                 <article id="form-switch">
-                    <section id="login_switch">Login</section>
-                    <section id="register_switch">Register</section>
+                    <section class="switch_text" id="login_switch">Login</section>
+                    <section class="switch_text" id="register_switch">Register</section>
                 </article>
                 <section class="form-main">
                     @include('register')
@@ -21,7 +24,7 @@
                     @include('login')
                 </section>
                 <article id="form-foot">
-                    <button id="closebutton">Close</button>
+                    <a id="closebutton">Close</a>
                 </article>    
             </section>
         </section>

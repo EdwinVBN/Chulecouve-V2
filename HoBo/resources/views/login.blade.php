@@ -1,13 +1,15 @@
 <link rel="stylesheet" href="{{ asset('SCSS/styles.css') }}">
 <form action="{{ route('login.submit') }}" id="loginForm" method="post">
     @csrf
-    <label for="username">username</label><br>
-    <input placeholder="username" type="text" name="username" id="">
-    <br><br>
-    <label for="password">password</label><br>
-    <input placeholder="password" type="password" name="password" id="">
-    <br><br>
-    <input type="submit" value="submit">
+    <section class="login_vak">
+        <label class="login_kop" for="username">username</label>
+        <input placeholder="username" type="text" name="username" id="">
+    </section>
+    <section class="login_vak">
+        <label class="login_kop" for="password">password</label>
+        <input placeholder="password" type="password" name="password" id="">    
+    </section>
+    <input id="login_sumbit" type="submit" value="submit">
 </form>
 <?php if($errors->has('username')): ?>
     <script>

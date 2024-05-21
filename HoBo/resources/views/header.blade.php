@@ -33,7 +33,7 @@ use Illuminate\Support\Facades\Auth;
                     <button type="submit">Logout</button>
                 </form>
             @else
-                <button id="login">Login</button>
+                <a id="login">Login</a>
             @endif
 
 
