@@ -269,21 +269,33 @@ $avatar-size: 50px;
     }
 
     @media screen and (max-width: 1600px) {
-        background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 20%, $dark-color 50%, $dark-color 100%), url('../img/movie-wallpaper.jpg');
+        background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 0%, $dark-color 90%, $dark-color 100%), url('../img/movie-wallpaper.jpg');
     }
 
-    @media screen and (max-width: 1100px) {
-        background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 20%, $dark-color 40%, $dark-color 100%), url('../img/movie-wallpaper.jpg');
+    @media screen and (max-width: 1200px) {
+        background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 0%, $dark-color 80%, $dark-color 100%), url('../img/movie-wallpaper.jpg');
     }
 
-    @media screen and (max-width: 900px) {
-        background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 20%, $dark-color 30%, $dark-color 100%), url('../img/movie-wallpaper.jpg');
+    @media screen and (max-width: 1050px) {
+        background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 0%, $dark-color 65%, $dark-color 100%), url('../img/movie-wallpaper.jpg');
     }
 
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 800px) {
         padding-left: 50px;
         padding-right: 50px;
-        background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 10%, $dark-color 20%, $dark-color 100%), url('../img/movie-wallpaper.jpg');
+        background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 0%, $dark-color 60%, $dark-color 100%), url('../img/movie-wallpaper.jpg');
+    }
+
+    @media screen and (max-width: 600px) {
+        padding-left: 50px;
+        padding-right: 50px;
+        background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 0%, $dark-color 40%, $dark-color 100%), url('../img/movie-wallpaper.jpg');
+    }
+
+    @media screen and (max-width: 400px) {
+        padding-left: 50px;
+        padding-right: 50px;
+        background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 0%, $dark-color 5%, $dark-color 100%), url('../img/movie-wallpaper.jpg');
     }
 
     main {
@@ -366,7 +378,6 @@ $avatar-size: 50px;
         }
 
         #info-movie {
-            height: 20vh;
             margin-top: 5vh;
             display: flex;
             flex-direction: column;
@@ -388,7 +399,7 @@ $avatar-size: 50px;
         }
 
         .carousel {
-            margin-top: 100px;
+            margin-top: 50px;
 
             button {
                 margin-bottom: 20px;
