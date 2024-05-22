@@ -71,12 +71,17 @@
                 <p class="movieGenre">{{ $serie->IMDBrating }}</p>
         </section>
         <section class="carousel">
-            <h1>Afleveringen</h1> 
+            <h1>Afleveringen</h1>
+            <select name="seasons" id="seasons">
+                @foreach ($seasons as $season)
+                    <option value="{{$season->id}}">{{$season->name}}</option>
+                @endforeach
+            </select>
             <button class="prev"><img src="../img/left-chevron.png" alt=""></button>
             <button class="next"><img src="../img/right-chevron.png" alt=""></button> 
             <section class="carousel-images">
                 @foreach ($episodes as $episode)
-                    <section class="carousel-section">
+                    <section class="seasonOptions" index='' data-value='{{ $episode->AflTitel }}'>
                         <a href="../stream/{{ $serie->SerieID }}">
                             <img class="carousel-image" src="../{{ $serie->Image }}">
                         </a>
@@ -192,5 +197,6 @@
 
     <script src="{{ asset('js/carousel.js') }}" defer></script>
     <script src="{{ asset('js/sidebar.js') }}"></script>
+    <script src="{{ asset('js/seasonFilter.js') }}"></script>
 </body>
 </html>

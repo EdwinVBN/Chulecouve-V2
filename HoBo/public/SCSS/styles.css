@@ -494,6 +494,20 @@ header article img:hover {
   color: white;
   font-family: "Montserrat", sans-serif;
 }
+#info-body main .carousel .carousel-images .seasonOptions,
+#login-body main .carousel .carousel-images .seasonOptions,
+#home-body main .carousel .carousel-images .seasonOptions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+#info-body main .carousel .carousel-images .seasonOptions p,
+#login-body main .carousel .carousel-images .seasonOptions p,
+#home-body main .carousel .carousel-images .seasonOptions p {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+}
 
 #stream-body {
   padding: 0;
