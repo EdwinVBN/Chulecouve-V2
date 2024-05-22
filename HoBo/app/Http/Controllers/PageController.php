@@ -7,6 +7,7 @@ use App\Models\Serie;
 use App\Models\Genre;
 use App\Models\Klant;
 use App\Models\Abonnement;
+use App\Models\Serie_Genre;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -39,12 +40,29 @@ class PageController extends Controller
         $active = Serie::where('Actief', 1)->inRandomOrder()->take(20)->get();
         $picks = Serie::whereNotNull('Image')->inRandomOrder()->take(20)->get();
         $daredevil = Serie::find(215);
+        
+        $user = Auth::user();
+
+        if($user){
+            $userGenre = $user->Genre;
+        };
+
+        $userGenreID = Genre::where('GenreNaam', $userGenre)->pluck('GenreID')->first();
+
+        $userSerieID = Serie_Genre::where('GenreID', $userGenreID)->pluck('SerieID')->all();
+
+        $userSeries = Serie::whereIn('SerieID', $userSerieID)
+                            ->wherein('Actief', [1])                    
+                            ->get();
+
+        // dd($userSeries);
 
         return view('home', [
             'viewing' => $seriesWithStreams,
             'active' => $active,
             'picks' => $picks,
-            'pick' => $daredevil
+            'pick' => $daredevil,
+            'userSeries' => $userSeries,
         ]);
     }
 
