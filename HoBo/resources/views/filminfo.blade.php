@@ -194,9 +194,9 @@
             @endif
         </section>
     </section>
-
+    <script src="{{ asset('js/seasonFilter.js') }}"></script>
     <script src="{{ asset('js/carousel.js') }}" defer></script>
     <script src="{{ asset('js/sidebar.js') }}"></script>
-    <script src="{{ asset('js/seasonFilter.js') }}"></script>
+    
 </body>
 </html>
