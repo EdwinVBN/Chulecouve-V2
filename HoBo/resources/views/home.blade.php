@@ -64,6 +64,24 @@
             </section>
         </section>
 
+        @if (Auth::check())
+        <section class="carousel">
+            <h1>Voor Jouw</h1> 
+            <button class="prev"><img src="img/left-chevron.png" alt=""></button>
+            <button class="next"><img src="img/right-chevron.png" alt=""></button> 
+            <section class="carousel-images">
+                @foreach ($userSeries as $userSerie)
+                    <section class="carousel-section">
+                        <a href="stream/{{ $userSerie->SerieID }}">
+                            <img class="carousel-image" src="{{ $userSerie->Image }}">
+                        </a>
+                        <p>{{ $userSerie->SerieTitel }}</p>
+                    </section>
+                @endforeach  
+            </section>
+        </section>
+        @endif
+
         <section class="carousel">
             <h1>Editors picks</h1> 
             <button class="prev"><img src="img/left-chevron.png" alt=""></button>
