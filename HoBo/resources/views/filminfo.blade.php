@@ -72,11 +72,6 @@
         </section>
         <section class="carousel">
             <h1>Afleveringen</h1>
-            <select name="seasons" id="seasons">
-                @foreach ($seasons as $season)
-                    <option value="{{$season->id}}">{{$season->name}}</option>
-                @endforeach
-            </select>
             <button class="prev"><img src="../img/left-chevron.png" alt=""></button>
             <button class="next"><img src="../img/right-chevron.png" alt=""></button> 
             <section class="carousel-images">
