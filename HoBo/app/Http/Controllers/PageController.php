@@ -42,6 +42,7 @@ class PageController extends Controller
         $daredevil = Serie::find(215);
         
         $user = Auth::user();
+        $userGenre = null;
 
         if($user){
             $userGenre = $user->Genre;
