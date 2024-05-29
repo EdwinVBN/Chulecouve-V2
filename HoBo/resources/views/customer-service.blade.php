@@ -27,7 +27,7 @@
     @include('header')
 
     <div class="container">
-        <h1 id='title'><i class="fas fa-headset"></i> Klantenservice</h1>
+        {{-- <h1 id='title'><i class="fas fa-headset"></i> Klantenservice</h1> --}}
         <div id="chat-container" class="chat-container">
         </div>
         <div class="input-group">

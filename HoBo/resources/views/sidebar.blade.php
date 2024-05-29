@@ -81,7 +81,7 @@
             <a href="{{ route('history') }}">Geschiedenis</a>
             @endif
             <a href="{{route('genres')}}">Genres</a>
-            <a href="{{route('customer-service')}}">Klantenservice</a>
+            {{-- <a href="{{route('customer-service')}}">Klantenservice</a> --}}
             @if (Auth::check())
                 @if (Auth::user()->AboID == 5 || Auth::user()->AboID == 4)
                 <a href="{{ route('admin.manageSeries') }}">Manage</a>
