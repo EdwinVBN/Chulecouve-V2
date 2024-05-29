@@ -206,6 +206,7 @@ $avatar-size: 50px;
     font-family: "Neutra", sans-serif;
     padding: $padding;
     display: flex;
+    flex-direction: row;
     justify-content: center;
 }
 
@@ -217,7 +218,10 @@ $avatar-size: 50px;
 }
 
 .user-info-view {
-    @extend .view-box;
+    padding: $padding;
+    background-color: white;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
     align-items: center;
     margin-right: 20px;
 
@@ -231,6 +235,7 @@ $avatar-size: 50px;
         height: $avatar-size;
         border-radius: 50%;
         margin-bottom: 10px;
+        align-self: center;
     }
 
     h1 {
@@ -449,6 +454,18 @@ $avatar-size: 50px;
                 }
 
                 .carousel-section {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                    
+                    p {
+                        color: white;
+                        font-family: $paragraph;
+                    }
+                }
+
+                .seasonOptions {
                     display: flex;
                     flex-direction: column;
                     align-items: center;

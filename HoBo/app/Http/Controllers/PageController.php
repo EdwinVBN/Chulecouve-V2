@@ -7,6 +7,7 @@ use App\Models\Serie;
 use App\Models\Genre;
 use App\Models\Klant;
 use App\Models\Abonnement;
+use App\Models\Seizoen;
 use App\Models\Serie_Genre;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -80,7 +81,20 @@ class PageController extends Controller
         $test = $serie->genres;
         $episodes = Serie::find($id)->episodes;
 
+        $seasons = Seizoen::where('SerieID', $id)->get();
+        $seasonArray = [];
+        $seasonCounter = 1;
+
+        foreach($seasons as $season) {
+            $seasonObject = new \stdClass();
+            $seasonObject->id = $seasonCounter;
+            $seasonObject->name = "Seizoen " . $seasonCounter;
+            array_push($seasonArray, $seasonObject);
+            $seasonCounter++;
+        }
+
         return view('filminfo', [
+            'seasons' => $seasonArray,
             'serie' => $serie,
             'test' => $test,
             'episodes' => $episodes

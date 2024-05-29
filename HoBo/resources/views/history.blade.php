@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Geschiedenis</title>
+    <link rel="icon" type="image/x-icon" href="img/HOBO_beeldmerk.png">
     <link rel="stylesheet" href="{{ asset('SCSS/styles.css') }}">
     <!DOCTYPE html>
 <html lang="en">

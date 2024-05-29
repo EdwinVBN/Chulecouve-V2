@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{$serie->SerieTitel}}</title>
+    <link rel="icon" type="image/x-icon" href="../img/HOBO_beeldmerk.png">
     <link rel="stylesheet" href="{{ asset('SCSS/styles.css') }}">
 </head>
 <body id="info-body">
@@ -70,12 +71,12 @@
                 <p class="movieGenre">{{ $serie->IMDBrating }}</p>
         </section>
         <section class="carousel">
-            <h1>Afleveringen</h1> 
+            <h1>Afleveringen</h1>
             <button class="prev"><img src="../img/left-chevron.png" alt=""></button>
             <button class="next"><img src="../img/right-chevron.png" alt=""></button> 
             <section class="carousel-images">
                 @foreach ($episodes as $episode)
-                    <section class="carousel-section">
+                    <section class="seasonOptions" index='' data-value='{{ $episode->AflTitel }}'>
                         <a href="../stream/{{ $serie->SerieID }}">
                             <img class="carousel-image" src="../{{ $serie->Image }}">
                         </a>
@@ -188,8 +189,9 @@
             @endif
         </section>
     </section>
-
+    <script src="{{ asset('js/seasonFilter.js') }}"></script>
     <script src="{{ asset('js/carousel.js') }}" defer></script>
     <script src="{{ asset('js/sidebar.js') }}"></script>
+    
 </body>
 </html>

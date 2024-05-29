@@ -198,10 +198,11 @@ header article img:hover {
   font-family: "Neutra", sans-serif;
   padding: 20px;
   display: flex;
+  flex-direction: row;
   justify-content: center;
 }
 
-.view-box, .betalings-gegevens-view, .user-info-view {
+.view-box, .betalings-gegevens-view {
   padding: 20px;
   background-color: #5b9bd5;
   border-radius: 10px;
@@ -209,6 +210,10 @@ header article img:hover {
 }
 
 .user-info-view {
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   align-items: center;
   margin-right: 20px;
 }
@@ -221,6 +226,7 @@ header article img:hover {
   height: 50px;
   border-radius: 50%;
   margin-bottom: 10px;
+  align-self: center;
 }
 .user-info-view h1 {
   color: #92d051;
@@ -485,6 +491,20 @@ header article img:hover {
 #info-body main .carousel .carousel-images .carousel-section p,
 #login-body main .carousel .carousel-images .carousel-section p,
 #home-body main .carousel .carousel-images .carousel-section p {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+}
+#info-body main .carousel .carousel-images .seasonOptions,
+#login-body main .carousel .carousel-images .seasonOptions,
+#home-body main .carousel .carousel-images .seasonOptions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+#info-body main .carousel .carousel-images .seasonOptions p,
+#login-body main .carousel .carousel-images .seasonOptions p,
+#home-body main .carousel .carousel-images .seasonOptions p {
   color: white;
   font-family: "Montserrat", sans-serif;
 }

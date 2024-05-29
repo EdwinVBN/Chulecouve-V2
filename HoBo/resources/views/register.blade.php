@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Registreren</title>
+    <link rel="icon" type="image/x-icon" href="img/HOBO_beeldmerk.png">
     <link href="https://fonts.googleapis.com/css2?family=Neutra&family=Montserrat&display=swap" rel="stylesheet">
         <style>
         :root {
