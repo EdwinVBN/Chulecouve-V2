@@ -1,0 +1,546 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@font-face {
+  font-family: "Neutra";
+  src: url("../NeutraText-BoldAlt.otf") format("opentype");
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.chat-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.chat-message {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  color: #ffffff;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.user-message {
+  background-color: #92d051;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.assistant-message {
+  background-color: #5b9bd5;
+  align-self: flex-start;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.form-control {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f5f5f5;
+  color: #444444;
+  font-size: 16px;
+}
+
+.btn-primary {
+  padding: 10px 20px;
+  background-color: #92d051;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #7cb63d;
+}
+
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.typing-indicator span {
+  width: 8px;
+  height: 8px;
+  background-color: #92d051;
+  border-radius: 50%;
+  margin-right: 5px;
+  animation: typing 1s infinite;
+}
+
+@keyframes typing {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.assistant-message {
+  display: flex;
+  align-items: center;
+}
+
+.microphone-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  margin-left: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.microphone-btn.active {
+  color: red;
+}
+
+.microphone-btn:hover {
+  color: #888;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header article {
+  display: flex;
+  gap: 150px;
+}
+header article #hamburger {
+  display: none;
+  width: 60px;
+  filter: invert(1) sepia(1) saturate(10000%) hue-rotate(30deg);
+}
+@media screen and (max-width: 1750px) {
+  header article #hamburger {
+    display: inline-block;
+  }
+}
+header article .tab {
+  text-decoration: none;
+  font-size: 24px;
+  color: #92d051;
+  font-family: "Neutra", sans-serif;
+  display: inline-block;
+}
+header article .tab:hover {
+  color: #628b35;
+}
+@media screen and (max-width: 1750px) {
+  header article .tab {
+    display: none;
+  }
+}
+header article button {
+  text-decoration: none;
+  font-size: 24px;
+  color: #92d051;
+  font-family: "Neutra", sans-serif;
+  background-color: transparent;
+  border: none;
+}
+header article button:hover {
+  color: #628b35;
+}
+header article img {
+  padding-top: 20px;
+  width: 100px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+header article img:hover {
+  transform: scale(1.1);
+}
+
+.nice-input {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.nice-input:focus {
+  outline: none;
+}
+
+.main-top,
+.main-bottom {
+  font-family: "Neutra", sans-serif;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.view-box, .betalings-gegevens-view {
+  padding: 20px;
+  background-color: #5b9bd5;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.user-info-view {
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  align-items: center;
+  margin-right: 20px;
+}
+.user-info-view section {
+  margin-right: 1vw;
+  float: left;
+}
+.user-info-view img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  align-self: center;
+}
+.user-info-view h1 {
+  color: #92d051;
+  margin-top: 0;
+}
+
+.betalings-gegevens-view p {
+  margin-bottom: 10px;
+}
+
+#info-body,
+#login-body,
+#home-body {
+  margin: 0;
+  padding: 0;
+  background-color: #444444;
+  padding-left: 100px;
+  padding-right: 100px;
+  background-attachment: fixed;
+  background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 0%, #444444 90%, #444444 100%), url("../img/movie-wallpaper.jpg");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  overflow-x: hidden;
+}
+@media screen and (max-width: 2000px) {
+  #info-body,
+  #login-body,
+  #home-body {
+    background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 20%, #444444 70%, #444444 100%), url("../img/movie-wallpaper.jpg");
+  }
+}
+@media screen and (max-width: 1600px) {
+  #info-body,
+  #login-body,
+  #home-body {
+    background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 0%, #444444 90%, #444444 100%), url("../img/movie-wallpaper.jpg");
+  }
+}
+@media screen and (max-width: 1200px) {
+  #info-body,
+  #login-body,
+  #home-body {
+    background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 0%, #444444 80%, #444444 100%), url("../img/movie-wallpaper.jpg");
+  }
+}
+@media screen and (max-width: 1050px) {
+  #info-body,
+  #login-body,
+  #home-body {
+    background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 0%, #444444 65%, #444444 100%), url("../img/movie-wallpaper.jpg");
+  }
+}
+@media screen and (max-width: 800px) {
+  #info-body,
+  #login-body,
+  #home-body {
+    padding-left: 50px;
+    padding-right: 50px;
+    background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 0%, #444444 60%, #444444 100%), url("../img/movie-wallpaper.jpg");
+  }
+}
+@media screen and (max-width: 600px) {
+  #info-body,
+  #login-body,
+  #home-body {
+    padding-left: 50px;
+    padding-right: 50px;
+    background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 0%, #444444 40%, #444444 100%), url("../img/movie-wallpaper.jpg");
+  }
+}
+@media screen and (max-width: 400px) {
+  #info-body,
+  #login-body,
+  #home-body {
+    padding-left: 50px;
+    padding-right: 50px;
+    background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 0%, #444444 5%, #444444 100%), url("../img/movie-wallpaper.jpg");
+  }
+}
+#info-body main #popup,
+#login-body main #popup,
+#home-body main #popup {
+  position: fixed;
+  top: 15%;
+  left: 35%;
+  z-index: 9999;
+  background-color: red;
+  height: 70%;
+  width: 30%;
+  justify-content: center;
+  display: none;
+}
+#info-body main #popup #form-body,
+#login-body main #popup #form-body,
+#home-body main #popup #form-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+#info-body main #popup #form-body #form-head,
+#login-body main #popup #form-body #form-head,
+#home-body main #popup #form-body #form-head {
+  flex: 1;
+}
+#info-body main #popup #form-body #form-main,
+#login-body main #popup #form-body #form-main,
+#home-body main #popup #form-body #form-main {
+  flex: 6;
+}
+#info-body main #popup #form-body #form-foot,
+#login-body main #popup #form-body #form-foot,
+#home-body main #popup #form-body #form-foot {
+  flex: 1;
+}
+#info-body main #popup #form-body #form-foot #form-foot button,
+#login-body main #popup #form-body #form-foot #form-foot button,
+#home-body main #popup #form-body #form-foot #form-foot button {
+  cursor: pointer;
+}
+#info-body main #home-info,
+#login-body main #home-info,
+#home-body main #home-info {
+  margin-top: 150px;
+  width: 600px;
+}
+@media screen and (max-width: 700px) {
+  #info-body main #home-info,
+  #login-body main #home-info,
+  #home-body main #home-info {
+    width: 400px;
+  }
+}
+#info-body main #home-info h1,
+#login-body main #home-info h1,
+#home-body main #home-info h1 {
+  font-family: "Neutra", sans-serif;
+  color: #92d051;
+  font-size: 55px;
+  padding: 0;
+  margin: 0;
+}
+#info-body main #home-info p,
+#login-body main #home-info p,
+#home-body main #home-info p {
+  font-family: "Montserrat", sans-serif;
+  color: #92d051;
+  font-size: 20px;
+}
+#info-body main #home-info button,
+#login-body main #home-info button,
+#home-body main #home-info button {
+  width: 200px;
+  margin-top: 20px;
+  height: 60px;
+  background-color: #92d051;
+  border: none;
+  border-radius: 30px;
+  color: #444444;
+  font-size: 20px;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+#info-body main #home-info button:hover,
+#login-body main #home-info button:hover,
+#home-body main #home-info button:hover {
+  transform: scale(1.1);
+}
+#info-body main #info-movie,
+#login-body main #info-movie,
+#home-body main #info-movie {
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+}
+#info-body main #info-movie h1,
+#login-body main #info-movie h1,
+#home-body main #info-movie h1 {
+  color: #5b9bd5;
+  font-family: "Neutra", sans-serif;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+#info-body main #info-movie .movieGenre,
+#login-body main #info-movie .movieGenre,
+#home-body main #info-movie .movieGenre {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+#info-body main .carousel,
+#login-body main .carousel,
+#home-body main .carousel {
+  margin-top: 50px;
+}
+#info-body main .carousel button,
+#login-body main .carousel button,
+#home-body main .carousel button {
+  margin-bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+#info-body main .carousel button img,
+#login-body main .carousel button img,
+#home-body main .carousel button img {
+  width: 80%;
+  filter: invert(100%);
+  display: block;
+  margin: auto;
+}
+#info-body main .carousel button:hover,
+#login-body main .carousel button:hover,
+#home-body main .carousel button:hover {
+  transform: scale(1.1);
+}
+#info-body main .carousel h1,
+#login-body main .carousel h1,
+#home-body main .carousel h1 {
+  color: #5b9bd5;
+  font-family: "Neutra", sans-serif;
+  font-size: 40px;
+}
+#info-body main .carousel .carousel-images,
+#login-body main .carousel .carousel-images,
+#home-body main .carousel .carousel-images {
+  display: flex;
+  gap: 30px;
+  transition: transform 0.3s ease-in-out;
+}
+#info-body main .carousel .carousel-images img,
+#login-body main .carousel .carousel-images img,
+#home-body main .carousel .carousel-images img {
+  width: 235px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+#info-body main .carousel .carousel-images img:hover,
+#login-body main .carousel .carousel-images img:hover,
+#home-body main .carousel .carousel-images img:hover {
+  transform: scale(1.05);
+}
+#info-body main .carousel .carousel-images .carousel-section,
+#login-body main .carousel .carousel-images .carousel-section,
+#home-body main .carousel .carousel-images .carousel-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+#info-body main .carousel .carousel-images .carousel-section p,
+#login-body main .carousel .carousel-images .carousel-section p,
+#home-body main .carousel .carousel-images .carousel-section p {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+}
+#info-body main .carousel .carousel-images .seasonOptions,
+#login-body main .carousel .carousel-images .seasonOptions,
+#home-body main .carousel .carousel-images .seasonOptions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+#info-body main .carousel .carousel-images .seasonOptions p,
+#login-body main .carousel .carousel-images .seasonOptions p,
+#home-body main .carousel .carousel-images .seasonOptions p {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+}
+
+#stream-body {
+  padding: 0;
+  margin: 0;
+  overflow-y: hidden;
+  background-color: black;
+}
+#stream-body iframe {
+  width: 100%;
+  height: 100vh;
+}
+#stream-body button {
+  margin-bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  position: absolute;
+  top: 1%;
+  left: 1%;
+}
+#stream-body button img {
+  width: 80%;
+  filter: invert(100%);
+  display: block;
+  margin: auto;
+}
+#stream-body button:hover {
+  transform: scale(1.1);
+}/*# sourceMappingURL=styles.css.map */
