@@ -5,7 +5,7 @@ function getEpisodes() {
     const selectValue = select.value;
 
     options.forEach(option => {
-        let season = option.getAttribute('data-value').charAt(12);
+        let season = option.getAttribute('data-value').match(/S(\d+)E/)[1];
         option.setAttribute("index", season);
         
 
@@ -18,7 +18,11 @@ function getEpisodes() {
         }
         
     })
+
+    // Adjust carousel width
+    const carouselImages = document.querySelector('.carousel-images');
+    const visibleOptions = document.querySelectorAll('.seasonOptions[style*="inline-block"]');
+    carouselImages.style.width = `${visibleOptions.length * 265}px`; // Adjust width based on visible items
 }
 
 select.addEventListener('change', getEpisodes);
-window.addEventListener('load', getEpisodes);

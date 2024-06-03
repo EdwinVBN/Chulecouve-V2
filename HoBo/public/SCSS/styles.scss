@@ -218,29 +218,95 @@ $avatar-size: 50px;
 }
 
 .user-info-view {
-    padding: $padding;
-    background-color: white;
-    border-radius: $border-radius;
-    box-shadow: $box-shadow;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
     align-items: center;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-right: 20px;
-
+    
     section {
-        margin-right: 1vw;
-        float: left;
+        flex: 1;
+        margin-right: 2rem;
+        
+        &:last-child {
+            margin-right: 0;
+        }
     }
-
+    
     img {
-        width: $avatar-size;
-        height: $avatar-size;
+        width: 150px;
+        height: 150px;
         border-radius: 50%;
-        margin-bottom: 10px;
-        align-self: center;
+        object-fit: cover;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        
+        &:hover {
+            transform: scale(1.05);
+        }
     }
-
+    
     h1 {
-        color: $primary-color;
+        color: #92d051;
         margin-top: 0;
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+    }
+    
+    p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 0.5rem;
+        
+        &.editable-container {
+            position: relative;
+            padding-left: 1.5rem;
+            
+            &:before {
+                content: '✏️';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #5b9bd5;
+                opacity: 0.7;
+                transition: opacity 0.3s ease;
+                font-size: 1rem; // Added font-size for better control
+            }
+            
+            &:hover:before {
+                opacity: 1;
+            }
+        }
+    }
+    
+    select {
+        appearance: none;
+        background-color: #f5f5f5;
+        border: none;
+        border-radius: 5px;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        color: #444444;
+        margin-left: 0.5rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        
+        &:hover {
+            background-color: #eeeeee;
+        }
+        
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #5b9bd5;
+        }
     }
 }
 
@@ -252,6 +318,30 @@ $avatar-size: 50px;
     }
 }
 
+.profile-section {
+    flex: 1 1 calc(50% - 20px); /* Two sections side by side */
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: var(--light-color);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    p {
+        font-size: 1.5rem;
+    }
+
+    select {
+        font-size: 1.5rem;
+    }
+}
+
+.centered-profile {
+    text-align: center;
+}
+
+.profile-section:nth-child(3) {
+    flex: 1 1 100%; /* The third section takes full width */
+}
 
 // Info Body Styles
 #info-body,
@@ -259,49 +349,50 @@ $avatar-size: 50px;
 #home-body {
     margin: 0;
     padding: 0;
-    background-color: $dark-color;
+    background-color: rgb(26, 26, 26);
     padding-left: 100px;
     padding-right: 100px;
     background-attachment: fixed;
-    background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 0%, $dark-color 90%, $dark-color 100%), url('../img/movie-wallpaper.jpg');
+    background-image: linear-gradient(135deg, rgb(26, 26, 26) 40%, $primary-color);
     background-position: top center;
     background-repeat: no-repeat;
     background-size: 100% auto;
     overflow-x: hidden;
 
     @media screen and (max-width: 2000px) {
-        background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 20%, $dark-color 70%, $dark-color 100%), url('../img/movie-wallpaper.jpg');
+        background-image: linear-gradient(to bottom, $dark-color, rgb(26, 26, 26));
     }
 
     @media screen and (max-width: 1600px) {
-        background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 0%, $dark-color 90%, $dark-color 100%), url('../img/movie-wallpaper.jpg');
+        background-image: linear-gradient(to bottom, $dark-color, rgb(26, 26, 26));
     }
 
     @media screen and (max-width: 1200px) {
-        background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 0%, $dark-color 80%, $dark-color 100%), url('../img/movie-wallpaper.jpg');
+        background-image: linear-gradient(to bottom, $dark-color, rgb(26, 26, 26));
     }
 
     @media screen and (max-width: 1050px) {
-        background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 0%, $dark-color 65%, $dark-color 100%), url('../img/movie-wallpaper.jpg');
+        background-image: linear-gradient(to bottom, $dark-color, rgb(26, 26, 26));
     }
 
     @media screen and (max-width: 800px) {
         padding-left: 50px;
         padding-right: 50px;
-        background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 0%, $dark-color 60%, $dark-color 100%), url('../img/movie-wallpaper.jpg');
+        background-image: linear-gradient(to bottom, $dark-color, rgb(26, 26, 26));
     }
 
     @media screen and (max-width: 600px) {
         padding-left: 50px;
         padding-right: 50px;
-        background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 0%, $dark-color 40%, $dark-color 100%), url('../img/movie-wallpaper.jpg');
+        background-image: linear-gradient(to bottom, $dark-color, rgb(26, 26, 26));
     }
 
     @media screen and (max-width: 400px) {
         padding-left: 50px;
         padding-right: 50px;
-        background-image: linear-gradient(to bottom, rgba(255, 153, 153, 0) 0%, $dark-color 5%, $dark-color 100%), url('../img/movie-wallpaper.jpg');
+        background-image: linear-gradient(to bottom, $dark-color, rgb(26, 26, 26));
     }
+
 
     main {
 
@@ -400,6 +491,41 @@ $avatar-size: 50px;
                 font-family: $paragraph;
                 padding: 0;
                 margin: 0;
+            }
+        }
+
+        #season-select {
+            display: flex;
+            flex-direction: column;
+            width: 10%;
+            margin-bottom: 20px;
+
+            label {
+                font-family: $title;
+                font-size: 18px;
+                color: $secondary-color;
+                margin-bottom: 10px;
+            }
+
+            select {
+                padding: 10px;
+                font-family: $paragraph;
+                font-size: 16px;
+                border: 1px solid $secondary-color;
+                border-radius: 5px;
+                background-color: $light-color;
+                color: $dark-color;
+                cursor: pointer;
+                transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+                &:hover {
+                    background-color: lighten($light-color, 10%);
+                }
+
+                &:focus {
+                    outline: none;
+                    box-shadow: 0 0 0 2px $secondary-color;
+                }
             }
         }
 

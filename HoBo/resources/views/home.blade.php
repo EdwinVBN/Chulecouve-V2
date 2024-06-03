@@ -64,18 +64,18 @@
             </section>
         </section>
 
-        @if (Auth::check())
+        @if (Auth::check() && $forYouSeries->isNotEmpty())
         <section class="carousel">
-            <h1>Voor Jouw</h1> 
+            <h1>Gebaseerd op jouw kijkgeschiedenis</h1> 
             <button class="prev"><img src="img/left-chevron.png" alt=""></button>
             <button class="next"><img src="img/right-chevron.png" alt=""></button> 
             <section class="carousel-images">
-                @foreach ($userSeries as $userSerie)
+                @foreach ($forYouSeries as $serie)
                     <section class="carousel-section">
-                        <a href="stream/{{ $userSerie->SerieID }}">
-                            <img class="carousel-image" src="{{ $userSerie->Image }}">
+                        <a href="filminfo/{{ $serie->SerieID }}">
+                            <img class="carousel-image" src="{{ $serie->Image }}">
                         </a>
-                        <p>{{ $userSerie->SerieTitel }}</p>
+                        <p>{{ $serie->SerieTitel }}</p>
                     </section>
                 @endforeach  
             </section>

@@ -47,25 +47,26 @@
         </article>
     </header>
         <section class="main-top" style="display: flex; justify-content: center">
-            <section class="user-info-view" style="display: flex;">
-                <section>
+            <section class="user-info-view">
+                <section class="profile-section centered-profile">
                     <h1>Account Gegevens</h1>
                     <img src="../img/YaL3s.jpg">
                 </section>
-                <section style="color: black;">
+                <section class="profile-section" style="color: black;">
                     <meta name="csrf-token" content="{{ csrf_token() }}">
-                    <p class="editable-container">Voornaam: <span class="editable" id="Voornaam">{{$user->Voornaam}}</span></p>
-                    <p class="editable-container">Tussenvoegsel: <span class="editable" id="Tussenvoegsel">{{$user->Tussenvoegsel}}</span></p>
-                    <p class="editable-container">Achternaam: <span class="editable" id="Achternaam">{{$user->Achternaam}}</span></p>
-                    <p class="editable-container">Wachtwoord: <span class="editable" id="password">{{str_repeat("*" , 8)}}</span></p>
-                    <p class="editable-container">Email address: <span class="editable" id="Email">{{$user->Email}}</span></p>
+                    <p class="editable-container"><span class="editable-label">Voornaam:</span> <span class="editable" id="Voornaam">{{$user->Voornaam}}</span></p>
+                    <p class="editable-container"><span class="editable-label">Tussenvoegsel:</span> <span class="editable" id="Tussenvoegsel">{{$user->Tussenvoegsel}}</span></p>
+                    <p class="editable-container"><span class="editable-label">Achternaam:</span> <span class="editable" id="Achternaam">{{$user->Achternaam}}</span></p>
+                    <p class="editable-container"><span class="editable-label">Wachtwoord:</span> <span class="editable" id="password">{{str_repeat("*" , 8)}}</span></p>
+                    <p class="editable-container"><span class="editable-label">Email address:</span> <span class="editable" id="Email">{{$user->Email}}</span></p>
+                </section>
+                <section class="profile-section">
                     <p>Naam: {{$user->Voornaam . ' ' . $user->Tussenvoegsel . ' ' . $user->Achternaam}}</p>
                     <p>Adress: {{$user->Address}}</p>
-                    <!-- <p>Adress: CENSORED</p> -->
                     <p>Iban: {{$user->Iban}}</p>
                     <h1 style="color: black;">Voorkeur:
-                        <span class="editable" id="Genre">{{ $user->Genre }}</span>
-                        <select id="genreSelect">
+                        <select class="editable" id="Genre">
+                            <option value="Furry">Furry</option>
                             @foreach ($genres as $genre)
                                 <option value="{{ $genre->GenreID }}" {{ $user->Genre == $genre->GenreNaam ? 'selected' : '' }}>
                                     {{ $genre->GenreNaam }}

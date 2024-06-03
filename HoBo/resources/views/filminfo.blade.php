@@ -70,6 +70,14 @@
             <h1>Rating: </h1>
                 <p class="movieGenre">{{ $serie->IMDBrating }}</p>
         </section>
+        <section id="season-select" style="margin-top: 20px;">
+            <label for="seasons">Select Season:</label>
+            <select id="seasons" onchange="location = this.value;">
+                @foreach ($seasons as $season)
+                    <option value="/filminfo/{{ $serie->SerieID }}?season={{ $season->id }}" {{ $selectedSeason == $season->id ? 'selected' : '' }}>{{ $season->name }}</option>
+                @endforeach
+            </select>
+        </section>
         <section class="carousel">
             <h1>Afleveringen</h1>
             <button class="prev"><img src="../img/left-chevron.png" alt=""></button>
@@ -189,7 +197,6 @@
             @endif
         </section>
     </section>
-    <script src="{{ asset('js/seasonFilter.js') }}"></script>
     <script src="{{ asset('js/carousel.js') }}" defer></script>
     <script src="{{ asset('js/sidebar.js') }}"></script>
     

@@ -24,6 +24,10 @@ class CustomerServiceController extends Controller
 
         $baseText .= $extraTekst;
 
+        // Add frequently asked questions
+        $faq = $this->loadFaq();
+        $baseText .= "\nVeelgestelde vragen:\n" . $faq;
+
         $response = $openai->chat([
             'model' => 'gpt-3.5-turbo',
             'messages' => [
@@ -46,9 +50,12 @@ class CustomerServiceController extends Controller
         return file_get_contents(storage_path('app/base_text.txt'));
     }
 
+    private function loadFaq()
+    {
+        return file_get_contents(storage_path('app/faq.txt'));
+    }
+
     private function saveConversation($user, $question, $response)
     {
-        // Save the conversation to the database
-        // Example: Conversation::create([...]);
     }
 }
