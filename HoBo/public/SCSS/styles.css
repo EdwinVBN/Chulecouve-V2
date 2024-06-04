@@ -5,26 +5,26 @@
   src: url("../NeutraText-BoldAlt.otf") format("opentype");
 }
 .container {
-  max-width: 800px;
+  max-width: 640px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 16px;
 }
 
 .chat-container {
   background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  max-height: 400px;
+  border-radius: 8px;
+  box-shadow: 0 1.6px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  max-height: 320px;
   overflow-y: auto;
 }
 
 .chat-message {
-  margin-bottom: 15px;
-  padding: 10px;
-  border-radius: 5px;
+  margin-bottom: 12px;
+  padding: 8px;
+  border-radius: 4px;
   color: #ffffff;
-  max-width: 80%;
+  max-width: 64%;
   word-wrap: break-word;
 }
 
@@ -45,28 +45,28 @@
 .input-group {
   display: flex;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .form-control {
   flex: 1;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 8px;
+  border-radius: 4px;
   border: none;
   background-color: #f5f5f5;
   color: #444444;
-  font-size: 16px;
+  font-size: 12.8px;
 }
 
 .btn-primary {
-  padding: 10px 20px;
+  padding: 8px 16px;
   background-color: #92d051;
   color: #ffffff;
   border: none;
-  border-radius: 5px;
-  margin-left: 10px;
+  border-radius: 4px;
+  margin-left: 8px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 12.8px;
   transition: background-color 0.3s;
 }
 
@@ -77,15 +77,15 @@
 .typing-indicator {
   display: flex;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .typing-indicator span {
-  width: 8px;
-  height: 8px;
+  width: 6.4px;
+  height: 6.4px;
   background-color: #92d051;
   border-radius: 50%;
-  margin-right: 5px;
+  margin-right: 4px;
   animation: typing 1s infinite;
 }
 
@@ -101,10 +101,10 @@
   }
 }
 .avatar {
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 8px;
 }
 
 .assistant-message {
@@ -116,8 +116,8 @@
   background: transparent;
   border: none;
   color: white;
-  margin-left: 10px;
-  font-size: 24px;
+  margin-left: 8px;
+  font-size: 19.2px;
   cursor: pointer;
 }
 
@@ -136,11 +136,11 @@ header {
 }
 header article {
   display: flex;
-  gap: 150px;
+  gap: 120px;
 }
 header article #hamburger {
   display: none;
-  width: 60px;
+  width: 48px;
   filter: invert(1) sepia(1) saturate(10000%) hue-rotate(30deg);
 }
 @media screen and (max-width: 1750px) {
@@ -150,7 +150,7 @@ header article #hamburger {
 }
 header article .tab {
   text-decoration: none;
-  font-size: 24px;
+  font-size: 19.2px;
   color: #92d051;
   font-family: "Neutra", sans-serif;
   display: inline-block;
@@ -165,7 +165,7 @@ header article .tab:hover {
 }
 header article button {
   text-decoration: none;
-  font-size: 24px;
+  font-size: 19.2px;
   color: #92d051;
   font-family: "Neutra", sans-serif;
   background-color: transparent;
@@ -175,8 +175,8 @@ header article button:hover {
   color: #628b35;
 }
 header article img {
-  padding-top: 20px;
-  width: 100px;
+  padding-top: 16px;
+  width: 80px;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
 }
@@ -186,8 +186,8 @@ header article img:hover {
 
 .nice-input {
   border: 1px solid transparent;
-  border-radius: 4px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 3.2px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
 .nice-input:focus {
@@ -197,46 +197,46 @@ header article img:hover {
 .main-top,
 .main-bottom {
   font-family: "Neutra", sans-serif;
-  padding: 20px;
+  padding: 16px;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
 .view-box, .betalings-gegevens-view {
-  padding: 20px;
+  padding: 16px;
   background-color: #5b9bd5;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 
 .user-info-view {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 16px;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
+  padding: 1.6rem;
   background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-right: 20px;
+  border-radius: 8px;
+  box-shadow: 0 3.2px 4.8px rgba(0, 0, 0, 0.1);
+  margin-right: 16px;
 }
 .user-info-view section {
   flex: 1;
-  margin-right: 2rem;
+  margin-right: 1.6rem;
 }
 .user-info-view section:last-child {
   margin-right: 0;
 }
 .user-info-view img {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   -o-object-fit: cover;
      object-fit: cover;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.2rem;
+  box-shadow: 0 1.6px 3.2px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
 .user-info-view img:hover {
@@ -245,18 +245,18 @@ header article img:hover {
 .user-info-view h1 {
   color: #92d051;
   margin-top: 0;
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 600;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 .user-info-view p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 0.5rem;
+  font-size: 0.88rem;
+  line-height: 1.28;
+  margin-bottom: 0.4rem;
 }
 .user-info-view p.editable-container {
   position: relative;
-  padding-left: 1.5rem;
+  padding-left: 1.2rem;
 }
 .user-info-view p.editable-container:before {
   content: "✏️";
@@ -267,7 +267,7 @@ header article img:hover {
   color: #5b9bd5;
   opacity: 0.7;
   transition: opacity 0.3s ease;
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 .user-info-view p.editable-container:hover:before {
   opacity: 1;
@@ -278,11 +278,11 @@ header article img:hover {
           appearance: none;
   background-color: #f5f5f5;
   border: none;
-  border-radius: 5px;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
+  border-radius: 4px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
   color: #444444;
-  margin-left: 0.5rem;
+  margin-left: 0.4rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -291,29 +291,29 @@ header article img:hover {
 }
 .user-info-view select:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #5b9bd5;
+  box-shadow: 0 0 0 1.6px #5b9bd5;
 }
 
 .betalings-gegevens-view p {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .profile-section {
-  flex: 1 1 calc(50% - 20px); /* Two sections side by side */
-  padding: 16px;
-  margin-bottom: 16px;
+  flex: 1 1 calc(50% - 16px);
+  padding: 12.8px;
+  margin-bottom: 12.8px;
   background-color: var(--light-color);
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 6.4px;
+  box-shadow: 0 1.6px 3.2px rgba(0, 0, 0, 0.1);
 }
 .profile-section p {
-  font-size: 1.2rem;
+  font-size: 0.96rem;
 }
 .profile-section select {
-  font-size: 1.2rem;
+  font-size: 0.96rem;
 }
 .profile-section input {
-  font-size: 1.2rem;
+  font-size: 0.96rem;
 }
 
 .centered-profile {
@@ -321,27 +321,27 @@ header article img:hover {
 }
 
 .profile-section:nth-child(3) {
-  flex: 1 1 100%; /* The third section takes full width */
+  flex: 1 1 100%;
 }
 
 .total-watched {
   background-color: #1c1c1c;
   color: #92d051;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 16px;
+  border-radius: 8px;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .total-watched h2 {
   font-family: "Neutra", sans-serif;
-  font-size: 30px;
-  margin-bottom: 10px;
+  font-size: 24px;
+  margin-bottom: 8px;
 }
 
 .total-watched p {
   font-family: "Montserrat", sans-serif;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 #info-body,
@@ -350,8 +350,8 @@ header article img:hover {
   margin: 0;
   padding: 0;
   background-color: linear-gradient(135deg, rgb(26, 26, 26) 40%, #92d051);
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 80px;
+  padding-right: 80px;
   background-attachment: fixed;
   background-image: linear-gradient(135deg, rgb(26, 26, 26) 40%, #92d051);
   background-position: top center;
@@ -391,8 +391,8 @@ header article img:hover {
   #info-body,
   #login-body,
   #home-body {
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
     background-image: linear-gradient(135deg, rgb(26, 26, 26) 40%, #92d051);
   }
 }
@@ -400,8 +400,8 @@ header article img:hover {
   #info-body,
   #login-body,
   #home-body {
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
     background-image: linear-gradient(135deg, rgb(26, 26, 26) 40%, #92d051);
   }
 }
@@ -409,8 +409,8 @@ header article img:hover {
   #info-body,
   #login-body,
   #home-body {
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
     background-image: linear-gradient(135deg, rgb(26, 26, 26) 40%, #92d051);
   }
 }
@@ -422,8 +422,8 @@ header article img:hover {
   left: 35%;
   z-index: 9999;
   background-color: red;
-  height: 70%;
-  width: 30%;
+  height: 56%;
+  width: 24%;
   justify-content: center;
   display: none;
 }
@@ -458,14 +458,14 @@ header article img:hover {
 #info-body main #home-info,
 #login-body main #home-info,
 #home-body main #home-info {
-  margin-top: 150px;
-  width: 600px;
+  margin-top: 120px;
+  width: 480px;
 }
 @media screen and (max-width: 700px) {
   #info-body main #home-info,
   #login-body main #home-info,
   #home-body main #home-info {
-    width: 400px;
+    width: 320px;
   }
 }
 #info-body main #home-info h1,
@@ -473,7 +473,7 @@ header article img:hover {
 #home-body main #home-info h1 {
   font-family: "Neutra", sans-serif;
   color: #92d051;
-  font-size: 55px;
+  font-size: 44px;
   padding: 0;
   margin: 0;
 }
@@ -482,19 +482,19 @@ header article img:hover {
 #home-body main #home-info p {
   font-family: "Montserrat", sans-serif;
   color: #92d051;
-  font-size: 20px;
+  font-size: 16px;
 }
 #info-body main #home-info button,
 #login-body main #home-info button,
 #home-body main #home-info button {
-  width: 200px;
-  margin-top: 20px;
-  height: 60px;
+  width: 160px;
+  margin-top: 16px;
+  height: 48px;
   background-color: #92d051;
   border: none;
-  border-radius: 30px;
+  border-radius: 24px;
   color: #444444;
-  font-size: 20px;
+  font-size: 16px;
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
 }
@@ -506,16 +506,18 @@ header article img:hover {
 #info-body main #info-movie,
 #login-body main #info-movie,
 #home-body main #info-movie {
-  margin-top: 5vh;
+  margin-top: 4vh;
   display: flex;
   flex-direction: column;
-  font-size: 18px;
+  font-size: 14.4px;
 }
 #info-body main #info-movie h1,
 #login-body main #info-movie h1,
 #home-body main #info-movie h1 {
   color: #5b9bd5;
   font-family: "Neutra", sans-serif;
+  margin-bottom: 8px;
+  margin-top: 8px;
   margin-bottom: 10px;
   margin-top: 10px;
 }
