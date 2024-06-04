@@ -43,14 +43,6 @@
             padding-top: 20px;
         }
 
-        #close {
-            width: 20px;
-            height: 20px;
-            padding-right: 20px;
-            margin-top: 20px;
-            cursor: pointer;
-        }
-
         #tabs {
             display: flex;
             flex-direction: column;

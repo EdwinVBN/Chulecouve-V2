@@ -46,6 +46,6 @@
         </article>
         @include('sidebar') 
     </header>
-    <script src="{{ asset('js/sidebar.js') }}" defer></script>
+    <script src="{{ asset('js/sidebar.js') }}"></script>
 </body>
 </html>

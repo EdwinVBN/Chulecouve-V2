@@ -57,6 +57,7 @@
     <script src="{{ asset('js/carousel.js') }}" defer></script>
     <script src="{{ asset('js/modal.js') }}" defer></script>
     <script src="{{ asset('js/speech.js') }}" defer></script>
+    <script src="{{ asset('js/sidebar.js') }}"></script>
 </body>
 </html>
 

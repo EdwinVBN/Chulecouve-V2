@@ -372,15 +372,16 @@ $avatar-size: 40px; // 50px * 0.8
 #home-body {
     margin: 0;
     padding: 0;
-    background-color: linear-gradient(135deg, rgb(26, 26, 26) 40%, $primary-color);
-    padding-left: 80px; // 100px * 0.8
-    padding-right: 80px; // 100px * 0.8
+    background-color: linear-gradient(135deg, rgb(26, 26, 26) 40%, #92d051);
+    padding-left: 80px;
+    padding-right: 80px;
     background-attachment: fixed;
-    background-image: linear-gradient(135deg, rgb(26, 26, 26) 40%, $primary-color);
+    background-image: linear-gradient(135deg, rgb(26, 26, 26) 40%, #92d051);
     background-position: top center;
     background-repeat: no-repeat;
-    background-size: 100% auto;
-    overflow-x: hidden;
+        background-size: 100% auto;
+        overflow-x: hidden;
+    min-height: 100vh;
 
     @media screen and (max-width: 2000px) {
         background-image: linear-gradient(135deg, rgb(26, 26, 26) 40%, $primary-color);
@@ -669,3 +670,44 @@ $avatar-size: 40px; // 50px * 0.8
         }
     }
 }
+@media screen and (max-width: 800px) {
+    #sidebar {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 801px) and (max-width: 1200px) {
+    #sidebar {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1201px) {
+    #sidebar {
+        width: 300px;
+    }
+}
+
+#sidebar {
+    width: 0;
+    right: 0;
+    top: 0;
+    height: 100%;
+    position: fixed;
+    z-index: 9999999999999999999999999999999999999;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.5s ease;
+}
+
+#close {
+    width: 20px;
+    height: 20px;
+    padding-right: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px; /* Adjust as needed */
+  }
