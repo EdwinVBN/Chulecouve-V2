@@ -66,7 +66,6 @@
                     <p>Iban: {{$user->Iban}}</p>
                     <h1 style="color: black;">Voorkeur:
                         <select class="editable" id="Genre">
-                            <option value="Furry">Furry</option>
                             @foreach ($genres as $genre)
                                 <option value="{{ $genre->GenreID }}" {{ $user->Genre == $genre->GenreNaam ? 'selected' : '' }}>
                                     {{ $genre->GenreNaam }}

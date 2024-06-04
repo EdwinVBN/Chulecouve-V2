@@ -26,6 +26,15 @@
             @endforeach
         </section>
     </section>
+    <section class="total-watched">
+        <h2>Total Watch Time</h2>
+        <p>
+            {{ floor($totalWatched / 86400) }} days, 
+            {{ floor(($totalWatched % 86400) / 3600) }} hours, 
+            {{ floor(($totalWatched % 3600) / 60) }} minutes, 
+            {{ $totalWatched % 60 }} seconds
+        </p>
+    </section>
     </main>
     <script src="{{ asset('js/carousel.js') }}" defer></script>
     <script src="{{ asset('js/sidebar.js') }}" defer></script>

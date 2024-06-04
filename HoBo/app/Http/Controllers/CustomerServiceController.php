@@ -38,8 +38,6 @@ class CustomerServiceController extends Controller
 
         $decodedResponse = json_decode($response, true);
         $assistantMessage = $decodedResponse['choices'][0]['message']['content'];
-
-        // Save the conversation to the database
         $this->saveConversation($request->user(), $question, $assistantMessage);
 
         return response()->json(['response' => $assistantMessage]);

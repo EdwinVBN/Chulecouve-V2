@@ -328,25 +328,59 @@ class PageController extends Controller
         return view('genre');
     }
 
+    // PageController.php
+    public function updateWatchtime(Request $request)
+{
+    try {
+        $watchtime = $request->input('watchtime');
+        Log::info('Received watchtime: ' . $watchtime);
+
+        $user = Auth::user();
+        Log::info('Authenticated user: ' . ($user ? $user->KlantNr : 'null'));
+
+        if ($user) {
+            DB::enableQueryLog();
+
+            Log::info('Before updateOrInsert query');
+            DB::table('klant')->updateOrInsert(
+                ['KlantNr' => $user->KlantNr],
+                ['totalWatched' => DB::raw('COALESCE(totalWatched, 0) + ' . $watchtime)]
+            );
+            Log::info('After updateOrInsert query');
+
+            Log::info('Executed queries: ' . print_r(DB::getQueryLog(), true));
+        } else {
+            Log::warning('No authenticated user found');
+        }
+
+        Log::info('Update successful');
+        $totalWatched = DB::table('klant')->where('KlantNr', Auth::user()->KlantNr)->value('totalWatched');
+        Log::info('Total watched for user ' . ($user ? $user->KlantNr : 'null') . ': ' . $totalWatched);
+        return response()->json(['success' => true]);
+    } catch (\Throwable $e) {
+        Log::error('Error updating watchtime: ' . $e->getMessage());
+        Log::error('Stack trace: ' . $e->getTraceAsString());
+        return response()->json(['success' => false], 500);
+    }
+    }
+
     public function stream($id)
     {
         $serie = Serie::find($id);
-        Log::info('Found series with id: ' . $id, ['serie' => $serie]);
         $recentlyWatched = session('recently_watched', collect());
+        $recentlyWatched = collect($recentlyWatched)->map(function ($item) {
+            return (object) $item;
+        });
         if ($recentlyWatched->contains('SerieID', $serie->SerieID)) {
             $recentlyWatched = $recentlyWatched->filter(function ($item) use ($serie) {
                 return $item->SerieID !== $serie->SerieID;
             });
         }
-        Log::info('Current recently watched series: ', ['recently_watched' => $recentlyWatched]);
 
         $recentlyWatched = $recentlyWatched->prepend($serie)->unique('SerieID');
-        Log::info('Updated recently watched series: ', ['recently_watched' => $recentlyWatched]);
 
         session(['recently_watched' => $recentlyWatched]);
-        Log::info('Saved recently watched series to session', ['recently_watched' => session('recently_watched')]);
 
-        // Update the session in the database
         $user = Auth::user();
         if ($user) {
             DB::table('sessions')->updateOrInsert(
@@ -357,9 +391,7 @@ class PageController extends Controller
 
         $seriesWithStreams = Serie::whereHas('seasons.episodes.streams')->get();
         $seriesWithStreams->prepend($serie);
-        Log::info('Updated series with streams: ', ['seriesWithStreams' => $seriesWithStreams]);
 
-        Log::info('Session stuff: ' . session('recently_watched', collect()));
         return view('stream', [
             'serie' => $serie
         ]);
@@ -375,9 +407,13 @@ class PageController extends Controller
         });
         
         $seriesWithStreams = $recentlyWatched->merge($seriesWithStreams)->unique('SerieID');
+        $user = Auth::user();
+        $totalWatched = $user ? $user->totalWatched : 0;
+        Log::info('Total watched for user ' . ($user ? $user->KlantNr : 'null') . ': ' . $totalWatched);
 
         return view('history', [
-            'recentlyWatched' => $seriesWithStreams
+            'recentlyWatched' => $seriesWithStreams,
+            'totalWatched' => $totalWatched,
         ]);
     }
     public function logout(Request $request): RedirectResponse

@@ -312,6 +312,9 @@ header article img:hover {
 .profile-section select {
   font-size: 1.5rem;
 }
+.profile-section input {
+  font-size: 1.5rem;
+}
 
 .centered-profile {
   text-align: center;
@@ -321,12 +324,32 @@ header article img:hover {
   flex: 1 1 100%; /* The third section takes full width */
 }
 
+.total-watched {
+  background-color: #1c1c1c;
+  color: #92d051;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.total-watched h2 {
+  font-family: "Neutra", sans-serif;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.total-watched p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+}
+
 #info-body,
 #login-body,
 #home-body {
   margin: 0;
   padding: 0;
-  background-color: rgb(26, 26, 26);
+  background-color: linear-gradient(135deg, rgb(26, 26, 26) 40%, #92d051);
   padding-left: 100px;
   padding-right: 100px;
   background-attachment: fixed;
@@ -340,28 +363,28 @@ header article img:hover {
   #info-body,
   #login-body,
   #home-body {
-    background-image: linear-gradient(to bottom, #444444, rgb(26, 26, 26));
+    background-image: linear-gradient(135deg, rgb(26, 26, 26) 40%, #92d051);
   }
 }
 @media screen and (max-width: 1600px) {
   #info-body,
   #login-body,
   #home-body {
-    background-image: linear-gradient(to bottom, #444444, rgb(26, 26, 26));
+    background-image: linear-gradient(135deg, rgb(26, 26, 26) 40%, #92d051);
   }
 }
 @media screen and (max-width: 1200px) {
   #info-body,
   #login-body,
   #home-body {
-    background-image: linear-gradient(to bottom, #444444, rgb(26, 26, 26));
+    background-image: linear-gradient(135deg, rgb(26, 26, 26) 40%, #92d051);
   }
 }
 @media screen and (max-width: 1050px) {
   #info-body,
   #login-body,
   #home-body {
-    background-image: linear-gradient(to bottom, #444444, rgb(26, 26, 26));
+    background-image: linear-gradient(135deg, rgb(26, 26, 26) 40%, #92d051);
   }
 }
 @media screen and (max-width: 800px) {
@@ -370,7 +393,7 @@ header article img:hover {
   #home-body {
     padding-left: 50px;
     padding-right: 50px;
-    background-image: linear-gradient(to bottom, #444444, rgb(26, 26, 26));
+    background-image: linear-gradient(135deg, rgb(26, 26, 26) 40%, #92d051);
   }
 }
 @media screen and (max-width: 600px) {
@@ -379,7 +402,7 @@ header article img:hover {
   #home-body {
     padding-left: 50px;
     padding-right: 50px;
-    background-image: linear-gradient(to bottom, #444444, rgb(26, 26, 26));
+    background-image: linear-gradient(135deg, rgb(26, 26, 26) 40%, #92d051);
   }
 }
 @media screen and (max-width: 400px) {
@@ -388,7 +411,7 @@ header article img:hover {
   #home-body {
     padding-left: 50px;
     padding-right: 50px;
-    background-image: linear-gradient(to bottom, #444444, rgb(26, 26, 26));
+    background-image: linear-gradient(135deg, rgb(26, 26, 26) 40%, #92d051);
   }
 }
 #info-body main #popup,
