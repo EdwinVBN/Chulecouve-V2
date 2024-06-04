@@ -8,6 +8,16 @@
   max-width: 640px;
   margin: 0 auto;
   padding: 16px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#title {
+  font-family: var(--title-font);
+  color: var(--secondary-color);
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .chat-container {
@@ -17,6 +27,7 @@
   padding: 16px;
   max-height: 320px;
   overflow-y: auto;
+  margin-bottom: 20px;
 }
 
 .chat-message {

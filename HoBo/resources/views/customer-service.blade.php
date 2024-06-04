@@ -21,25 +21,29 @@
         #title {
             font-family: var(--title-font);
             color: var(--secondary-color);
+            text-align: center;
+            margin-bottom: 20px;
         }
     </style>
 
     @include('header')
 
-    <div class="container">
-        {{-- <h1 id='title'><i class="fas fa-headset"></i> Klantenservice</h1> --}}
-        <div id="chat-container" class="chat-container">
+    <main>
+        <div class="container">
+            <h1 id='title'><i class="fas fa-headset"></i> Klantenservice</h1>
+            <div id="chat-container" class="chat-container">
+            </div>
+            <div class="input-group">
+                <input type="text" id="question" class="form-control" placeholder="Ask a question...">
+                <button id="send-btn" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send</button>
+            </div>
+            <div id="typing-indicator" class="typing-indicator" style="display: none;">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-        <div class="input-group">
-            <input type="text" id="question" class="form-control" placeholder="Ask a question...">
-            <button id="send-btn" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send</button>
-        </div>
-        <div id="typing-indicator" class="typing-indicator" style="display: none;">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
+    </main>
 
     <script>
         document.getElementById('send-btn').addEventListener('click', function() {
