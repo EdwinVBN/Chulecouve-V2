@@ -14,7 +14,7 @@
             </a>
         </article>
         <article id="header-right">
-            <img id='hamburger' src='img/hamburger.png' onclick="openBar()">
+            <img id='hamburger' src='{{ asset('img/hamburger.png') }}' onclick="openBar()">
             @if (Auth::check())
             <a class='tab' href="{{ route('history') }}">Geschiedenis</a>
             @endif
@@ -46,5 +46,6 @@
         </article>
         @include('sidebar') 
     </header>
+    <script src="{{ asset('js/sidebar.js') }}" defer></script>
 </body>
 </html>

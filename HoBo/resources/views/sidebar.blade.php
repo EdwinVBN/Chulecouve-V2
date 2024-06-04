@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Hobo</title>
 </head>
 <body>
     <style>
@@ -72,8 +72,8 @@
 
     <section id="sidebar">
         <section id="logo">
-            <img id='img' src='img/HOBO_Logo.png'>
-            <img id='close' onclick='closeBar()' src='img/close.png'>
+            <img id='img' src='{{ asset('img/HOBO_Logo.png') }}'>
+            <img id='close' onclick='closeBar()' src='{{ asset('img/close.png') }}'>
         </section>
         <section id='tabs'>
             <a href="{{ route('search') }}">Zoek</a>

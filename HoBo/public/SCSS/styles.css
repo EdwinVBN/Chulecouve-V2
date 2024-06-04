@@ -300,20 +300,20 @@ header article img:hover {
 
 .profile-section {
   flex: 1 1 calc(50% - 20px); /* Two sections side by side */
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: 16px;
+  margin-bottom: 16px;
   background-color: var(--light-color);
-  border-radius: 10px;
+  border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .profile-section p {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 .profile-section select {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 .profile-section input {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .centered-profile {
