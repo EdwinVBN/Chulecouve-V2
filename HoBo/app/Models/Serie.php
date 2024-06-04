@@ -10,6 +10,14 @@ class Serie extends Model
     protected $table = 'serie';
     protected $primaryKey = 'SerieID';
 
+    protected $fillable = [
+        'SerieID',
+        'SerieNaam',
+        'SerieBeschrijving',
+        'SerieAfbeelding',
+        'SerieTitel'
+    ];
+
     public function seasons() {
         return $this->hasMany(Seizoen::class, 'serieID');
     }
