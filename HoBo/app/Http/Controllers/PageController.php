@@ -283,16 +283,23 @@ class PageController extends Controller
 
     public function updateSerie(Request $request, $id)
     {
-        $serie = Serie::findOrFail($id);
-        $serie->update([
+        $serie = Serie::find($id);
+        $data = [
             'SerieTitel' => $request->input('SerieTitel'),
             'IMDBLink' => $request->input('IMDBLink'),
             'Image' => $request->input('Image'),
             'Description' => $request->input('Description'),
             'Director' => $request->input('Director'),
-            'IMDBRating' => $request->input('IMDBRating'),
-            'trailerVideo' => $request->input('trailerVideo'),
-        ]);
+            'IMDBrating' => $request->input('IMDBRating'),
+            'trailerVideo' => $request->input('trailerVideo')
+        ];
+
+        Serie::withoutTimestamps(function () use ($id, $data) {
+            Serie::where('SerieID', $id)->update($data);
+        });
+
+        dd($serie);
+
         return redirect()->route('admin.manageSeries')->with('success', 'Series updated successfully.');
     }
 

@@ -40,7 +40,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/admin/series/{id}/edit', [PageController::class, 'editSerie'])->name('admin.editSerie')->middleware('auth', 'contentmanager');
     Route::delete('/admin/series/{id}', [PageController::class, 'deleteSerie'])->name('admin.deleteSerie')->middleware('auth', 'contentmanager');
     Route::get('/admin/series/{id}/edit', [PageController::class, 'editSerie'])->name('admin.editSerie')->middleware('auth', 'contentmanager');
-    Route::put('/admin/series/{id}', [PageController::class, 'updateSerie'])->name('admin.updateSerie')->middleware('auth', 'contentmanager');
+    Route::post('/admin/series/{id}', [PageController::class, 'updateSerie'])->name('admin.updateSerie')->middleware('auth', 'contentmanager');
     Route::delete('/admin/series/{id}', [PageController::class, 'deleteSerie'])->name('admin.deleteSerie')->middleware('auth', 'contentmanager');
 
     Route::post('/customer-service/request', [CustomerServiceController::class, 'handleRequest']);
