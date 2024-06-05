@@ -6,6 +6,7 @@
     <title>{{$serie->SerieTitel}}</title>
     <link rel="icon" type="image/x-icon" href="../img/HOBO_beeldmerk.png">
     <link rel="stylesheet" href="{{ asset('SCSS/styles.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body id="stream-body">
     @if ($serie->trailerVideo == null)
@@ -23,5 +24,37 @@
         </button>
     </a>
     @endif
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var startTime = new Date().getTime();
+
+            window.addEventListener('beforeunload', function () {
+                var endTime = new Date().getTime();
+                var watchtime = Math.floor((endTime - startTime) / 1000); // Calculate watchtime in seconds
+
+                // Get the CSRF token from the meta tag
+                var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+                // Use fetch to send the watchtime data
+                fetch('/update-watchtime', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                    body: JSON.stringify({ watchtime: watchtime })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error sending watchtime: ' + response.status);
+                    }
+                    console.log('Watchtime sent successfully');
+                })
+                .catch(error => {
+                    console.error('Error sending watchtime:', error);
+                });
+            });
+        });
+    </script>
 </body>
 </html>

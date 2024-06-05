@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Log; 
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB; // Added this line to import the DB facade
 
 class KlantController extends Controller
 {
@@ -55,11 +56,18 @@ class KlantController extends Controller
 
     public function logout(Request $request): RedirectResponse
     {
+        $user = Auth::user();
+        if ($user) {
+            DB::table('sessions')->updateOrInsert(
+                ['KlantNr' => $user->KlantNr],
+                ['session_cookie' => json_encode(session()->get('recently_watched'))]
+            );
+        }
+
+        //clear session
+        session()->invalidate();
+        session()->regenerate();
         Auth::logout();
-    
-        // $request->session()->invalidate();
-    
-        // $request->session()->regenerateToken();
     
         return redirect('/')->with('success', 'You have been logged out.');
     }
@@ -128,20 +136,41 @@ class KlantController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
+        Log::debug('Attempting login with credentials:', ['email' => $credentials['email']]);
+        
         $attempt = Auth::attempt($credentials);
         if ($attempt) {
             $user = Auth::getLastAttempted();
+            Log::debug('Login successful for user:', ['KlantNr' => $user->KlantNr]);
             Auth::login($user);
-            session()->save();
+
+            $existingSession = DB::table('sessions')->where('KlantNr', $user->KlantNr)->first();
+            if ($existingSession) {
+                Log::debug('Existing session found for user:', ['KlantNr' => $user->KlantNr]);
+                $recentlyWatched = json_decode($existingSession->session_cookie, true);
+                session(['recently_watched' => collect($recentlyWatched)]);
+            } else {
+                $recentlyWatched = collect();
+            }
+
+            Log::debug('Retrieved recently watched from session:', ['recently_watched' => $recentlyWatched]);
+            DB::table('sessions')->updateOrInsert(
+                ['KlantNr' => $user->KlantNr],
+                ['session_cookie' => json_encode(session()->get('recently_watched'))]
+            );
+            Log::debug('Session and recently watched saved to database for user:', ['KlantNr' => $user->KlantNr]);
+
             $redirect = redirect()->intended(route('home'));
             return $redirect;
         }
 
+        Log::debug('Login attempt failed for email:', ['email' => $credentials['email']]);
         $user = Klant::where('Email', $credentials['email'])->first();
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);
     }
+
     public function register(Request $request)
     {
         if ($request->input('abonnement') == 4) {

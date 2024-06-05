@@ -88,7 +88,6 @@
 
         <form action="{{ route('admin.updateSerie', $serie->SerieID) }}" method="POST">
             @csrf
-            @method('PUT')
 
             <div>
                 <label for="SerieTitel">Title:</label>

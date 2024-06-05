@@ -23,6 +23,7 @@ class Klant extends Authenticatable
         'Email',
         'Naam',
         'password',
+        'totalWatched',
         // Add other fields here
     ];
 }

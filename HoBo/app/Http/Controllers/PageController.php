@@ -7,6 +7,7 @@ use App\Models\Serie;
 use App\Models\Genre;
 use App\Models\Klant;
 use App\Models\Abonnement;
+use Illuminate\Support\Facades\DB;
 use App\Models\Seizoen;
 use App\Models\Serie_Genre;
 use Illuminate\Http\RedirectResponse;
@@ -36,11 +37,51 @@ class PageController extends Controller
 
         $recentlyWatched = session('recently_watched', collect());
         
+        $recentlyWatched = collect($recentlyWatched)->map(function ($item) {
+            return (object) $item;
+        });
+
+        $user = Auth::user();
+    
+        if($user){
+            $recentlyWatchedb = $recentlyWatched->take(5);
+            
+            $recentlyWatchedGenres = $recentlyWatchedb->pluck('SerieID')->map(function($serieId) {
+                return Serie_Genre::where('SerieID', $serieId)->pluck('GenreID');
+            })->flatten()->unique();
+            
+            $forYouSerieIDs = Serie_Genre::whereIn('GenreID', $recentlyWatchedGenres)
+                                          ->pluck('SerieID')
+                                          ->unique();
+                                          
+            $forYouSeries = Serie::whereIn('SerieID', $forYouSerieIDs)
+                                 ->where('Actief', 1)
+                                 ->get();
+            
+            $forYouSeries = $forYouSeries->filter(function($serie) use ($recentlyWatched) {
+                return !$recentlyWatched->contains('SerieID', $serie->SerieID);
+            });
+            $forYouSeries = $forYouSeries->sortBy(function($serie) use ($recentlyWatchedGenres) {
+                $serieGenres = $serie->genres->pluck('GenreID');
+                $minIndex = $recentlyWatchedGenres->search(function($genreId) use ($serieGenres) {
+                    return $serieGenres->contains($genreId);
+                });
+                return $minIndex !== false ? $minIndex : PHP_INT_MAX;
+            });
+        } else {
+            $forYouSeries = collect();
+        }
+
         $seriesWithStreams = $recentlyWatched->merge($seriesWithStreams)->unique('SerieID');
         
         $active = Serie::where('Actief', 1)->inRandomOrder()->take(20)->get();
         $picks = Serie::whereNotNull('Image')->inRandomOrder()->take(20)->get();
-        $daredevil = Serie::find(215);
+
+        if (count($recentlyWatched) > 0) {
+            $daredevil = Serie::find($recentlyWatched->first()->SerieID);
+        } else {
+            $daredevil = Serie::find(1);
+        }
         
         $user = Auth::user();
         $userGenre = null;
@@ -52,7 +93,6 @@ class PageController extends Controller
         $userGenreID = Genre::where('GenreNaam', $userGenre)->pluck('GenreID')->first();
 
         $userSerieID = Serie_Genre::where('GenreID', $userGenreID)->pluck('SerieID')->all();
-
         $userSeries = Serie::whereIn('SerieID', $userSerieID)
                             ->wherein('Actief', [1])                    
                             ->get();
@@ -63,6 +103,7 @@ class PageController extends Controller
             'viewing' => $seriesWithStreams,
             'active' => $active,
             'picks' => $picks,
+            'forYouSeries' => $forYouSeries,
             'pick' => $daredevil,
             'userSeries' => $userSeries,
         ]);
@@ -76,10 +117,27 @@ class PageController extends Controller
         return redirect()->route('users')->with('success', 'User account deleted successfully.');
     }
 
-    public function filminfo($id) {
+    public function filminfo($id, Request $request) {
         $serie = Serie::find($id);
         $test = $serie->genres;
-        $episodes = Serie::find($id)->episodes;
+        $seasonId = $request->input('season', 1); // Default to season 1 if not provided
+
+        // Load only the episodes of the requested season
+        $episodes = Serie::find($id)->episodes->filter(function($episode) use ($seasonId) {
+            if (preg_match('/Aflevering S(\d+)E/', $episode->AflTitel, $matches)) {
+                return $matches[1] == $seasonId;
+            }
+            return false;
+        });
+
+        // Extract season number from episode title
+        foreach ($episodes as $episode) {
+            if (preg_match('/Aflevering S(\d+)E/', $episode->AflTitel, $matches)) {
+                $episode->seasonNumber = $matches[1];
+            } else {
+                $episode->seasonNumber = null; // or some default value
+            }
+        }
 
         $seasons = Seizoen::where('SerieID', $id)->get();
         $seasonArray = [];
@@ -97,7 +155,8 @@ class PageController extends Controller
             'seasons' => $seasonArray,
             'serie' => $serie,
             'test' => $test,
-            'episodes' => $episodes
+            'episodes' => $episodes,
+            'selectedSeason' => $seasonId
         ]);
     }
 
@@ -224,16 +283,23 @@ class PageController extends Controller
 
     public function updateSerie(Request $request, $id)
     {
-        $serie = Serie::findOrFail($id);
-        $serie->update([
+        $serie = Serie::find($id);
+        $data = [
             'SerieTitel' => $request->input('SerieTitel'),
             'IMDBLink' => $request->input('IMDBLink'),
             'Image' => $request->input('Image'),
             'Description' => $request->input('Description'),
             'Director' => $request->input('Director'),
-            'IMDBRating' => $request->input('IMDBRating'),
-            'trailerVideo' => $request->input('trailerVideo'),
-        ]);
+            'IMDBrating' => $request->input('IMDBRating'),
+            'trailerVideo' => $request->input('trailerVideo')
+        ];
+
+        Serie::withoutTimestamps(function () use ($id, $data) {
+            Serie::where('SerieID', $id)->update($data);
+        });
+
+        dd($serie);
+
         return redirect()->route('admin.manageSeries')->with('success', 'Series updated successfully.');
     }
 
@@ -269,29 +335,69 @@ class PageController extends Controller
         return view('genre');
     }
 
+    // PageController.php
+    public function updateWatchtime(Request $request)
+{
+    try {
+        $watchtime = $request->input('watchtime');
+        Log::info('Received watchtime: ' . $watchtime);
+
+        $user = Auth::user();
+        Log::info('Authenticated user: ' . ($user ? $user->KlantNr : 'null'));
+
+        if ($user) {
+            DB::enableQueryLog();
+
+            Log::info('Before updateOrInsert query');
+            DB::table('klant')->updateOrInsert(
+                ['KlantNr' => $user->KlantNr],
+                ['totalWatched' => DB::raw('COALESCE(totalWatched, 0) + ' . $watchtime)]
+            );
+            Log::info('After updateOrInsert query');
+
+            Log::info('Executed queries: ' . print_r(DB::getQueryLog(), true));
+        } else {
+            Log::warning('No authenticated user found');
+        }
+
+        Log::info('Update successful');
+        $totalWatched = DB::table('klant')->where('KlantNr', Auth::user()->KlantNr)->value('totalWatched');
+        Log::info('Total watched for user ' . ($user ? $user->KlantNr : 'null') . ': ' . $totalWatched);
+        return response()->json(['success' => true]);
+    } catch (\Throwable $e) {
+        Log::error('Error updating watchtime: ' . $e->getMessage());
+        Log::error('Stack trace: ' . $e->getTraceAsString());
+        return response()->json(['success' => false], 500);
+    }
+    }
+
     public function stream($id)
     {
         $serie = Serie::find($id);
-        Log::info('Found series with id: ' . $id, ['serie' => $serie]);
         $recentlyWatched = session('recently_watched', collect());
+        $recentlyWatched = collect($recentlyWatched)->map(function ($item) {
+            return (object) $item;
+        });
         if ($recentlyWatched->contains('SerieID', $serie->SerieID)) {
             $recentlyWatched = $recentlyWatched->filter(function ($item) use ($serie) {
                 return $item->SerieID !== $serie->SerieID;
             });
         }
-        Log::info('Current recently watched series: ', ['recently_watched' => $recentlyWatched]);
 
         $recentlyWatched = $recentlyWatched->prepend($serie)->unique('SerieID');
-        Log::info('Updated recently watched series: ', ['recently_watched' => $recentlyWatched]);
 
         session(['recently_watched' => $recentlyWatched]);
-        Log::info('Saved recently watched series to session', ['recently_watched' => session('recently_watched')]);
+
+        $user = Auth::user();
+        if ($user) {
+            DB::table('sessions')->updateOrInsert(
+                ['KlantNr' => $user->KlantNr],
+                ['session_cookie' => session()->get('recently_watched')]
+            );
+        }
 
         $seriesWithStreams = Serie::whereHas('seasons.episodes.streams')->get();
         $seriesWithStreams->prepend($serie);
-        Log::info('Updated series with streams: ', ['seriesWithStreams' => $seriesWithStreams]);
-
-        Log::info('Session stuff: ' . session('recently_watched', collect()));
 
         return view('stream', [
             'serie' => $serie
@@ -303,21 +409,23 @@ class PageController extends Controller
         $seriesWithStreams = Serie::whereHas('seasons.episodes.streams')->get();
 
         $recentlyWatched = session('recently_watched', collect());
+        $recentlyWatched = collect($recentlyWatched)->map(function ($item) {
+            return (object) $item;
+        });
         
         $seriesWithStreams = $recentlyWatched->merge($seriesWithStreams)->unique('SerieID');
+        $user = Auth::user();
+        $totalWatched = $user ? $user->totalWatched : 0;
+        Log::info('Total watched for user ' . ($user ? $user->KlantNr : 'null') . ': ' . $totalWatched);
 
         return view('history', [
-            'recentlyWatched' => $seriesWithStreams
+            'recentlyWatched' => $seriesWithStreams,
+            'totalWatched' => $totalWatched,
         ]);
     }
     public function logout(Request $request): RedirectResponse
     {
         Auth::logout();
-    
-        $request->session()->invalidate();
-    
-        $request->session()->regenerateToken();
-    
         return redirect('/');
     }
 }

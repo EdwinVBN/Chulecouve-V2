@@ -94,7 +94,7 @@
             <section class="carousel-images">
                 @foreach ($topSeries as $serie)
                     <section class="carousel-section">
-                        <a href="stream/{{ $serie->SerieID }}">
+                        <a href="filminfo/{{ $serie->SerieID }}">
                             <img class="carousel-image" src="{{ $serie->Image }}">
                         </a>
                         <p>{{ $serie->SerieTitel }}</p>

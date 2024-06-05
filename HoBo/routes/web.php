@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::group(['middleware' => ['web']], function () {
+    Route::post('/update-watchtime', [App\Http\Controllers\PageController::class, 'updateWatchtime']);
     Route::get('/', [PageController::class, 'home'])->name('home');
     Route::post('/logout', [KlantController::class, 'logout'])->name('logout')->middleware('auth');
     Route::get('/history', [PageController::class, 'history'])->name('history')->middleware('auth');
@@ -39,7 +40,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/admin/series/{id}/edit', [PageController::class, 'editSerie'])->name('admin.editSerie')->middleware('auth', 'contentmanager');
     Route::delete('/admin/series/{id}', [PageController::class, 'deleteSerie'])->name('admin.deleteSerie')->middleware('auth', 'contentmanager');
     Route::get('/admin/series/{id}/edit', [PageController::class, 'editSerie'])->name('admin.editSerie')->middleware('auth', 'contentmanager');
-    Route::put('/admin/series/{id}', [PageController::class, 'updateSerie'])->name('admin.updateSerie')->middleware('auth', 'contentmanager');
+    Route::post('/admin/series/{id}', [PageController::class, 'updateSerie'])->name('admin.updateSerie')->middleware('auth', 'contentmanager');
     Route::delete('/admin/series/{id}', [PageController::class, 'deleteSerie'])->name('admin.deleteSerie')->middleware('auth', 'contentmanager');
 
     Route::post('/customer-service/request', [CustomerServiceController::class, 'handleRequest']);
