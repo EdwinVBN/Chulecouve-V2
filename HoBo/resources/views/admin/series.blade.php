@@ -93,7 +93,11 @@
 
     <main>
         <h1 style="color: white;">Manage Series</h1>
-
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <table>
             <thead>
                 <tr>

@@ -306,6 +306,8 @@ class PageController extends Controller
     public function deleteSerie($id)
     {
         $serie = Serie::findOrFail($id);
+        $genre = Serie_Genre::where('SerieID', $id);
+        $genre->delete();
         $serie->delete();
         return redirect()->route('admin.manageSeries')->with('success', 'Series deleted successfully.');
     }
