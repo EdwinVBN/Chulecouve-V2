@@ -136,35 +136,26 @@ class KlantController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-        Log::debug('Attempting login with credentials:', ['email' => $credentials['email']]);
         
         $attempt = Auth::attempt($credentials);
         if ($attempt) {
             $user = Auth::getLastAttempted();
-            Log::debug('Login successful for user:', ['KlantNr' => $user->KlantNr]);
             Auth::login($user);
 
             $existingSession = DB::table('sessions')->where('KlantNr', $user->KlantNr)->first();
             if ($existingSession) {
-                Log::debug('Existing session found for user:', ['KlantNr' => $user->KlantNr]);
                 $recentlyWatched = json_decode($existingSession->session_cookie, true);
                 session(['recently_watched' => collect($recentlyWatched)]);
             } else {
                 $recentlyWatched = collect();
             }
-
-            Log::debug('Retrieved recently watched from session:', ['recently_watched' => $recentlyWatched]);
             DB::table('sessions')->updateOrInsert(
                 ['KlantNr' => $user->KlantNr],
                 ['session_cookie' => json_encode(session()->get('recently_watched'))]
             );
-            Log::debug('Session and recently watched saved to database for user:', ['KlantNr' => $user->KlantNr]);
-
             $redirect = redirect()->intended(route('home'));
             return $redirect;
         }
-
-        Log::debug('Login attempt failed for email:', ['email' => $credentials['email']]);
         $user = Klant::where('Email', $credentials['email'])->first();
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',

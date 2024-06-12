@@ -418,8 +418,6 @@ class PageController extends Controller
         $seriesWithStreams = $recentlyWatched->merge($seriesWithStreams)->unique('SerieID');
         $user = Auth::user();
         $totalWatched = $user ? $user->totalWatched : 0;
-        Log::info('Total watched for user ' . ($user ? $user->KlantNr : 'null') . ': ' . $totalWatched);
-
         return view('history', [
             'recentlyWatched' => $seriesWithStreams,
             'totalWatched' => $totalWatched,

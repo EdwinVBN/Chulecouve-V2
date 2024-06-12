@@ -47,7 +47,6 @@ document.querySelectorAll('.editable').forEach(function(element) {
             var text = input.value;
             this.innerHTML = text;
 
-            // Make a POST request to update the data on the server
             fetch('/update-user-data', {
                 method: 'POST',
                 headers: {
@@ -63,19 +62,15 @@ document.querySelectorAll('.editable').forEach(function(element) {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    // If the update was successful, refresh the page
                     location.reload();
                 } else {
-                    // If the update failed, display an error message
                     if (data.errors) {
-                        // Handle validation errors
                         let errorMessage = '';
                         for (const field in data.errors) {
                             errorMessage += `${field}: ${data.errors[field].join(', ')}\n`;
                         }
                         alert(errorMessage);
                     } else {
-                        // Handle other errors
                         alert('An error occurred: ' + data.error);
                     }
                 }

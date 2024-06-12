@@ -30,12 +30,9 @@
 
             window.addEventListener('beforeunload', function () {
                 var endTime = new Date().getTime();
-                var watchtime = Math.floor((endTime - startTime) / 1000); // Calculate watchtime in seconds
-
-                // Get the CSRF token from the meta tag
+                var watchtime = Math.floor((endTime - startTime) / 1000);
                 var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-                // Use fetch to send the watchtime data
                 fetch('/update-watchtime', {
                     method: 'POST',
                     headers: {
