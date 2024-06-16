@@ -253,21 +253,6 @@ class PageController extends Controller
             ->whereNotNull('Image')
             ->get();
 
-        // $series = $series->map(function ($serie) use ($search_querys) {
-        //     $relevance = 0;
-        //     foreach ($search_querys as $querys) {
-        //         if (stripos($serie->SerieTitel, $querys) !== false) {
-        //             $relevance += 2;
-        //         } elseif (levenshtein($serie->SerieTitel, $querys) <= 2) {
-        //             $relevance++;
-        //         }
-        //     }
-        //     $serie->relevance = $relevance;
-        //     return $serie;
-        // });
-
-        // $series = $series->sortByDesc('relevance');
-
         return view('search', [
             'series' => $series,
             'search' => $search,
