@@ -120,8 +120,9 @@ class PageController extends Controller
     public function filminfo($id, Request $request) {
         $serie = Serie::find($id);
         $test = $serie->genres;
-        $seasonId = $request->input('season', 1);
+        $seasonId = $request->input('season', 1); // Default to season 1 if not provided
 
+        // Load only the episodes of the requested season
         $episodes = Serie::find($id)->episodes->filter(function($episode) use ($seasonId) {
             if (preg_match('/Aflevering S(\d+)E/', $episode->AflTitel, $matches)) {
                 return $matches[1] == $seasonId;
@@ -252,20 +253,20 @@ class PageController extends Controller
             ->whereNotNull('Image')
             ->get();
 
-        $series = $series->map(function ($serie) use ($search_querys) {
-            $relevance = 0;
-            foreach ($search_querys as $querys) {
-                if (stripos($serie->SerieTitel, $querys) !== false) {
-                    $relevance += 2;
-                } elseif (levenshtein($serie->SerieTitel, $querys) <= 2) {
-                    $relevance++;
-                }
-            }
-            $serie->relevance = $relevance;
-            return $serie;
-        });
+        // $series = $series->map(function ($serie) use ($search_querys) {
+        //     $relevance = 0;
+        //     foreach ($search_querys as $querys) {
+        //         if (stripos($serie->SerieTitel, $querys) !== false) {
+        //             $relevance += 2;
+        //         } elseif (levenshtein($serie->SerieTitel, $querys) <= 2) {
+        //             $relevance++;
+        //         }
+        //     }
+        //     $serie->relevance = $relevance;
+        //     return $serie;
+        // });
 
-        $series = $series->sortByDesc('relevance');
+        // $series = $series->sortByDesc('relevance');
 
         return view('search', [
             'series' => $series,

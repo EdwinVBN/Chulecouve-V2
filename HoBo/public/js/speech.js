@@ -316,46 +316,52 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     recognition.onresult = function(event) {
-        const transcript = event.results[event.results.length - 1][0].transcript.toLowerCase();
-        const searchCommand = 'search for';
-        const homeCommand = 'to the homepage';
-        const watchCommand = "watch the";
-        const watchRandomCommand = "a random";
-
-        const searchCommandIndex = transcript.indexOf(searchCommand);
-        const homeCommandIndex = transcript.indexOf(homeCommand);
-        const watchCommandIndex = transcript.indexOf(watchCommand);
-        const watchRandomCommandIndex = transcript.indexOf(watchRandomCommand);
-
-        console.log(transcript);
-
-        if (searchCommandIndex !== -1) {
-            const query = transcript.slice(searchCommandIndex + searchCommand.length).trim();
-            searchInput.value = query;
-            setTimeout(function() {
-                document.getElementById('searchForm').submit();
-            }, 500);
-        } else if (homeCommandIndex !== -1) {
-            window.location.href = '/';
-        } else if (watchCommandIndex !== -1) {
-            const numberWords = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth'];
-            const numberIndex = numberWords.findIndex(word => transcript.includes(word));
-            if (numberIndex !== -1) {
-                const carouselSections = document.querySelectorAll('.carousel-section');
-                if (carouselSections[numberIndex]) {
-                    const link = carouselSections[numberIndex].querySelector('a');
-                    if (link) {
-                        const href = link.href.replace('filminfo', 'stream');
-                        window.location.href = href;
-                    }
-                }
-            }
-        } else if (watchRandomCommandIndex !== -1) {
-            const randomIndex = Math.floor(Math.random() * data.rows.length);
-            const randomSerieId = data.rows[randomIndex].SerieId;
-            window.location.href = `/stream/${randomSerieId}`;
-        }
-    };
+		const transcript = event.results[event.results.length - 1][0].transcript.toLowerCase();
+		console.log(transcript);
+	
+		if (handleCommand(transcript, 'search for', handleSearch)) return;
+		if (handleCommand(transcript, 'to the homepage', handleHome)) return;
+		if (handleCommand(transcript, 'watch the', handleWatch)) return;
+		if (handleCommand(transcript, 'a random', handleWatchRandom)) return;
+	};
+	
+	function handleCommand(transcript, command, callback) {
+		const commandIndex = transcript.indexOf(command);
+		if (commandIndex !== -1) {
+			callback(transcript, command, commandIndex);
+			return true;
+		}
+		return false;
+	}
+	
+	function handleSearch(transcript, command, commandIndex) {
+		const query = transcript.slice(commandIndex + command.length).trim();
+		searchInput.value = query;
+		setTimeout(() => document.getElementById('searchForm').submit(), 500);
+	}
+	
+	function handleHome() {
+		window.location.href = '/';
+	}
+	
+	function handleWatch(transcript, command, commandIndex) {
+		const numberWords = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth'];
+		const numberIndex = numberWords.findIndex(word => transcript.includes(word));
+		const carouselSections = document.querySelectorAll('.carousel-section');
+		if (numberIndex !== -1 && carouselSections[numberIndex]) {
+			const link = carouselSections[numberIndex].querySelector('a');
+			if (link) {
+				window.location.href = link.href.replace('filminfo', 'stream');
+			}
+		}
+	}
+	
+	function handleWatchRandom() {
+		const randomIndex = Math.floor(Math.random() * data.rows.length);
+		const randomSerieId = data.rows[randomIndex].SerieId;
+		window.location.href = `/stream/${randomSerieId}`;
+	}
+	
 
     recognition.onstart = function() {
         recognition.isStarted = true;
