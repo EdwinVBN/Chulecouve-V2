@@ -24,7 +24,6 @@ class CustomerServiceController extends Controller
 
         $baseText .= $extraTekst;
 
-        // Add frequently asked questions
         $faq = $this->loadFaq();
         $baseText .= "\nVeelgestelde vragen:\n" . $faq;
 

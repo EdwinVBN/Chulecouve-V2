@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::group(['middleware' => ['web']], function () {
-    Route::post('/update-watchtime', [App\Http\Controllers\PageController::class, 'updateWatchtime']);
+    Route::post('/update-watchtime', [PageController::class, 'updateWatchtime'])->middleware('auth');
     Route::get('/', [PageController::class, 'home'])->name('home');
     Route::post('/logout', [KlantController::class, 'logout'])->name('logout')->middleware('auth');
     Route::get('/history', [PageController::class, 'history'])->name('history')->middleware('auth');

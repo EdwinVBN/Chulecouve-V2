@@ -120,9 +120,8 @@ class PageController extends Controller
     public function filminfo($id, Request $request) {
         $serie = Serie::find($id);
         $test = $serie->genres;
-        $seasonId = $request->input('season', 1); // Default to season 1 if not provided
+        $seasonId = $request->input('season', 1);
 
-        // Load only the episodes of the requested season
         $episodes = Serie::find($id)->episodes->filter(function($episode) use ($seasonId) {
             if (preg_match('/Aflevering S(\d+)E/', $episode->AflTitel, $matches)) {
                 return $matches[1] == $seasonId;
@@ -130,12 +129,11 @@ class PageController extends Controller
             return false;
         });
 
-        // Extract season number from episode title
         foreach ($episodes as $episode) {
             if (preg_match('/Aflevering S(\d+)E/', $episode->AflTitel, $matches)) {
                 $episode->seasonNumber = $matches[1];
             } else {
-                $episode->seasonNumber = null; // or some default value
+                $episode->seasonNumber = null;
             }
         }
 
@@ -342,27 +340,21 @@ class PageController extends Controller
 {
     try {
         $watchtime = $request->input('watchtime');
-        Log::info('Received watchtime: ' . $watchtime);
 
         $user = Auth::user();
-        Log::info('Authenticated user: ' . ($user ? $user->KlantNr : 'null'));
 
         if ($user) {
             DB::enableQueryLog();
 
-            Log::info('Before updateOrInsert query');
             DB::table('klant')->updateOrInsert(
                 ['KlantNr' => $user->KlantNr],
                 ['totalWatched' => DB::raw('COALESCE(totalWatched, 0) + ' . $watchtime)]
             );
-            Log::info('After updateOrInsert query');
 
-            Log::info('Executed queries: ' . print_r(DB::getQueryLog(), true));
         } else {
             Log::warning('No authenticated user found');
         }
 
-        Log::info('Update successful');
         $totalWatched = DB::table('klant')->where('KlantNr', Auth::user()->KlantNr)->value('totalWatched');
         Log::info('Total watched for user ' . ($user ? $user->KlantNr : 'null') . ': ' . $totalWatched);
         return response()->json(['success' => true]);
