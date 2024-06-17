@@ -120,23 +120,14 @@ class PageController extends Controller
     public function filminfo($id, Request $request) {
         $serie = Serie::find($id);
         $test = $serie->genres;
-        $seasonId = $request->input('season', 1); // Default to season 1 if not provided
+        $seasonId = $request->input('season', 1);
 
-        // Load only the episodes of the requested season
         $episodes = Serie::find($id)->episodes->filter(function($episode) use ($seasonId) {
             if (preg_match('/Aflevering S(\d+)E/', $episode->AflTitel, $matches)) {
                 return $matches[1] == $seasonId;
             }
             return false;
         });
-
-        foreach ($episodes as $episode) {
-            if (preg_match('/Aflevering S(\d+)E/', $episode->AflTitel, $matches)) {
-                $episode->seasonNumber = $matches[1];
-            } else {
-                $episode->seasonNumber = null;
-            }
-        }
 
         $seasons = Seizoen::where('SerieID', $id)->get();
         $seasonArray = [];
