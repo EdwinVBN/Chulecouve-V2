@@ -65,7 +65,6 @@ class KlantController extends Controller
             );
         }
 
-        //clear session
         session()->invalidate();
         session()->regenerate();
         Auth::logout();
@@ -186,7 +185,8 @@ class KlantController extends Controller
         $klant->Email = $request->input('email');
         $klant->password = bcrypt($request->input('password'));
         $klant->Genre = $request->input('genre');
-        $iban = str_replace(' ', '', $request->input('iban'));
+        // $iban = str_replace(' ', '', $request->input('iban'));
+        $iban = $request->input('iban');
         $klant->Iban = $iban;
         $klant->Address = $request->input('adress');
         $klant->identificationString = Str::random(32);

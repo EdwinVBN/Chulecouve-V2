@@ -157,7 +157,8 @@
             </div>
             <div class="form-group">
                 <label for="iban">IBAN</label>
-                <input placeholder="NL54ABNA0123981319" type="text" pattern="NL[a-zA-Z0-9]{2}\s?([a-zA-Z]{4}\s?){1}([0-9]{4}\s?){2}([0-9]{2})\s?" name="iban" id="iban" required>
+                <input type="text" placeholder="NL54 ABNA 0513 8956 12" name="iban" id="iban" required>
+                <!-- <input placeholder="NL54ABNA0123981319" type="text" pattern="NL[a-zA-Z0-9]{2}\s?([a-zA-Z]{4}\s?){1}([0-9]{4}\s?){2}([0-9]{2})\s?" name="iban" id="iban" required> -->
             </div>
             <div class="form-group">
                 <label for="adress">Address</label>

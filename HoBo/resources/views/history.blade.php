@@ -12,6 +12,7 @@
     @include('header') 
     <main>
     <section class="carousel">
+        @if (count($recentlyWatched) > 0)
         <h1>History</h1>
         <button class="prev"><img src="img/left-chevron.png" alt=""></button>
         <button class="next"><img src="img/right-chevron.png" alt=""></button>
@@ -25,6 +26,9 @@
                 </section>
             @endforeach
         </section>
+        @else
+        <h1 style="text-align: center; margin-top: 10%; margin-bottom: 20%;">No history found</h1>
+        @endif
     </section>
     <section class="total-watched">
         <h2>Total Watch Time</h2>
