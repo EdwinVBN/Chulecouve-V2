@@ -120,6 +120,7 @@ class PageController extends Controller
                 'SerieTitel' => $request->input('SerieTitel'),
                 'IMDBLink' => $request->input('IMDBLink'),
                 'Image' => $request->input('Image'),
+                'Actief' => 1,
                 'Description' => $request->input('Description'),
                 'Director' => $request->input('Director'),
                 'IMDBrating' => $request->input('IMDBRating'),

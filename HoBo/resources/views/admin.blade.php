@@ -64,7 +64,7 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Total Series</h5>
+                        <h5 class="card-title"><a href="{{ route('admin.manageSeries') }}" style="text-decoration: none; color: #333;">Total Series</a></h5>
                         <p class="card-text">{{ $seriesCount }}</p>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Total Genres</h5>
+                        <h5 class="card-title"><a href="{{ route('genres') }}" style="text-decoration: none; color: #333;">Total Genres</a></h5>
                         <p class="card-text">{{ $genresCount }}</p>
                     </div>
                 </div>

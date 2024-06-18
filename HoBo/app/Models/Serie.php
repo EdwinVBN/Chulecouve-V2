@@ -15,6 +15,7 @@ class Serie extends Model
         'SerieTitel',
         'IMDBLink',
         'Image',
+        'Actief',
         'Description',
         'Director',
         'IMDBrating',
