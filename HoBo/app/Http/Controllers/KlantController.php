@@ -79,7 +79,7 @@ class KlantController extends Controller
     {
         $data = $request->json()->all();
         $klantNr = $data['klantNr'];
-        $klant = Klant::where('KlantNr', $klantNr)->first();
+        $klant = Klant::where('identificationString', $klantNr)->first();
 
         if ($klant) {
             $field = $data['field'];
@@ -95,20 +95,14 @@ class KlantController extends Controller
                     ], 422);
                 }
             }
-
             if ($field === 'password') {
                 $klant->password = bcrypt($value);
             } else {
                 $klant->$field = $value;
             }
 
-            if ($field === 'Naam') {
-                $klant->Naam = $value;
-            } else {
-                $klant->$field = $value;
-            }
-
             $klant->save();
+
             Log::info('Updated Klant:', ['updatedKlant' => $klant]);
 
             return response()->json(['success' => true]);

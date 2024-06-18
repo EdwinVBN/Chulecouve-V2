@@ -41,7 +41,7 @@
                 <a class='tab' href="{{ route('login') }}">Login</a>
             @endif
             @if (Auth::check())
-            <a class='tab' href="{{ route('profiel', Auth::user()->KlantNr) }}">Profiel</a>
+            <a class='tab' href="{{ route('profiel', Auth::user()->identificationString) }}">Profiel</a>
             @endif
             <a class='tab' href="{{ route('search') }}">Zoek</a>
         </article>
@@ -56,7 +56,7 @@
                 <section class="profile-section" style="color: black;">
                     <meta name="csrf-token" content="{{ csrf_token() }}">
                     <p class="editable-container"><span class="editable-label">Voornaam:</span> <span class="editable" id="Voornaam">{{$user->Voornaam}}</span></p>
-                    <p class="editable-container"><span class="editable-label">Tussenvoegsel:</span> <span class="editable" id="Tussenvoegsel">{{$user->Tussenvoegsel}}</span></p>
+                    <p class="editable-container"><span class="editable-label">Tussenvoegsel:</span><span class="editable" id="Tussenvoegsel"> {{$user->Tussenvoegsel ? $user->Tussenvoegsel : 'Geen tussen-voegsel'}}</span></p>
                     <p class="editable-container"><span class="editable-label">Achternaam:</span> <span class="editable" id="Achternaam">{{$user->Achternaam}}</span></p>
                     <p class="editable-container"><span class="editable-label">Wachtwoord:</span> <span class="editable" id="password">{{str_repeat("*" , 8)}}</span></p>
                     <p class="editable-container"><span class="editable-label">Email address:</span> <span class="editable" id="Email">{{$user->Email}}</span></p>
@@ -76,7 +76,7 @@
                     </h1>
                 </section>
                 <section class="profile-section" style="text-align: center">
-                    <p>Abbonement Type: {{$abo}} | Abbonement Verloopt: {{$user->expiration_time}}</p>
+                    <p>Abonnement Type: {{$abo}} | Abonnement Verloopt: {{$user->expiration_time}}</p>
                 </section>
                 @else
                 <section class="profile-section">
@@ -181,7 +181,7 @@
                     <a href="{{ route('login') }}">Login</a>
                 @endif
                 @if (Auth::check())
-                <a href="{{ route('profiel', Auth::user()->KlantNr) }}">Profiel</a>
+                <a href="{{ route('profiel', Auth::user()->identificationString) }}">Profiel</a>
                 @endif
             </section>
         </section>

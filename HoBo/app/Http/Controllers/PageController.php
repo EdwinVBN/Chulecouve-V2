@@ -109,8 +109,23 @@ class PageController extends Controller
         ]);
     }
 
+    public function isAdmin() 
+    {
+        $user = Auth::user();
+        if ($user->AboID == 4)
+        {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     public function seriesCreate(Request $request)
     {
+        if (!$this->isAdmin()) {
+            return redirect()->back()->withErrors(['error' => 'You are not authorized to create series']);
+        }
         $method = $request->method();
         if ($method == 'POST') {
             $latestSeriesId = Serie::max('SerieID');
@@ -141,6 +156,9 @@ class PageController extends Controller
 
     public function deleteUser($klantNr)
     {
+        if (!$this->isAdmin()) {
+            return redirect()->back()->withErrors(['error' => 'You are not authorized to delete users']);
+        }
         $user = Klant::findOrFail($klantNr);
         $user->delete();
 
@@ -195,6 +213,9 @@ class PageController extends Controller
 
     public function users()
     {
+        if (!$this->isAdmin()) {
+            return redirect()->back()->withErrors(['error' => 'You are not authorized to view users']);
+        }
         $users = Klant::all();
         $abbonementen = Abonnement::all();
 
@@ -205,6 +226,9 @@ class PageController extends Controller
     }
 
     public function admin() {
+        if (!$this->isAdmin()) {
+            return redirect()->back()->withErrors(['error' => 'You are not authorized to view the admin page']);
+        }
         $series = Serie::all();
         $genres = Genre::all();
         $users = Klant::all();
@@ -282,12 +306,18 @@ class PageController extends Controller
 
     public function editSerie($id)
     {
+        if (!$this->isAdmin()) {
+            return redirect()->back()->withErrors(['error' => 'You are not authorized to edit series']);
+        }
         $serie = Serie::findOrFail($id);
         return view('admin.edit-serie', ['serie' => $serie]);
     }
 
     public function updateSerie(Request $request, $id)
     {
+        if (!$this->isAdmin()) {
+            return redirect()->back()->withErrors(['error' => 'You are not authorized to update series']);
+        }
         $serie = Serie::find($id);
         $data = [
             'SerieTitel' => $request->input('SerieTitel'),
@@ -308,6 +338,9 @@ class PageController extends Controller
 
     public function deleteSerie($id)
     {
+        if (!$this->isAdmin()) {
+            return redirect()->back()->withErrors(['error' => 'You are not authorized to delete series']);
+        }
         $serie = Serie::findOrFail($id);
         $genre = Serie_Genre::where('SerieID', $id);
         $genre->delete();
@@ -317,6 +350,7 @@ class PageController extends Controller
 
     public function manageSeries()
     {
+        
         $series = Serie::all();
         return view('admin.series', ['series' => $series]);
     }
@@ -324,6 +358,9 @@ class PageController extends Controller
     {
         // $user = Auth::user();
         $user = Klant::where('identificationString', $identificationString)->first();
+        if (!$user) {
+            return redirect()->back();
+        }
         $genres = Genre::all();
         $abonnement = Abonnement::find($user->AboID)->AboNaam;
 
@@ -349,7 +386,7 @@ class PageController extends Controller
 
     // PageController.php
     public function updateWatchtime(Request $request)
-{
+    {
     try {
         $watchtime = $request->input('watchtime');
 
