@@ -70,7 +70,7 @@
             <h1>Rating: </h1>
                 <p class="movieGenre">{{ $serie->IMDBrating }}</p>
             <h1>IMDBLink: </h1>
-                <a style="text-decoration: none;" class="movieGenre" href="{{$serie->IMDBLink}}">{{$serie->IMDBLink}}</a>
+                <a target="_blank" style="text-decoration: none;" class="movieGenre" href="{{$serie->IMDBLink}}">{{$serie->IMDBLink}}</a>
         </section>
         <section id="season-select" style="margin-top: 20px;">
             <label for="seasons">Select Season:</label>
