@@ -273,8 +273,6 @@ class PageController extends Controller
             Serie::where('SerieID', $id)->update($data);
         });
 
-        dd($serie);
-
         return redirect()->route('admin.manageSeries')->with('success', 'Series updated successfully.');
     }
 
