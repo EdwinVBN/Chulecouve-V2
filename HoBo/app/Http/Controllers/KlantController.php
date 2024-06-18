@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use App\Models\Klant;
 use App\Models\Abonnement;
 use App\Models\Genre;
@@ -140,6 +141,15 @@ class KlantController extends Controller
         $attempt = Auth::attempt($credentials);
         if ($attempt) {
             $user = Auth::getLastAttempted();
+
+            $abonnement = Abonnement::find($user->AboID)->AboNaam;
+
+            if (now()->greaterThan(Auth::user()->expiration_time)) {
+                Auth::logout();
+                return back()->withErrors([
+                'email' => 'Your "' . $abonnement . '" subscribtion has expired. Please renew it.',
+            ]);
+            }
             Auth::login($user);
 
             $existingSession = DB::table('sessions')->where('KlantNr', $user->KlantNr)->first();
@@ -185,6 +195,8 @@ class KlantController extends Controller
         $iban = str_replace(' ', '', $request->input('iban'));
         $klant->Iban = $iban;
         $klant->Address = $request->input('adress');
+        $klant->identificationString = Str::random(32);
+        $klant->expiration_time = now()->addDays(30);
         $klant->save();
 
         $credentials = [

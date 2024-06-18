@@ -109,6 +109,35 @@ class PageController extends Controller
         ]);
     }
 
+    public function seriesCreate(Request $request)
+    {
+        $method = $request->method();
+        if ($method == 'POST') {
+            $latestSeriesId = Serie::max('SerieID');
+            $createdSerieNumber = $latestSeriesId+=1;
+            $data = [
+                'SerieID' => $createdSerieNumber,
+                'SerieTitel' => $request->input('SerieTitel'),
+                'IMDBLink' => $request->input('IMDBLink'),
+                'Image' => $request->input('Image'),
+                'Description' => $request->input('Description'),
+                'Director' => $request->input('Director'),
+                'IMDBrating' => $request->input('IMDBRating'),
+                'trailerVideo' => $request->input('trailerVideo')
+            ];
+
+            Serie::withoutTimestamps(function () use ($data) {
+                Serie::create($data);
+            });
+
+            return redirect()->back()->with('success', 'Created series succesfully');
+
+        }
+        elseif ($method == 'GET') {
+            return view('admin/create-serie');
+        }
+    }
+
     public function deleteUser($klantNr)
     {
         $user = Klant::findOrFail($klantNr);
@@ -290,20 +319,27 @@ class PageController extends Controller
         $series = Serie::all();
         return view('admin.series', ['series' => $series]);
     }
-    public function profiel()
+    public function profiel($identificationString)
     {
-        $user = Auth::user();
-
+        // $user = Auth::user();
+        $user = Klant::where('identificationString', $identificationString)->first();
         $genres = Genre::all();
+        $abonnement = Abonnement::find($user->AboID)->AboNaam;
 
         if ($user) {
             return view('profiel', [
                 'user' => $user,
+                'abo' => $abonnement,
                 'genres' => $genres,
             ]);
         } else {
             return redirect()->back()->withErrors(['error' => 'User not authenticated']);
         }
+    }
+
+    public function CreateSerie()
+    {
+        return redirect()->back();
     }
 
     public function genre() {

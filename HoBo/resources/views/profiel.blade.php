@@ -52,6 +52,7 @@
                     <h1>Account Gegevens</h1>
                     <img src="../img/YaL3s.jpg">
                 </section>
+                @if (Auth::user()->KlantNr == $user->KlantNr || Auth::user()->AboID == 4)
                 <section class="profile-section" style="color: black;">
                     <meta name="csrf-token" content="{{ csrf_token() }}">
                     <p class="editable-container"><span class="editable-label">Voornaam:</span> <span class="editable" id="Voornaam">{{$user->Voornaam}}</span></p>
@@ -74,6 +75,14 @@
                         </select>
                     </h1>
                 </section>
+                <section class="profile-section" style="text-align: center">
+                    <p>Abbonement Type: {{$abo}} | Abbonement Verloopt: {{$user->expiration_time}}</p>
+                </section>
+                @else
+                <section class="profile-section">
+                    <h1 style="color: black">GEEN TOEGANG!</h1>
+                </section>
+                @endif
             </section>
         </section>
 

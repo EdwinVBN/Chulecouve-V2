@@ -12,10 +12,13 @@ class Serie extends Model
 
     protected $fillable = [
         'SerieID',
-        'SerieNaam',
-        'SerieBeschrijving',
-        'SerieAfbeelding',
-        'SerieTitel'
+        'SerieTitel',
+        'IMDBLink',
+        'Image',
+        'Description',
+        'Director',
+        'IMDBrating',
+        'trailerVideo'
     ];
 
     public function seasons() {

@@ -135,6 +135,15 @@
 <body id="login-body">
     <section id="login-form">
         <img src="../img/HOBO_logo.png">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li style="color: black; list-style-type: none;">{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         @if (Auth::check())
             <h1>Switch to another account</h1>
         @else

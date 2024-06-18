@@ -21,7 +21,7 @@
             <a class='tab' href="{{route('genres')}}">Genres</a>
             {{-- <a class='tab' href="{{route('customer-service')}}">Klantenservice</a> --}}
             @if (Auth::check())
-                @if (Auth::user()->AboID == 5 || Auth::user()->AboID == 4)
+                @if (Auth::user()->AboID >= 4)
                 <a class='tab' href="{{ route('admin.manageSeries') }}">Manage</a>
                 @endif
                 @if (Auth::user()->AboID == 4)
@@ -40,7 +40,7 @@
                 <a class='tab' href="{{ route('login') }}">Login</a>
             @endif
             @if (Auth::check())
-            <a class='tab' href="{{ route('profiel', Auth::user()->KlantNr) }}">Profiel</a>
+            <a class='tab' href="{{ route('profiel', Auth::user()->identificationString) }}">Profiel</a>
             @endif
             <a class='tab' href="{{ route('search') }}">Zoek</a>
         </article>

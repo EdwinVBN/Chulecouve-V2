@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Abonnement extends Model
 {
     protected $table = 'abonnement';
+
+    protected $primaryKey = 'AboID';
 }

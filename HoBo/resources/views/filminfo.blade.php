@@ -41,7 +41,7 @@
                 <a class='tab' href="{{ route('login') }}">Login</a>
             @endif
             @if (Auth::check())
-            <a class='tab' href="{{ route('profiel', Auth::user()->KlantNr) }}">Profiel</a>
+            <a class='tab' href="{{ route('profiel', Auth::user()->identificationString) }}">Profiel</a>
             @endif
             <a class='tab' href="{{ route('search') }}">Zoek</a>
         </article>
@@ -69,6 +69,8 @@
                 <p class="movieGenre">{{ $serie->Director }}</p>
             <h1>Rating: </h1>
                 <p class="movieGenre">{{ $serie->IMDBrating }}</p>
+            <h1>IMDBLink: </h1>
+                <p class="movieGenre" href="{{$serie->IMDBLink}}">{{$serie->IMDBLink}}</p>
         </section>
         <section id="season-select" style="margin-top: 20px;">
             <label for="seasons">Select Season:</label>
@@ -193,7 +195,7 @@
                 <a href="{{ route('login') }}">Login</a>
             @endif
             @if (Auth::check())
-            <a href="{{ route('profiel', Auth::user()->KlantNr) }}">Profiel</a>
+            <a href="{{ route('profiel', Auth::user()->identificationString) }}">Profiel</a>
             @endif
         </section>
     </section>

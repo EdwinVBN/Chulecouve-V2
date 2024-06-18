@@ -94,6 +94,7 @@
                     <th>Email</th>
                     <th>Membership</th>
                     <th>Actions</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -108,6 +109,11 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="{{ route('profiel', $user->identificationString)}}" method="GET">
+                                <button type="submit" class="btn btn-danger">Bewerk</button>
                             </form>
                         </td>
                     </tr>

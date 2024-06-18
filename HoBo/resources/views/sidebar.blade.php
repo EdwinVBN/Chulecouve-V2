@@ -94,7 +94,7 @@
                 <a href="{{ route('login') }}">Login</a>
             @endif
             @if (Auth::check())
-            <a href="{{ route('profiel', Auth::user()->KlantNr) }}">Profiel</a>
+            <a href="{{ route('profiel', Auth::user()->identificationString) }}">Profiel</a>
             @endif
         </section>
     </section>

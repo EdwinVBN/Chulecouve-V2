@@ -30,7 +30,7 @@
                 <button id="watch">Kijk</button>
             </a>
         </section>
-        @if (Auth::check())
+        @if (Auth::check() && count($viewing) > 0)
         <section class="carousel">
             <h1>Kijk verder</h1> 
             <button class="prev"><img src="img/left-chevron.png" alt=""></button>

@@ -106,6 +106,7 @@
                     <th>IMDBLink</th>
                     <th>Director</th>
                     <th>Actions</th>
+                    <th><a href="{{ route('admin.createSerie') }}">Create</a></th>
                 </tr>
             </thead>
             <tbody>
