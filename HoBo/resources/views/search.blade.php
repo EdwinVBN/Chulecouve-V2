@@ -20,7 +20,7 @@
         </div>
     </form>
 
-        @if(isset($series) && isset($search))
+        @if(isset($series) && isset($search) && count($series) > 0)
         <section class="carousel">
             <h1>Gevonden items voor "{{ $search }}" </h1> 
             <button class="prev"><img src="img/left-chevron.png" alt=""></button>
@@ -35,6 +35,10 @@
                     </section>
                 @endforeach  
             </section>
+        </section>
+        @elseif(isset($series) && isset($search) && count($series) == 0)
+        <section class="carousel">
+            <h1>Geen items gevonden voor "{{ $search }}" </h1>
         </section>
         @else
         <section class="carousel">
