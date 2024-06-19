@@ -27,6 +27,10 @@ class PageController extends Controller
         ]);
     }
 
+    public function customerService() {
+        return view('customer-service');
+    }
+
     public function login(){
         return view('login');
     }
@@ -368,7 +372,7 @@ class PageController extends Controller
             return redirect()->back();
         }
         $genres = Genre::all();
-        $abonnement = Abonnement::find($user->AboID)->AboNaam;
+        $abonnement = Abonnement::find($user->AboID);
 
         $lidmaatschappen = Abonnement::all();
 

@@ -60,8 +60,11 @@
                 <section class="profile-section centered-profile">
                     <h1>Account Gegevens</h1>
                     <img src="../img/YaL3s.jpg">
-                    @if (Auth::user()->AboID == 4 && Auth::user()->identificationString != $user->identificationString)
                     <h1 style="color: black;">Lidmaatschap:
+                    {{$abo->AboNaam}}
+                    <p>Maximum Aantal Devices: {{$abo->MaxDevices}}</p>
+                    <p>Stream Kwaliteit: {{$abo->StreamKwaliteit}}p</p>
+                    @if (Auth::user()->AboID == 4 && Auth::user()->identificationString != $user->identificationString)
                         <select class="editable" id="AboID">
                         @foreach ($lidmaatschappen as $lidmaatschap)
                                 <option value="{{ $lidmaatschap->AboID }}" {{ $user->AboID == $lidmaatschap->AboID ? 'selected' : '' }}>
@@ -69,8 +72,8 @@
                                 </option>
                         @endforeach
                         </select>
+                        @endif
                     </h1>
-                    @endif
                 </section>
                 @if (Auth::user()->KlantNr == $user->KlantNr || Auth::user()->AboID == 4)
                 <section class="profile-section" style="color: black;">
@@ -96,7 +99,7 @@
                     </h1>
                 </section>
                 <section class="profile-section" style="text-align: center">
-                    <p>Abonnement Type: {{$abo}} | Abonnement Verloopt: {{$user->expiration_time}}</p>
+                    <p>Abonnement Type: {{$abo->AboNaam;}} | Abonnement Verloopt: {{$user->expiration_time}}</p>
                 </section>
                 @else
                 <section class="profile-section">
