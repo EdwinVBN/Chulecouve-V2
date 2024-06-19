@@ -134,11 +134,11 @@
             @csrf
             <article id="abonnentenVak" style="color: #5b9bd5">
                 @foreach ($abos as $abo)
-                @if ($abo->AboID != 4)
+                @if ($abo->AboID < 4)
                     <article id="abonnentVak" style="margin-right: 5%;">
                         <h2>{{$abo->AboNaam}}</h2>
-                        <h3>{{$abo->MaxDevices}}</h3>
-                        <h4>{{$abo->StreamKwaliteit}}</h4>
+                        <h3>Devices: {{$abo->MaxDevices}}</h3>
+                        <h4>StreamKwaliteit: {{$abo->StreamKwaliteit}}</h4>
                         <input type="radio" name="abonnement" id="aboKnop" value="{{$abo->AboID}}">
                     </article>
                 @endif

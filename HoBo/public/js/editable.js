@@ -12,7 +12,13 @@ document.querySelectorAll('.editable').forEach(function(element) {
 
     if (element.tagName === 'SELECT') {
         element.addEventListener('change', function() {
-            var value = element.options[element.selectedIndex].text;
+            if (element.id == "AboID")
+            {
+                var value = element.options[element.selectedIndex].value   
+            } else
+            {
+                var value = element.options[element.selectedIndex].text;
+            }
             console.log(value);
             fetch('/update-user-data', {
                 method: 'POST',

@@ -78,10 +78,19 @@ class KlantController extends Controller
     {
         $data = $request->json()->all();
         $klantNr = $data['klantNr'];
+        $authenticatedUser = Auth::user();
+        if (!$klantNr == $authenticatedUser->KlantNr && $authenticatedUser->AboID != 4)
+        {
+            return redirect()->back()->withErrors(['error' => 'User is not allowed to do this.']);
+        }
         $klant = Klant::where('identificationString', $klantNr)->first();
-
         if ($klant) {
             $field = $data['field'];
+            if ($field == 'AboID') {
+                if ($authenticatedUser->AboID != 4) {
+                    return redirect()->back()->withErrors(['error' => 'You are not an admin, you cannot perform this action.']);
+                }
+            }
             $value = $data['value'];
 
             if ($field === 'Email') {

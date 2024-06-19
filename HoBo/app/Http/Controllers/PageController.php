@@ -108,6 +108,15 @@ class PageController extends Controller
             'userSeries' => $userSeries,
         ]);
     }
+    public function isContentManager()
+    {
+        $user = Auth::user();
+        if ($user->AboID >= 4)
+        {
+            return true;
+        }
+        return false;
+    }
 
     public function isAdmin() 
     {
@@ -116,14 +125,12 @@ class PageController extends Controller
         {
             return true;
         }
-        else {
-            return false;
-        }
+        return false;
     }
 
     public function seriesCreate(Request $request)
     {
-        if (!$this->isAdmin()) {
+        if (!$this->isContentManager()) {
             return redirect()->back()->withErrors(['error' => 'You are not authorized to create series']);
         }
         $method = $request->method();
@@ -306,7 +313,7 @@ class PageController extends Controller
 
     public function editSerie($id)
     {
-        if (!$this->isAdmin()) {
+        if (!$this->isContentManager()) {
             return redirect()->back()->withErrors(['error' => 'You are not authorized to edit series']);
         }
         $serie = Serie::findOrFail($id);
@@ -315,7 +322,7 @@ class PageController extends Controller
 
     public function updateSerie(Request $request, $id)
     {
-        if (!$this->isAdmin()) {
+        if (!$this->isContentManager()) {
             return redirect()->back()->withErrors(['error' => 'You are not authorized to update series']);
         }
         $serie = Serie::find($id);
@@ -338,7 +345,7 @@ class PageController extends Controller
 
     public function deleteSerie($id)
     {
-        if (!$this->isAdmin()) {
+        if (!$this->isContentManager()) {
             return redirect()->back()->withErrors(['error' => 'You are not authorized to delete series']);
         }
         $serie = Serie::findOrFail($id);
@@ -350,7 +357,6 @@ class PageController extends Controller
 
     public function manageSeries()
     {
-        
         $series = Serie::all();
         return view('admin.series', ['series' => $series]);
     }
@@ -364,11 +370,14 @@ class PageController extends Controller
         $genres = Genre::all();
         $abonnement = Abonnement::find($user->AboID)->AboNaam;
 
+        $lidmaatschappen = Abonnement::all();
+
         if ($user) {
             return view('profiel', [
                 'user' => $user,
                 'abo' => $abonnement,
                 'genres' => $genres,
+                'lidmaatschappen' => $lidmaatschappen,
             ]);
         } else {
             return redirect()->back()->withErrors(['error' => 'User not authenticated']);

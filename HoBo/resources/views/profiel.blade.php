@@ -46,11 +46,31 @@
             <a class='tab' href="{{ route('search') }}">Zoek</a>
         </article>
     </header>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li style="color: black; list-style-type: none;">{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <section class="main-top" style="display: flex; justify-content: center">
             <section class="user-info-view">
                 <section class="profile-section centered-profile">
                     <h1>Account Gegevens</h1>
                     <img src="../img/YaL3s.jpg">
+                    @if (Auth::user()->AboID == 4 && Auth::user()->identificationString != $user->identificationString)
+                    <h1 style="color: black;">Lidmaatschap:
+                        <select class="editable" id="AboID">
+                        @foreach ($lidmaatschappen as $lidmaatschap)
+                                <option value="{{ $lidmaatschap->AboID }}" {{ $user->AboID == $lidmaatschap->AboID ? 'selected' : '' }}>
+                                    {{ $lidmaatschap->AboNaam }}
+                                </option>
+                        @endforeach
+                        </select>
+                    </h1>
+                    @endif
                 </section>
                 @if (Auth::user()->KlantNr == $user->KlantNr || Auth::user()->AboID == 4)
                 <section class="profile-section" style="color: black;">
