@@ -168,13 +168,17 @@ class KlantController extends Controller
     public function register(Request $request)
     {
         if ($request->input('abonnement') == 4) {
-            return redirect()->route('register')->with('error', 'You cannot register with this subscription.');
+            return redirect()->route('register')->withErrors([
+                'Internal' => 'Internal server error'
+            ]);
         }
 
         $email = $request->input('email');
         $klant = Klant::where('Email', $email)->first();
         if ($klant) {
-            return redirect()->route('register')->with('error', 'Email already in use.');
+            return redirect()->route('register')->withErrors([
+                'email' => 'Email is already registered on the site.'
+            ]);
         }
 
         $klant = new Klant();
