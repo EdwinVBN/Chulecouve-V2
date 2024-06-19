@@ -120,6 +120,15 @@
 </head>
 <body id="register-body">
     <section id="register-form">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li style="color: black; list-style-type: none;">{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <h1>Register</h1>
         <form action="{{ route('register.submit') }}" method="post" id="registerForm">
             @csrf

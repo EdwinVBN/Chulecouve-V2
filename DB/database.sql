@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `aflevering` (
   CONSTRAINT `FKAflevering938760` FOREIGN KEY (`SeizID`) REFERENCES `seizoen` (`SeizoenID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15734 DEFAULT CHARSET=latin1;
 
--- Dumping data for table hobo.aflevering: ~7.369 rows (approximately)
+-- Dumping data for table hobo.aflevering: ~7.542 rows (approximately)
 INSERT INTO `aflevering` (`AfleveringID`, `SeizID`, `Rang`, `AflTitel`, `Duur`) VALUES
 	(8192, 1, 1, 'Aflevering S1E1', 30),
 	(8193, 1, 2, 'Aflevering S1E2', 44),
@@ -8689,7 +8689,8 @@ INSERT INTO `klant` (`KlantNr`, `AboID`, `Voornaam`, `Tussenvoegsel`, `Achternaa
 	(11058, 2, 'Max', 'van', 'Merwijk', 'merwijkmax3@gmail.com', '$2y$12$QxvxEvwL/g9ZPlvBB8nIsuemlwx2XbEMeoL5xCNvPm3adVL4yfXaW', 'Superhero', NULL, NULL, 'Wippolderstraat 18, Delft, 2628VC', 'NL54ABNA0111761727', NULL, '2021-06-18 18:23:46', NULL, '222f234f7b7629e7a0bc22d3af420cef'),
 	(11059, 1, 'Max', 'van', 'Merwijk', 'merwijkmax4@gmail.com', '$2y$12$YK1UYtPDBwt6wipGJpg8cu/8NffsbNaR7jQzsuzbVVhZYrb1FxcDu', 'Travel', NULL, NULL, 'Wippolderstraat 18, Delft, 2628VC', 'NL54ABNA0111761727', NULL, '2024-03-18 15:47:54', 1, 'c88e42d49f18a06a0fd87547b4d294be'),
 	(11060, 2, 'Max', 'van', 'Merwijk', 'merwijkmax5@gmail.com', '$2y$12$NaqculaOv/N56C46AhTVbOV2ncbPXXmW.N3DYzL6kfQhDD9z6lUQm', 'Culinary', NULL, NULL, 'Wippolderstraat 18, Delft, 2628VC', 'NL54ABNA0111761727', NULL, '2024-07-18 16:24:46', NULL, '4jwhzkmVqwjpQogcAEYJKuBc8tazAnYc'),
-	(11061, 2, 'Max', 'van', 'Merwijk', 'merwijkmax19@gmail.com', '$2y$12$C87/0CCB.cDzgacr1iFCxewnVjGRJ8COpA/B/BSIz9PmdgsNvkHme', 'Political', NULL, NULL, 'Wippolderstraat 18, Delft, 2628VC', 'NL54ABNA0111761727', NULL, '2024-07-18 17:55:28', 5, 'wHea6S8jSsALljgxg5IDGxYL5Hyr8cfG');
+	(11061, 2, 'Max', 'van', 'Merwijk', 'merwijkmax19@gmail.com', '$2y$12$C87/0CCB.cDzgacr1iFCxewnVjGRJ8COpA/B/BSIz9PmdgsNvkHme', 'Political', NULL, NULL, 'Wippolderstraat 18, Delft, 2628VC', 'NL54ABNA0111761727', NULL, '2024-07-18 17:55:28', 7, 'wHea6S8jSsALljgxg5IDGxYL5Hyr8cfG'),
+	(11062, 2, 'Max', 'van', 'Merwijk', 'jasknasf@gmail.com', '$2y$12$lCOGjXRGMrfHpL1PIKcOoeur5962VRfXH7Y0OB2lCiBr/QA8BKpoC', 'Superhero', NULL, NULL, 'Wippolderstraat 18, Delft, 2628VC', 'NL54 ABNA 0111 7617 27', NULL, '2024-07-18 19:01:54', 1, 'iXVoOvVYbAj9GJ09uy6UfNpr64toxsmV');
 
 -- Dumping structure for function hobo.LEVENSHTEIN
 DELIMITER //
@@ -10115,7 +10116,7 @@ CREATE TABLE IF NOT EXISTS `serie` (
   PRIMARY KEY (`SerieID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=644 DEFAULT CHARSET=latin1;
 
--- Dumping data for table hobo.serie: ~637 rows (approximately)
+-- Dumping data for table hobo.serie: ~636 rows (approximately)
 INSERT INTO `serie` (`SerieID`, `SerieTitel`, `IMDBLink`, `Actief`, `Image`, `Description`, `Director`, `IMDBrating`, `trailerVideo`) VALUES
 	(1, 'Stranger Things', 'https://www.imdb.com/title/tt4574334/', 1, 'img/posters/00001.jpg', 'A group of kids in a small town uncover a mystery involving secret experiments, supernatural forces, and a strange girl with extraordinary abilities.', 'The Duffer Brothers', 8.3, 'https://www.youtube.com/embed/mnd7sFt5c3A'),
 	(2, 'The Crown', 'https://www.imdb.com/title/tt4786824/', 1, 'img/posters/00002.jpg', 'Follows the political rivalries and romance of Queen Elizabeth II\'s reign and the events that shaped the second half of the 20th century.', 'Peter Morgan', 8.7, 'https://www.youtube.com/embed/JWtnJjn6ng0'),
@@ -10764,7 +10765,7 @@ CREATE TABLE IF NOT EXISTS `serie_genre` (
   CONSTRAINT `FKSerie_Genr458403` FOREIGN KEY (`SerieID`) REFERENCES `serie` (`SerieID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table hobo.serie_genre: ~800 rows (approximately)
+-- Dumping data for table hobo.serie_genre: ~796 rows (approximately)
 INSERT INTO `serie_genre` (`SerieID`, `GenreID`) VALUES
 	(1, 3),
 	(13, 3),
@@ -11591,7 +11592,8 @@ INSERT INTO `sessions` (`id`, `KlantNr`, `session_cookie`) VALUES
 	(8, 11058, '[]'),
 	(9, 11059, '[{"SerieID":218,"SerieTitel":"Jessica Jones","IMDBLink":"https:\\/\\/www.imdb.com\\/title\\/tt0903747\\/","Actief":1,"Image":"img\\/posters\\/00218.jpg","Description":"Jessica Jones follows the titular character, a former superhero turned private investigator with superhuman strength and a troubled past. As she confronts her inner demons and battles against formidable adversaries, she uncovers dark secrets that threaten her and those she cares about.","Director":"Melissa Rosenberg","IMDBrating":8.5,"trailerVideo":"https:\\/\\/www.youtube.com\\/embed\\/nWHUjuJ8zxE"},{"SerieID":396,"SerieTitel":"The Protector","IMDBLink":"https:\\/\\/www.imdb.com\\/title\\/tt0903747\\/","Actief":1,"Image":"img\\/posters\\/00396.jpg","Description":"The Protector is a Turkish fantasy series following a young shopkeeper who discovers his ties to an ancient secret order tasked with protecting Istanbul from supernatural threats.","Director":"Mehmet Yilmaz","IMDBrating":8.6,"trailerVideo":"https:\\/\\/www.youtube.com\\/embed\\/UbtmhRPvIk4"}]'),
 	(10, 11060, 'null'),
-	(11, 11061, '[{"SerieID":222,"SerieTitel":"A Series of Unfortunate Events","IMDBLink":"https:\\/\\/www.imdb.com\\/title\\/tt0903747\\/","Actief":1,"Image":"img\\/posters\\/00222.jpg","Description":"A Series of Unfortunate Events follows the misadventures of the Baudelaire orphans as they navigate a series of unfortunate events and encounters with the nefarious Count Olaf, who is determined to steal their inheritance. With its dark humor and whimsical style, the series captures the essence of Lemony Snicket\'s beloved books.","Director":"Barry Sonnenfeld","IMDBrating":8.8,"trailerVideo":"https:\\/\\/www.youtube.com\\/embed\\/wHgq9BgJ9L4"}]');
+	(12, 11061, '[{"SerieID":1,"SerieTitel":"Stranger Things","IMDBLink":"https:\\/\\/www.imdb.com\\/title\\/tt4574334\\/","Actief":1,"Image":"img\\/posters\\/00001.jpg","Description":"A group of kids in a small town uncover a mystery involving secret experiments, supernatural forces, and a strange girl with extraordinary abilities.","Director":"The Duffer Brothers","IMDBrating":8.3,"trailerVideo":"https:\\/\\/www.youtube.com\\/embed\\/mnd7sFt5c3A"}]'),
+	(13, 11062, '[{"SerieID":225,"SerieTitel":"Free Rein","IMDBLink":"https:\\/\\/www.imdb.com\\/title\\/tt0903747\\/","Actief":1,"Image":"img\\/posters\\/00225.jpg","Description":"Free Rein follows the story of a teenage girl named Zoe who spends the summer at her grandparents horse ranch in England. There, she forms a special bond with a wild horse named Raven and discovers the joy of horse riding and the importance of friendship and perseverance.","Director":"Vicki Lutas","IMDBrating":8.5,"trailerVideo":"https:\\/\\/www.youtube.com\\/embed\\/0eCjI-gJRgM"}]');
 
 -- Dumping structure for table hobo.stream
 CREATE TABLE IF NOT EXISTS `stream` (

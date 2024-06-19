@@ -84,6 +84,11 @@
 <body id="home-body">
     @include('header')
     <main>
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <h1>Create Serie</h1>
 
         <form action="{{ route('admin.createSerie') }}" method="POST">
@@ -124,7 +129,7 @@
                 <input type="text" name="trailerVideo" value="">
             </div>
 
-            <button type="submit">Update</button>
+            <button type="submit">Create</button>
         </form>
     </main>
 </body>

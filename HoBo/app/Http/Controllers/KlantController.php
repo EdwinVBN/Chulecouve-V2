@@ -202,7 +202,7 @@ class KlantController extends Controller
             $user = Auth::getLastAttempted();
             Auth::login($user);
             session()->save();
-            return redirect()->route('home');
+            return redirect()->route('home')->with('success', 'Thank you for creating an account at HoBo, to congratulate our launch we have assigned 1 month of usage to your account.');
         }
 
         return redirect()->route('register')->withErrors([

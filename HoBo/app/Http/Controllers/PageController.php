@@ -146,7 +146,7 @@ class PageController extends Controller
                 Serie::create($data);
             });
 
-            return redirect()->back()->with('success', 'Created series succesfully');
+            return redirect()->route('admin.manageSeries')->with('success', 'Created series succesfully');
 
         }
         elseif ($method == 'GET') {

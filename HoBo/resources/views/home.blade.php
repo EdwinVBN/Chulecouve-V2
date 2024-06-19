@@ -10,6 +10,11 @@
 <body id="home-body">
     @include('header')
     <main>
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <section id="popup">
             <section id="form-body">
                 <article id="form-head">

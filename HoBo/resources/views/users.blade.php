@@ -25,19 +25,6 @@
         color: #333;
         margin-bottom: 20px;
     }
-    
-    .alert {
-        padding: 10px;
-        margin-bottom: 20px;
-        border-radius: 5px;
-    }
-    
-    .alert-success {
-        background-color: #d4edda;
-        color: #155724;
-        border: 1px solid #c3e6cb;
-    }
-    
     .table {
         width: 100%;
         border-collapse: collapse;
