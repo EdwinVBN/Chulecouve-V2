@@ -15,6 +15,15 @@
                 {{ session('success') }}
             </div>
         @endif
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li style="color: black; list-style-type: none;">{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <section id="popup">
             <section id="form-body">
                 <article id="form-head">

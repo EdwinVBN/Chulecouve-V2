@@ -45,6 +45,10 @@ class PageController extends Controller
             return (object) $item;
         });
 
+        $recentlyWatched = $recentlyWatched->filter(function ($item) {
+            return Serie::find($item->SerieID) !== null;
+        });
+
         $user = Auth::user();
     
         if($user){
@@ -346,6 +350,14 @@ class PageController extends Controller
         }
         $serie = Serie::findOrFail($id);
         $genre = Serie_Genre::where('SerieID', $id);
+        $recentlyWatched = session('recently_watched', collect());
+        $recentlyWatched = collect($recentlyWatched)->map(function ($item) {
+            return (object) $item;
+        });
+        $recentlyWatched = $recentlyWatched->filter(function ($item) use ($serie) {
+            return $item->SerieID !== $serie->SerieID;
+        });
+        session(['recently_watched' => $recentlyWatched]);
         $genre->delete();
         $serie->delete();
         return redirect()->route('admin.manageSeries')->with('success', 'Series deleted successfully.');
@@ -422,6 +434,9 @@ class PageController extends Controller
     public function stream($id)
     {
         $serie = Serie::find($id);
+        if (!$serie) {
+            return redirect()->route('home')->withErrors(['error' => 'Serie with ID ' . $id . ' not found. | redirected to home']);
+        }
         $recentlyWatched = session('recently_watched', collect());
         $recentlyWatched = collect($recentlyWatched)->map(function ($item) {
             return (object) $item;
