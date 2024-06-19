@@ -115,21 +115,13 @@ class PageController extends Controller
     public function isContentManager()
     {
         $user = Auth::user();
-        if ($user->AboID >= 4)
-        {
-            return true;
-        }
-        return false;
+        return $user->AboID >= 4;
     }
 
     public function isAdmin() 
     {
         $user = Auth::user();
-        if ($user->AboID == 4)
-        {
-            return true;
-        }
-        return false;
+        return $user->AboID == 4;
     }
 
     public function seriesCreate(Request $request)
