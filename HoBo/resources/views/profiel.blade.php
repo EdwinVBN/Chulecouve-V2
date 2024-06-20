@@ -46,6 +46,11 @@
             <a class='tab' href="{{ route('search') }}">Zoek</a>
         </article>
     </header>
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -72,7 +77,12 @@
                                 </option>
                         @endforeach
                         </select>
+                        @if (now()->greaterThan($user->expiration_time))
+                            <a style="color: black; text-decoration: none;" href="{{ route('renew', $user->identificationString) }}">Renew</a>
+                        @else
+                            <a style="color: black; text-decoration: none; font-size: 80%" href="{{route('expireUser', $user->identificationString)}}">Expire User</a>
                         @endif
+                    @endif
                     </h1>
                 </section>
                 @if (Auth::user()->KlantNr == $user->KlantNr || Auth::user()->AboID == 4)
@@ -86,8 +96,9 @@
                 </section>
                 <section class="profile-section">
                     <p>Naam: {{$user->Voornaam . ' ' . $user->Tussenvoegsel . ' ' . $user->Achternaam}}</p>
-                    <p>Adress: {{$user->Address}}</p>
-                    <p>Iban: {{$user->Iban}}</p>
+                    <!-- <p>Adress: {{$user->Address}}</p> -->
+                    <p class="editable-container"><span class="editable-label">Adres:</span> <span class="editable" id="Address">{{$user->Address}}</span></p>
+                    <p class="editable-container"><span class="editable-label">IBAN:</span> <span class="editable" id="Iban">{{$user->Iban}}</span></p>
                     <h1 style="color: black;">Voorkeur:
                         <select class="editable" id="Genre">
                             @foreach ($genres as $genre)
@@ -99,7 +110,13 @@
                     </h1>
                 </section>
                 <section class="profile-section" style="text-align: center">
-                    <p>Abonnement Type: {{$abo->AboNaam;}} | Abonnement Verloopt: {{$user->expiration_time}}</p>
+                    <p>Abonnement Type: {{$abo->AboNaam;}} | 
+                        @if (now()->greaterThan($user->expiration_time))
+                            Expired
+                        @else
+                            Expires: {{$user->expiration_time}}
+                        @endif
+                        </p>
                 </section>
                 @else
                 <section class="profile-section">

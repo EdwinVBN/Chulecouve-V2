@@ -24,6 +24,7 @@ class Klant extends Authenticatable
         'Naam',
         'password',
         'totalWatched',
+        'expiration_time'
         // Add other fields here
     ];
 }

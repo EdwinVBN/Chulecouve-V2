@@ -5,15 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Orhanerday\OpenAi\OpenAi;
 use App\Models\Klant;
+use Illuminate\Support\Facades\Http;
 use App\Models\Serie;
 
 class CustomerServiceController extends Controller
 {
+    private $apiKey;
+    private $apiBaseUrl = 'https://openrouter.ai/api/v1/chat/completions';
+
+    public function __construct()
+    {
+        $this->apiKey = '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';
+    }
+
     public function handleRequest(Request $request)
     {
         $question = $request->input('question');
-
-        $openai = new OpenAi(env('OPENAI_API_KEY'));
         $baseText = $this->loadBaseText();
 
         $aantal_klanten = Klant::count();
@@ -23,23 +30,29 @@ class CustomerServiceController extends Controller
             " Er zijn $aantal_series series beschikbaar op hobo."; 
 
         $baseText .= $extraTekst;
+        $baseText .= "\nVeelgestelde vragen:\n" . $this->loadFaq();
 
-        $faq = $this->loadFaq();
-        $baseText .= "\nVeelgestelde vragen:\n" . $faq;
+        $response = $this->ask($baseText, $question);
+        $noQuotes = str_replace('"', '', $response);
 
-        $response = $openai->chat([
-            'model' => 'gpt-3.5-turbo',
+        $this->saveConversation($request->user(), $question, $noQuotes);
+
+        return response()->json(['response' => $noQuotes]);
+    }
+
+    private function ask($baseText, $userMessage)
+    {
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $this->apiKey,
+        ])->post($this->apiBaseUrl, [
+            'model' => 'gryphe/mythomax-l2-13b',
             'messages' => [
                 ['role' => 'system', 'content' => $baseText],
-                ['role' => 'user', 'content' => $question],
+                ['role' => 'user', 'content' => $userMessage],
             ],
         ]);
 
-        $decodedResponse = json_decode($response, true);
-        $assistantMessage = $decodedResponse['choices'][0]['message']['content'];
-        $this->saveConversation($request->user(), $question, $assistantMessage);
-
-        return response()->json(['response' => $assistantMessage]);
+        return $response->json()['choices'][0]['message']['content'];
     }
 
     private function loadBaseText()
@@ -54,5 +67,6 @@ class CustomerServiceController extends Controller
 
     private function saveConversation($user, $question, $response)
     {
+        // Implementeer deze functie om het gesprek op te slaan.
     }
 }

@@ -116,6 +116,55 @@ class PageController extends Controller
             'userSeries' => $userSeries,
         ]);
     }
+
+    public function expireUser($identificationString)
+    {
+        $user = Klant::where('identificationString', $identificationString)->first();
+
+        if (!$user) {
+            return redirect()->back()->withErrors(['error' => 'User does not exist.']);
+        }
+
+        if (Auth::user()->AboID != 4)
+        {
+            return redirect()->back()->withErrors(['error' => 'Unauthorized']);
+        }
+
+        if ((now()->greaterThan($user->expiration_time))) {
+            return redirect()->back()->withErrors(['error' => 'This subscribtion is already expired!']);
+        }
+
+        $user->update([
+            'expiration_time' => now()->subHour()
+        ]);
+
+        $user->save();
+
+        return redirect()->route('profiel', $identificationString)->with('success', 'You expired ' . $user->Voornaam . "'s active subscribtion!");
+
+    }
+
+    public function renew($identificationString) {
+        $user = Klant::where('identificationString', $identificationString)->first();
+
+        if (!$user) {
+            return redirect()->back()->withErrors(['error' => 'User does not exist.']);
+        }
+
+        if (!(now()->greaterThan($user->expiration_time))) {
+            return redirect()->back()->withErrors(['error' => 'You can only renew when your subscribtion is expired']);
+        }
+
+        $user->update([
+            'expiration_time' => now()->addDays(30)
+        ]);
+
+        $user->save();
+
+        return redirect()->route('profiel', $identificationString)->with('success', 'Thank you for renewing your HoBo subscribtion!');
+
+
+    }
     public function isContentManager()
     {
         $user = Auth::user();
