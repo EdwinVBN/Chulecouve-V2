@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInit6405029f70e23aeae5a145cd3210c21e
 {
     public static $prefixLengthsPsr4 = array (
+        'P' => 
+        array (
+            'Psr\\Log\\' => 8,
+        ),
         'O' => 
         array (
             'Orhanerday\\OpenAi\\' => 18,
@@ -14,9 +18,23 @@ class ComposerStaticInit6405029f70e23aeae5a145cd3210c21e
     );
 
     public static $prefixDirsPsr4 = array (
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
         'Orhanerday\\OpenAi\\' => 
         array (
             0 => __DIR__ . '/..' . '/orhanerday/open-ai/src',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'PayPal' => 
+            array (
+                0 => __DIR__ . '/..' . '/paypal/rest-api-sdk-php/lib',
+            ),
         ),
     );
 
@@ -29,6 +47,7 @@ class ComposerStaticInit6405029f70e23aeae5a145cd3210c21e
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit6405029f70e23aeae5a145cd3210c21e::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit6405029f70e23aeae5a145cd3210c21e::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit6405029f70e23aeae5a145cd3210c21e::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit6405029f70e23aeae5a145cd3210c21e::$classMap;
 
         }, null, ClassLoader::class);

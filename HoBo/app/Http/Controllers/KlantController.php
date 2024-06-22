@@ -86,7 +86,8 @@ class KlantController extends Controller
         $klant = Klant::where('identificationString', $klantNr)->first();
         if ($klant) {
             $field = $data['field'];
-            if ($field == 'AboID') {
+            $forbidden_fields = ['AboID', 'expiration_time', 'identificationString', 'KlantNr', 'totalWatched', 'Role'];
+            if (in_array($field, $forbidden_fields)) {
                 if ($authenticatedUser->AboID != 4) {
                     return redirect()->back()->withErrors(['error' => 'You are not an admin, you cannot perform this action.']);
                 }
@@ -146,12 +147,12 @@ class KlantController extends Controller
 
             $abonnement = Abonnement::find($user->AboID)->AboNaam;
 
-            if (now()->greaterThan(Auth::user()->expiration_time)) {
-                Auth::logout();
-                return back()->withErrors([
-                'email' => 'Your "' . $abonnement . '" subscribtion has expired. Please renew it.',
-            ]);
-            }
+            // if (now()->greaterThan(Auth::user()->expiration_time)) {
+            //     Auth::logout();
+            //     return back()->withErrors([
+            //     'email' => 'Your "' . $abonnement . '" subscribtion has expired. Please renew it.',
+            // ]);
+            // }
             Auth::login($user);
 
             $existingSession = DB::table('sessions')->where('KlantNr', $user->KlantNr)->first();

@@ -35,6 +35,8 @@ $paragraph: "Montserrat", sans-serif;
     max-width: 64%; // 80% * 0.8
     word-wrap: break-word;
 }
+
+
 .user-message {
     background-color: #92d051;
     align-self: flex-end;
@@ -225,6 +227,73 @@ $avatar-size: 40px; // 50px * 0.8
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+.search-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.filter-select, .filter-input {
+    flex: 1;
+    min-width: 120px;
+    padding: 8px 12px;
+    font-family: $paragraph;
+    font-size: 14px;
+    color: $light-color;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid $secondary-color;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+    &:focus {
+        outline: none;
+        background-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 0 2px rgba($secondary-color, 0.5);
+    }
+
+    option {
+        background-color: $dark-color;
+    }
+}
+
+.filter-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-button {
+    padding: 8px 16px;
+    font-family: $title;
+    font-size: 14px;
+    color: $dark-color;
+    background-color: $primary-color;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+        background-color: darken($primary-color, 10%);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+// Responsive adjustments
+@media screen and (max-width: 600px) {
+    .search-filters {
+        flex-direction: column;
+    }
+
+    .filter-select, .filter-input, .search-button {
+        width: 100%;
+    }
 }
 
 .view-box {
@@ -603,7 +672,7 @@ $avatar-size: 40px; // 50px * 0.8
             h1 {
                 color: $secondary-color;
                 font-family: $title;
-                font-size: 40px;
+                font-size: 30px;
             }
 
             .carousel-images {
@@ -612,8 +681,10 @@ $avatar-size: 40px; // 50px * 0.8
                 transition: transform 0.3s ease-in-out;
 
                 img {
-                    width: 235px;
+                    width: 167px;
+                    height: 237px;
                     border-radius: 5px;
+                    box-shadow: rgba(0, 0, 0, 0.7) 0px 8px 10px -10px, rgba(0, 0, 0, 0.5) 0px 20px 30px -10px;
                     cursor: pointer;
                     transition: transform 0.2s ease-in-out;
 

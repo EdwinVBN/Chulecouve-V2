@@ -162,8 +162,6 @@ class PageController extends Controller
         $user->save();
 
         return redirect()->route('profiel', $identificationString)->with('success', 'Thank you for renewing your HoBo subscribtion!');
-
-
     }
     public function isContentManager()
     {
@@ -175,6 +173,30 @@ class PageController extends Controller
     {
         $user = Auth::user();
         return $user->AboID == 4;
+    }
+
+    public function deletehistory($identificationString)
+    {
+        $authenticatedUser = Auth::user();
+        if (!$this->isAdmin() && $identificationString != $authenticatedUser->identificationString) {
+            return redirect()->route('history')->withErrors(['erorr' => 'You cannot perform this action.']);
+        }
+
+        $requestedUser = Klant::where('identificationString', $identificationString)->first();
+
+        if (!$requestedUser) {
+            return redirect()->route('history')->withErrors(['erorr' => 'User does not exist.']);
+        }
+
+        $recentlyWatched = DB::table('sessions')->where(
+            ['KlantNr' => $requestedUser->KlantNr],
+        );
+
+        $recentlyWatched->delete();
+
+        session(['recently_watched' => collect()]);
+
+        return redirect()->route('history')->with('success', 'History cleared successfully.');
     }
 
     public function seriesCreate(Request $request)

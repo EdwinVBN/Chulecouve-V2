@@ -70,6 +70,7 @@
                     <p>Maximum Aantal Devices: {{$abo->MaxDevices}}</p>
                     <p>Stream Kwaliteit: {{$abo->StreamKwaliteit}}p</p>
                     @if (Auth::user()->AboID == 4 && Auth::user()->identificationString != $user->identificationString)
+                    <a style="color: black; text-decoration: none; font-size: 80%" href="{{route('expireUser', $user->identificationString)}}">Expire User</a>
                         <select class="editable" id="AboID">
                         @foreach ($lidmaatschappen as $lidmaatschap)
                                 <option value="{{ $lidmaatschap->AboID }}" {{ $user->AboID == $lidmaatschap->AboID ? 'selected' : '' }}>
@@ -77,12 +78,11 @@
                                 </option>
                         @endforeach
                         </select>
+                    @endif
                         @if (now()->greaterThan($user->expiration_time))
                             <a style="color: black; text-decoration: none;" href="{{ route('renew', $user->identificationString) }}">Renew</a>
                         @else
-                            <a style="color: black; text-decoration: none; font-size: 80%" href="{{route('expireUser', $user->identificationString)}}">Expire User</a>
                         @endif
-                    @endif
                     </h1>
                 </section>
                 @if (Auth::user()->KlantNr == $user->KlantNr || Auth::user()->AboID == 4)
@@ -117,6 +117,7 @@
                             Expires: {{$user->expiration_time}}
                         @endif
                         </p>
+                        <a href="{{ route('deletehistory', $user->identificationString) }}" style="color: black; text-decoration: none;">Verwijder Geschiedenis</a>
                 </section>
                 @else
                 <section class="profile-section">

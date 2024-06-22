@@ -25,10 +25,12 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/filminfo/{id}', [PageController::class, 'filminfo'])->name('filminfo');
     Route::get('/profile', [PageController::class, 'profile'])->middleware('auth');
     Route::get('/search', [PageController::class, 'search'])->name('search');
+    Route::get('/autocomplete', [PageController::class, 'autocomplete'])->name('autocomplete');
     Route::get('/genres', [PageController::class, 'genrePage'])->name('genres');
     Route::get('/profiel/{KlantNr}', [PageController::class, 'profiel'])->name('profiel')->middleware('auth');
     Route::get('/renew/{identificationString}', [PageController::class, 'renew'])->name('renew')->middleware('auth');
     Route::get('/expire/{identificationString}', [PageController::class, 'expireUser'])->name('expireUser')->middleware('auth');
+    Route::get('/deletehistory/{identificationString}', [PageController::class, 'deletehistory'])->name('deletehistory')->middleware('auth');
     Route::get('/genre', [PageController::class, 'genre'])->name('genre')->middleware('auth');
     Route::get('/settings', [PageController::class, 'settings'])->middleware('auth');
     Route::get('/stream/{id}', [PageController::class, 'stream'])->name('stream')->middleware('auth');

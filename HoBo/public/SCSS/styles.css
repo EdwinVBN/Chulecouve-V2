@@ -221,6 +221,70 @@ header article img:hover {
   justify-content: center;
 }
 
+.search-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.filter-select, .filter-input {
+  flex: 1;
+  min-width: 120px;
+  padding: 8px 12px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  color: #efefef;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid #5b9bd5;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.filter-select:focus, .filter-input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 0 2px rgba(91, 155, 213, 0.5);
+}
+.filter-select option, .filter-input option {
+  background-color: #444444;
+}
+
+.filter-input::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.filter-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.search-button {
+  padding: 8px 16px;
+  font-family: "Neutra", sans-serif;
+  font-size: 14px;
+  color: #444444;
+  background-color: #92d051;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.search-button:hover {
+  background-color: #79bb33;
+  transform: translateY(-2px);
+}
+.search-button:active {
+  transform: translateY(0);
+}
+
+@media screen and (max-width: 600px) {
+  .search-filters {
+    flex-direction: column;
+  }
+  .filter-select, .filter-input, .search-button {
+    width: 100%;
+  }
+}
 .view-box, .betalings-gegevens-view {
   padding: 16px;
   background-color: #5b9bd5;
@@ -626,7 +690,7 @@ header article img:hover {
 #home-body main .carousel h1 {
   color: #5b9bd5;
   font-family: "Neutra", sans-serif;
-  font-size: 40px;
+  font-size: 30px;
 }
 #info-body main .carousel .carousel-images,
 #login-body main .carousel .carousel-images,
@@ -638,8 +702,10 @@ header article img:hover {
 #info-body main .carousel .carousel-images img,
 #login-body main .carousel .carousel-images img,
 #home-body main .carousel .carousel-images img {
-  width: 235px;
+  width: 167px;
+  height: 237px;
   border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 8px 10px -10px, rgba(0, 0, 0, 0.5) 0px 20px 30px -10px;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
 }
